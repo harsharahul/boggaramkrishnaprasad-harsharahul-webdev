@@ -3,5 +3,24 @@ input.form-control {
 }
 
 body {
-    padding-top: 36px;
+    padding-top: 60px;
+    padding-bottom: 70px;
+}
+
+.bhr-no-border{
+    border-left: none;
+    border-bottom: none;
+    border-right: none;
+    border-top: none;
+    padding: 7px;
+}
+
+.bhr-divider{
+    border-width: 0.5px;
+    border-right: solid;
+}
+
+.bhr-button-padding{
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
