@@ -45,6 +45,10 @@ body {
     padding-top: 10px;
 }
 
+.bhr-top-padding{
+    padding-top: 50px;
+}
+
 .jga-toolbar {
     position: absolute;
     right: 15px;
@@ -95,10 +99,6 @@ table td {
 
 
 }
-
-
-
-
 .center-me{
     text-align: center
 }
