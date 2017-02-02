@@ -2,57 +2,117 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Page</title>
+    <title>Page Edit</title>
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <!--<link href="../css/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>-->
     <link href="../css/style.css" rel="stylesheet"/>
-
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
 </head>
 <body>
+
 <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-text pull-left">
-            <a href = "">
-                <span class="glyphicon glyphicon-chevron-left">
-            </span>
-            </a>
+    <div class="row container-fluid ">
+        <div class="col-sm-4 hidden-xs">
+            <div class="navbar-text pull-left">
+                <a>
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand">
+                    Pages
+                </a>
+            </div>
+            <div class="navbar-text pull-right">
+                <a>
+                    <span class="glyphicon glyphicon-plus "></span>
+                </a>
+            </div>
         </div>
-        <div class="navbar-text pull-right">
-            <span class="glyphicon glyphicon-ok"></span>
-        </div>
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Edit Page</a>
+        <div class="col-sm-8">
+            <div class="navbar-text pull-left visible-xs">
+                <a>
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+            <div class="navbar-text pull-right">
+                <a>
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand">
+                    Edit Page
+                </a>
+            </div>
         </div>
     </div>
 </nav>
 
-<div class="container">
-    Name:
-    <input type="text"
-           class="form-control"
-           placeholder="Page Name"/>
-    Title:
-    <input type="text"
-           class="form-control"
-           placeholder="Page Title"/>
+<div class="row container-fluid">
 
-</div>
+    <div class="col-sm-4 hidden-xs bhr-split-panel bhr-divider">
+        <!--style="overflow-y: scroll;top: 0px;bottom: 0px;position: absolute;left: 0px;margin-top: 50px;padding-top: 15px;margin-bottom: 50px;">-->
+        <ul class="list-group">
 
-<div class="container">
-    <a class="btn btn-danger btn-block"
-       href="../page/page-list.html">Delete</a>
+            <li class="list-group-item bhr-no-border">Blog Post
+                <a href="page-edit.html">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
+            </li>
+            <li class="list-group-item bhr-no-border">Blog
+                <a href="page-edit.html">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
+            </li>
+            <li class="list-group-item bhr-no-border">Home
+                <a href="page-edit.html">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
+            </li>
+            <li class="list-group-item bhr-no-border">About Us
+                <a href="page-edit.htmls">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-xs-12 col-sm-8 pull-right">
+        <label for="website-name">Name</label>
+        <input placeholder="Page Name"
+                value="Blog Post"
+               class="form-control"
+               id="website-name"/>
+
+        <label for="website-description">Title</label>
+        <textarea placeholder="Page Title"
+                  class="form-control"
+                  id="website-description"></textarea>
+
+        <div class="bhr-button-padding">
+            <a href="website-list.html" class=" btn btn-danger btn-block">
+                Delete
+            </a>
+        </div>
+    </div>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
-        <div class="navbar-text pull-right ">
-            <a href="../user/profile.html">
-                <span class="glyphicon glyphicon-user"></span>
-            </a>
+        <div class="navbar-header">
+            <!--<a class="navbar-brand" href="#">Footer</a>-->
+
         </div>
+        <div class="navbar-text col-xs-12">
+            <a href="website-new.html"> <span class="pull-right glyphicon glyphicon-user"></span></a>
+        </div>
+
     </div>
 </nav>
+
+
+
 </body>
 </html>

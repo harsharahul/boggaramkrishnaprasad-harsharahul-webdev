@@ -15,15 +15,34 @@ body {
     padding: 7px;
 }
 
+.bhr-split-panel{
+    overflow-y: scroll;
+    top: 0px;
+    bottom: 0px;
+    position: absolute;
+    left: 0px;
+    margin-top: 50px;
+    padding-top: 15px;
+    margin-bottom: 50px;
+    border-right: solid
+}
+
 .bhr-divider{
     border-width: 1px;
     border-right: solid;
     border-right-width: thin;
+    border-color: lightgrey;
 }
 
 .bhr-button-padding{
     padding-top: 5px;
     padding-bottom: 10px;
+}
+
+.bhr-side-spaces{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
 }
 
 .jga-toolbar {

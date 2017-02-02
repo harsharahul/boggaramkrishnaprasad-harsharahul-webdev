@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="../css/bootstrap/css/bootstrap.css" rel="stylesheet"/>
-    <link href="../css/style.css" rel="stylesheet"/>
     <meta charset="UTF-8">
     <title>Website List</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../css/style.css" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
 </head>
 <body>
 
@@ -28,7 +31,7 @@
             </div>
         </div>
         <div class="col-sm-8">
-            <div class="navbar-text pull-left">
+            <div class="navbar-text pull-left visible-xs">
                 <a>
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
@@ -49,8 +52,8 @@
 
 <div class="row container-fluid">
 
-    <div class="col-sm-4 hidden-xs bhr-divider"
-         style="overflow-y: scroll;top: 0px;bottom: 0px;position: absolute;left: 0px;margin-top: 50px;padding-top: 15px;margin-bottom: 50px;">
+    <div class="col-sm-4 hidden-xs bhr-split-panel bhr-divider">
+         <!--style="overflow-y: scroll;top: 0px;bottom: 0px;position: absolute;left: 0px;margin-top: 50px;padding-top: 15px;margin-bottom: 50px;">-->
             <ul class="list-group">
                 <li class="list-group-item bhr-no-border">
                     <div class="row">
@@ -58,7 +61,7 @@
                             Facebook
                         </div>
                         <div class="col-xs-2">
-                            <span class="glyphicon glyphicon-cog pull-right"></span>
+                            <a href="#"> <span class="glyphicon glyphicon-cog pull-right"></span></a>
                         </div>
                     </div>
                 </li>
