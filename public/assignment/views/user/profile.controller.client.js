@@ -15,16 +15,17 @@
 
         var user = UserService.findUserById(userId);
         vm.user = user;
+        //vm.error = "No Data";
 
         console.log(user);
-        // vm.update = function (newUser) {
-        //     var user = UserService.updateUser(userId, newUser);
-        //     if(user == null) {
-        //         vm.error = "unable to update user";
-        //     } else {
-        //         vm.message = "user successfully updated"
-        //     }
-        // };
+        vm.update = function (newUser) {
+            var user = UserService.updateUser(userId, newUser);
+            if(user == null) {
+                vm.error = "unable to update user";
+            } else {
+                vm.message = "user successfully updated"
+            }
+        };
 
         function update(user) {
             console.log("in the update funciton")
