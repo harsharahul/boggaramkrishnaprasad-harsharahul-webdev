@@ -1,0 +1,95 @@
+
+<div>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="row container-fluid ">
+        <div class="col-sm-4 hidden-xs">
+            <div class="navbar-text pull-left">
+                <a>
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand">
+                    Pages
+                </a>
+            </div>
+            <div class="navbar-text pull-right">
+                <a>
+                    <span class="glyphicon glyphicon-plus "></span>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="navbar-text pull-left visible-xs">
+                <a href="page-list.view.client.html">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+            <div class="navbar-text pull-right">
+                <a ng-click="model.createPage(page)">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand">
+                    New Page
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="row container-fluid">
+
+    <div class="col-sm-4 hidden-xs bhr-split-panel bhr-divider">
+        <ul class="list-group">
+
+            <ul class="list-group">
+
+                <li ng-repeat="page in model.pages" class="list-group-item bhr-no-border bhr-side-spaces">
+                    <div class="row">
+                        <div class="col-xs-10">
+                            {{page.name}}
+                        </div>
+                        <div class="col-xs-2">
+                            <a ng-click="model.routeEdit(page.websiteId)"><span class="glyphicon glyphicon-cog pull-right"></span></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </ul>
+    </div>
+
+    <div class="col-xs-12 col-sm-8 pull-right">
+        <label for="website-name">Name</label>
+        <input placeholder="Page Name"
+               ng-model="page.name"
+               class="form-control"
+               id="website-name"/>
+
+        <label for="website-description">Title</label>
+        <textarea placeholder="Page Title"
+                  ng-model="page.description"
+                  class="form-control"
+                  id="website-description"></textarea>
+
+
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-header">
+
+        </div>
+        <div class="navbar-text col-xs-12">
+            <a ng-click="model.routeProfile()"> <span class="pull-right glyphicon glyphicon-user"></span></a>
+        </div>
+
+    </div>
+</nav>
+
+
+
+</div>

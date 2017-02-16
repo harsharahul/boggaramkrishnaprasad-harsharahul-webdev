@@ -1,20 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Choose Widget</title>
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <!--<link href="../css/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>-->
-    <link href="../css/style.css" rel="stylesheet"/>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-</head>
-<body>
+<div>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text pull-left">
-            <a href = "widget-list.html">
+            <a ng-click="model.routeWidgetList()">
                 <span class="glyphicon glyphicon-chevron-left">
             </span>
             </a>
@@ -27,16 +16,19 @@
 
 <div class="container">
     <ul class="list-group">
-        <a href = "widget-heading.html">
-            <li class="list-group-item bhr-no-border">Header
+
+        <a ng-click="model.createNewHeaderWidget()">
+            <li class="list-group-item bhr-no-border">Header</li>
         </a>
-        </li>
+
         <li class="list-group-item bhr-no-border">Label
 
         </li>
-        <li class="list-group-item bhr-no-border">HTML
+        <a ng-click="model.createAnewHTMLWidget()">
+        <li  class="list-group-item bhr-no-border">HTML
 
         </li>
+        </a>
         <li class="list-group-item bhr-no-border">Text Input
 
         </li>
@@ -47,12 +39,12 @@
 
         </li>
 
-        <a href = "widget-image.html">
+        <a ng-click="model.createNewImageWidget()">
             <li class="list-group-item bhr-no-border">Image
 
             </li></a>
 
-        <a href="widget-youtube.html">
+        <a ng-click="model.createNewYoutubeWidget()">
             <li class="list-group-item bhr-no-border">Youtube
 
             </li>
@@ -71,11 +63,10 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-right ">
-            <a href="../user/profile.html">
+            <a ng-click="model.routeProfile()">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </div>
     </div>
 </nav>
-</body>
-</html>
+</div>

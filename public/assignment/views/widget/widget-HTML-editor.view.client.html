@@ -1,0 +1,55 @@
+<div>
+<!--<nav class="navbar navbar-default navbar-fixed-top">-->
+    <!--<div class="container-fluid ">-->
+
+        <!--<div class = "navbar-header">-->
+            <!--<div class="navbar-text pull-left">-->
+                <!--<a ng-click="model.routeWidgetList()">-->
+                <!--<span class="glyphicon glyphicon-chevron-left">-->
+            <!--</span>-->
+                <!--</a>-->
+            <!--</div>-->
+            <!--<a class = "navbar-brand pull-left" href = "#">Widget Edit</a>-->
+            <!--<div class="navbar-text pull-right">-->
+                <!--<a ng-click="model.updateWidget(model.widget)">-->
+            <!--<span class="glyphicon glyphicon-ok ">-->
+            <!--</span>-->
+                <!--</a>-->
+            <!--</div>-->
+        <!--</div>-->
+
+    <!--</div>-->
+<!--</nav>-->
+
+<div class="container">
+    Text:
+    <input type="text" placeholder="Text" ng-model="model.widget.text"
+           class="form-control"/>
+
+</div>
+
+
+<div class="container dow">
+    <a class="btn btn-primary btn-block"
+       ng-click="model.updateWidget(model.widget)"> Update Widget</a>
+</div>
+<div class="container">
+    <a class="btn btn-danger btn-block"
+       ng-click="model.deleteWidget()">Delete</a>
+</div>
+
+
+</div>
+
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a ng-click="model.routeProfile()">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+    </div>
+</nav>
+</div>

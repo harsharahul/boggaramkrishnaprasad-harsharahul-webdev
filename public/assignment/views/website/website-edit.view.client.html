@@ -1,21 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Website List</title>
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/style.css" rel="stylesheet"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-</head>
-<body>
+<div>
 
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row container-fluid ">
         <div class="col-sm-4 hidden-xs">
             <div class="navbar-text pull-left">
-                <a href="website-list.html">
+                <a href="website-list.view.client.html">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
@@ -25,19 +15,19 @@
                 </a>
             </div>
             <div class="navbar-text pull-right">
-                <a href="website-list.html">
+                <a href="website-list.view.client.html">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </div>
         </div>
         <div class="col-sm-8">
             <div class="navbar-text pull-left visible-xs">
-                <a href="website-list.html">
+                <a href="website-list.view.client.html">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
             <div class="navbar-text pull-right">
-                <a href="website-new.html">
+                <a ng-click="model.websiteNew()">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </div>
@@ -54,22 +44,15 @@
 
     <div class="col-sm-4 hidden-xs bhr-split-panel bhr-divider">
         <ul class="list-group">
-            <li class="list-group-item bhr-no-border bhr-side-spaces">
-                <a href="../page/page-list.html">Address Book App</a>
-                <a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right" /></a>
-            </li>
-            <li class="list-group-item bhr-no-border bhr-side-spaces">
-                <a href="../page/page-list.html">Blogger</a>
-                <a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right" /></a>
-            </li>
-            <li class="list-group-item bhr-no-border bhr-side-spaces">
-                <a href="../page/page-list.html">Blogging App</a>
-                <a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right" /></a>
-            </li>
-
-            <li class="list-group-item bhr-no-border bhr-side-spaces">
-                <a href="../page/page-list.html">Script Testing App</a>
-                <a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right" /></a>
+            <li ng-repeat="website in model.websites" class="list-group-item bhr-no-border bhr-side-spaces">
+                <div class="row">
+                    <div class="col-xs-10">
+                        <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">{{website.name}}</a>
+                    </div>
+                    <div class="col-xs-2">
+                        <a ng-click="model.updateWebsite(website._id)"><span class="glyphicon glyphicon-cog pull-right"></span></a>
+                    </div>
+                </div>
             </li>
         </ul>
         </div>
@@ -77,17 +60,18 @@
     <div class="col-xs-12 col-sm-8 pull-right">
         <label for="website-name">Website Name</label>
         <input placeholder="Website Name"
-               value="Facebook"
+               ng-model="model.website.name"
                class="form-control"
                id="website-name"/>
 
         <label for="website-description">Website Description</label>
         <textarea placeholder="Website Description"
+                  ng-model="model.website.description"
                   class="form-control"
                   id="website-description">This is the description of facebook website</textarea>
 
         <div class="bhr-button-padding">
-        <a href="website-list.html" class=" btn btn-danger btn-block">
+        <a href="website-list.view.client.html" class=" btn btn-danger btn-block">
             Delete
         </a>
         </div>
@@ -99,7 +83,7 @@
         <div class="navbar-header">
         </div>
         <div class="navbar-text col-xs-12">
-            <a href="../user/profile.html"> <span class="pull-right glyphicon glyphicon-user"></span></a>
+            <a href="../user/profile.view.client.html"> <span class="pull-right glyphicon glyphicon-user"></span></a>
         </div>
 
     </div>
@@ -107,5 +91,4 @@
 
 
 
-</body>
-</html>
+</div>

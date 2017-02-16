@@ -1,0 +1,195 @@
+<!--<div>-->
+
+
+<!--<nav class="navbar navbar-default navbar-fixed-top">-->
+    <!--<div class="container-fluid">-->
+        <!--<div class="navbar-text pull-right">-->
+            <!--<a href="profile.view.client.html"><span class="glyphicon glyphicon-ok"></span></a>-->
+        <!--</div>-->
+        <!--<div class="navbar-header">-->
+            <!--<a class="navbar-brand" href="#">Profile</a>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</nav>-->
+
+
+<!--<div class="container-fluid bhr-top-padding" >-->
+
+    <!--<form>-->
+        <!--<div class="form-group">-->
+            <!--<label for="username">Username</label>-->
+            <!--<input type="text" class="form-control" id="username" placeholder="Username">-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label for="email">Email address</label>-->
+            <!--<input type="email" class="form-control" id="email" placeholder="alice@wonderland.com">-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label for="first-name">First Name</label>-->
+            <!--<input type="text" class="form-control" id="first-name" placeholder="Alice">-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label for="last-name">Last Name</label>-->
+            <!--<input type="text" class="form-control" id="last-name" placeholder="Wonderland">-->
+        <!--</div>-->
+    <!--</form>-->
+
+    <!--<a class="btn btn-primary btn-block"-->
+       <!--href="../views/website/website-list.view.client.html">Websites</a>-->
+    <!--<a class="btn btn-danger  btn-block"-->
+       <!--href="login.view.client.html">Logout</a>-->
+<!--</div>-->
+
+
+
+<!--<nav class="navbar navbar-default navbar-fixed-bottom">-->
+    <!--<div class="container-fluid">-->
+        <!--<div class="navbar-text pull-right ">-->
+            <!--<a href="/profile.view.client.html">-->
+                <!--<span class="glyphicon glyphicon-user"></span>-->
+            <!--</a>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</nav>-->
+
+<!--</div>-->
+
+<div>
+    <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+    <div class="navbar-text pull-right">
+    <a href="profile.view.client.html"><span class="glyphicon glyphicon-ok"></span></a>
+    </div>
+    <div class="navbar-header">
+    <a class="navbar-brand" href="#">Profile</a>
+    </div>
+    </div>
+    </nav>
+
+    <div class="container-fluid bhr-top-padding" >
+
+         <div class="alert alert-danger" ng-show="model.error">
+                {{model.error}}
+            </div>
+
+            <div class="alert alert-success" ng-show="model.message">
+                {{model.message}}
+        </div>
+        <form>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <!--<input type="text" class="form-control" id="username" placeholder="Username">-->
+                <input class="form-control" ng-model="model.user.username"
+                                  
+                                  type="text"
+                                  placeholder="Username"/>
+
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <!--<input type="email" class="form-control" id="email" placeholder="alice@wonderland.com">-->
+                <input class="form-control" ng-model="model.user.email"
+                                  id="email"
+                                  
+                                  type="email"
+                                  placeholder="Email"/>
+
+            </div>
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <!--<input type="text" class="form-control" id="first-name" placeholder="Alice">-->
+                <input class="form-control" ng-model="model.user.firstName"
+                                  id="first"
+                                  
+                                  type="text"
+                                  placeholder="First Name"/>
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <!--<input type="text" class="form-control" id="last-name" placeholder="Wonderland">-->
+                <input  class="form-control" ng-model="model.user.lastName"
+                                  id="last"
+                                  
+                                  type="text"
+                                  placeholder="Last Name"/>
+            </div>
+            <div class="form-group">
+            <label >Password</label>
+                <input class="form-control" type="password" placeholder="Password"/>
+            </div>
+
+        </form>
+
+        <a class="btn btn-block btn-success" ng-click="model.update(model.user)">Update</a>
+        <a class="btn btn-primary btn-block"
+           href="#!/user/{{model.user._id}}/website/">Website</a>
+        <a class="btn btn-danger  btn-block"
+           href="login.view.client.html">Logout</a>
+    </div>
+
+
+
+    <!--<div class="container-fluid bhr-top-padding">-->
+
+    <!--    <div class="alert alert-danger" ng-show="model.error">-->
+    <!--        {{model.error}}-->
+    <!--    </div>-->
+
+    <!--    <div class="alert alert-success" ng-show="model.message">-->
+    <!--        {{model.message}}-->
+    <!--    </div>-->
+
+    <!--    <label for="first">First Name</label>-->
+    <!--    <input ng-model="model.user.firstName"-->
+               <!--           id="first"-->
+               <!--           class="form-control"-->
+               <!--           type="text"-->
+               <!--           placeholder="First Name"/>-->
+
+    <!--    <label for="last">Last Name</label>-->
+    <!--    <input ng-model="model.user.lastName"-->
+               <!--           id="last"-->
+               <!--           class="form-control"-->
+               <!--           type="text"-->
+               <!--           placeholder="Last Name"/>-->
+
+    <!--    <label for="email">Email</label>-->
+    <!--    <input ng-model="model.user.email"-->
+               <!--           id="email"-->
+               <!--           class="form-control"-->
+               <!--           type="email"-->
+               <!--           placeholder="Email"/>-->
+
+    <!--    <label>Username</label>-->
+    <!--    <input ng-model="model.user.username"-->
+               <!--           class="form-control"-->
+               <!--           type="text"-->
+               <!--           placeholder="Username"/>-->
+
+    <!--    <label>Password</label>-->
+    <!--    <input class="form-control" type="password" placeholder="Password"/>-->
+
+    <!--    <a href="#/user/{{model.user._id}}/website" class="btn btn-success btn-block">-->
+    <!--        Websites-->
+    <!--    </a>-->
+
+    <!--    <a ng-click="model.update(model.user)"-->
+           <!--       class="btn btn-primary btn-block">-->
+    <!--        Update-->
+    <!--    </a>-->
+
+    <!--    <a class="btn btn-danger btn-block" href="#/login">-->
+    <!--        Logout-->
+    <!--    </a>-->
+<!--</div>-->
+
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container-fluid">
+                <div class="navbar-text pull-right ">
+                    <a href="/profile.view.client.html">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+</div>

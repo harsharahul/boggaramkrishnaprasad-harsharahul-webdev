@@ -1,0 +1,54 @@
+
+<div>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a ng-click="model.routeWidgetList()">
+                <span class="glyphicon glyphicon-chevron-left">
+            </span>
+            </a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a ng-click="model.updateWidget(model.widget)"> <span class="glyphicon glyphicon-ok"></span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Widget Edit</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    Name:
+    <input type="text"
+           ng-model="model.widget.widgetType"
+           class="form-control"
+           placeholder="ABCD"/>
+    Text:
+    <input type="text"
+           ng-model="model.widget.text"
+           class="form-control"
+           placeholder="US Senate"/>
+    Size:
+    <input type="text"
+           ng-model="model.widget.size"
+           class="form-control"
+           placeholder="10"/>
+
+</div>
+
+<div class="container">
+    <a class="btn btn-danger btn-block"
+       ng-click="model.deleteWidget()">Delete</a>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right ">
+            <a ng-click="model.routeProfile()">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+    </div>
+</nav>
+</div>

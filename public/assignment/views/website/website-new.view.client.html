@@ -1,0 +1,103 @@
+
+<div>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="row container-fluid">
+        <div class="col-sm-4 hidden-xs">
+            <div class="navbar-text pull-left ">
+                <a href="website-list.view.client.html">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    Websites
+                </a>
+            </div>
+            <div class="navbar-text pull-right ">
+                <a href="website-new.view.client.html">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="navbar-text pull-left visible-xs">
+                <a href="website-list.view.client.html">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+            <div class="navbar-text pull-right " >
+                <a ng-click="model.createWebsite(website)">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    New Website
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="row container-fluid bhr-divider">
+
+    <div class="col-sm-4 hidden-xs bhr-split-panel bhr-divider">
+        <ul class="list-group">
+
+            <li ng-repeat="website in model.websites" class="list-group-item bhr-no-border bhr-side-spaces">
+                <div class="row">
+                    <div class="col-xs-10">
+                        <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">{{website.name}}</a>
+                    </div>
+                    <div class="col-xs-2">
+                        <a ng-click="model.routeEditWebsite(website._id)">
+                            <span class="glyphicon glyphicon-cog pull-right"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="col-xs-12 col-sm-8 pull-right">
+        <form>
+
+            <div>
+                <label for="website-description">Website Name</label>
+                <input ng-model="website.name"
+                       placeholder="Website Name"
+                       class="form-control"
+                       id="website-name"/>
+            </div>
+            <div>
+
+                <label for="website-description">Website Description</label>
+                <textarea ng-model="website.description"
+                          placeholder="Website Description"
+                          class="form-control"
+                          id="website-description"></textarea>
+            </div>
+            <div>
+
+
+            </div>
+        </form>
+
+
+
+    </div>
+
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="../user/profile.view.client.html" class="">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+
+</div>
+
+
