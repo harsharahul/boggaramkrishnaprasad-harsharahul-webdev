@@ -33,7 +33,7 @@
             // $location.url("/user/"+vm.userId+"/website");
             WebsiteService
                 .createWebsite(vm.userId, website)
-                .findWebsitesByUser(vm.userId)
+                //.findWebsitesByUser(vm.userId)
                 .then(function (response) {
                     $location.url("/user/"+vm.userId+"/website");
                 })
