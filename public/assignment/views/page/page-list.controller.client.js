@@ -10,14 +10,23 @@
         var vm = this;
         vm.websiteId = $routeParams.wid;
         vm.userId = $routeParams.uid;
-        vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
+        //vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
         vm.newPage = newPage;
         vm.backToWebsiteList = backToWebsiteList;
         vm.routeProfile = routeProfile;
         vm.routeEdit = routeEdit;
         vm.routeWidget= routeWidget;
 
-
+        function init() {
+            PageService
+                .findPageByWebsiteId(vm.websiteId)
+                .then(function (response) {
+                    if(response.data){
+                        vm.pages = response.data;
+                    }
+                })
+        }
+        init();
 
         function newPage()
         {

@@ -5,7 +5,7 @@
     <div class="row container-fluid ">
         <div class="col-sm-4 hidden-xs">
             <div class="navbar-text pull-left">
-                <a>
+                <a ng-click="model.routePageList()">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
@@ -15,14 +15,14 @@
                 </a>
             </div>
             <div class="navbar-text pull-right">
-                <a>
+                <a ng-click="model.routePageNew()">
                     <span class="glyphicon glyphicon-plus "></span>
                 </a>
             </div>
         </div>
         <div class="col-sm-8">
             <div class="navbar-text pull-left visible-xs">
-                <a href="page-list.view.client.html">
+                <a ng-click="model.routePageList()">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
@@ -53,7 +53,7 @@
                             {{page.name}}
                         </div>
                         <div class="col-xs-2">
-                            <a ng-click="model.routeEdit(page.websiteId)"><span class="glyphicon glyphicon-cog pull-right"></span></a>
+                            <a ng-click="model.routeEdit(page._id)"><span class="glyphicon glyphicon-cog pull-right"></span></a>
                         </div>
                     </div>
                 </li>

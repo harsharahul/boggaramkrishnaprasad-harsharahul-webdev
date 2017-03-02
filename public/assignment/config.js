@@ -5,7 +5,11 @@
     angular
         .module("WebAppMaker")
         .config(Config);
-    function Config($routeProvider) {
+    function Config($routeProvider, $httpProvider) {
+
+        $httpProvider.defaults.headers.put['Content-Type'] = 'application/json;charset=UTF-8';
+        $httpProvider.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
+
         $routeProvider
             .when("/login", {
                 templateUrl: "views/user/login.view.client.html",
@@ -84,6 +88,9 @@
                 templateUrl:"views/widget/widget-edit.view.client.html",
                 controller: 'WidgetEditController',
                 controllerAs: 'model'
+            })
+            .otherwise({
+                templateUrl: "views/user/login.view.client.html"
             })
     }
 })();

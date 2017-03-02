@@ -17,13 +17,25 @@
         vm.routeNewWidget = routeNewWidget;
 
         function init() {
-            vm.widget = WidgetService.findWidgetById(vm.widgetId);
+            //vm.widget = WidgetService.findWidgetById(vm.widgetId);
+
+            WidgetService
+                .findWidgetById(vm.widgetId)
+                .then(function (response) {
+                    if(response.data){
+
+                        vm.widget = response.data;
+                        console.log(vm.widget.widgetType);
+                    }
+                })
         }
         init();
 
         function getEditorTemplateUrl(type) {
-            console.log(type);
-            return 'views/widget/widget-'+type+'-editor.view.client.html';
+            //console.log(type+"hi");
+            if(type){
+                return 'views/widget/widget-'+type+'-editor.view.client.html';
+            }
         };
 
         function routeProfile(){
@@ -31,8 +43,13 @@
         };
 
         function deleteWidget(){
-            WidgetService.deleteWidgetById(vm.widgetId);
-            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
+            WidgetService
+                .deleteWidgetById(vm.widgetId)
+                .then(function (response) {
+                    if(response.data){
+                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
+                    }
+                })
         };
 
         function routeWidgetList(){
@@ -40,13 +57,18 @@
         };
 
         function updateWidget(widget){
-            WidgetService.updateWidget(widget, vm.widgetId);
-            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
+            WidgetService
+                .updateWidget(widget, vm.widgetId)
+                .then(function (response) {
+                    if(response.data){
+                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
+                    }
+                })
         };
 
         function routeNewWidget()
         {
             $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/new");
-        }
+        };
     }
 })();

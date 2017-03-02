@@ -14,9 +14,19 @@
 
         vm.createPage = createPage;
         vm.routeProfile = routeProfile;
+        vm.routePageList = routePageList;
+        vm.routePageNew =routePageNew;
+        vm.routeEdit = routeEdit;
 
         function init() {
-            vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
+            //vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
+            PageService
+                .findPageByWebsiteId(vm.websiteId)
+                .then(function (response) {
+                    if(response.data){
+                        vm.pages = response.data;
+                    }
+                })
         }
         init();
 
@@ -32,6 +42,19 @@
         function routeProfile()
         {
             $location.url("/profile/"+vm.userId);
+        };
+
+        function routePageList() {
+            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+        };
+
+        function routePageNew() {
+            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/new");
+        };
+
+        function routeEdit(page)
+        {
+            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+page);
         };
 
     }

@@ -19,8 +19,25 @@
         vm.newPage=newPage;
 
         function init() {
-            vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
-            vm.pagess = PageService.findPageById(vm.pageId);
+            // vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
+            // vm.pagess = PageService.findPageById(vm.pageId);
+
+            PageService
+                .findPageByWebsiteId(vm.websiteId)
+                .then(function (response) {
+                    if(response.data){
+                        vm.pages = response.data;
+                    }
+                });
+
+            PageService
+                .findPageById(vm.pageId)
+                .then(function (res) {
+                    if(res.data){
+                        vm.pagess = res.data;
+                    }
+                });
+            
         }
         init();
 
@@ -47,6 +64,7 @@
 
         function routeEdit(page)
         {
+            console.log(page);
             $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+page);
         };
 

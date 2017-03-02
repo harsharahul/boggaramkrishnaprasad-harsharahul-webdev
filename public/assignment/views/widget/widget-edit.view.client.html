@@ -1,20 +1,20 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-text pull-left">
-            <a ng-click="model.routeProfile()">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-            </a>
-        </div>
-        <div class="navbar-text pull-right">
-            <a ng-click="model.routeNewWidget()">
-                <span class="glyphicon glyphicon-plus"></span>
-            </a>
-        </div>
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Widget Editor</a>
-        </div>
-    </div>
-</nav>
+<!--<nav class="navbar navbar-default navbar-fixed-top">-->
+    <!--<div class="container-fluid">-->
+        <!--<div class="navbar-text pull-left">-->
+            <!--<a ng-click="model.routeWidgetList()">-->
+                <!--<span class="glyphicon glyphicon-chevron-left"></span>-->
+            <!--</a>-->
+        <!--</div>-->
+        <!--<div class="navbar-text pull-right">-->
+            <!--<a ng-click="model.routeNewWidget()">-->
+                <!--<span class="glyphicon glyphicon-plus"></span>-->
+            <!--</a>-->
+        <!--</div>-->
+        <!--<div class="navbar-header">-->
+            <!--<a class="navbar-brand" href="#">Widget Editor</a>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</nav>-->
 
 <div class="container-fluid"
      ng-include="model.getEditorTemplateUrl(model.widget.widgetType)">

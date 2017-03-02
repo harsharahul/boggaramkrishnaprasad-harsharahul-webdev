@@ -5,7 +5,7 @@
     <div class="row container-fluid ">
         <div class="col-sm-4 hidden-xs">
             <div class="navbar-text pull-left">
-                <a href="website-list.view.client.html">
+                <a ng-click="model.routeWebsiteList()">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
@@ -15,20 +15,20 @@
                 </a>
             </div>
             <div class="navbar-text pull-right">
-                <a href="website-list.view.client.html">
-                    <span class="glyphicon glyphicon-ok"></span>
+                <a ng-click="model.websiteNew()">
+                    <span class="glyphicon glyphicon-plus "></span>
                 </a>
             </div>
         </div>
         <div class="col-sm-8">
             <div class="navbar-text pull-left visible-xs">
-                <a href="website-list.view.client.html">
+                <a ng-click="model.routeWebsiteList()">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
             <div class="navbar-text pull-right">
-                <a ng-click="model.websiteNew()">
-                    <span class="glyphicon glyphicon-plus"></span>
+                <a ng-click="model.updateWebsite(model.website)">
+                    <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </div>
             <div class="navbar-header">
@@ -50,7 +50,7 @@
                         <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">{{website.name}}</a>
                     </div>
                     <div class="col-xs-2">
-                        <a ng-click="model.updateWebsite(website._id)"><span class="glyphicon glyphicon-cog pull-right"></span></a>
+                        <a ng-click="model.routeEditWebsiteWithWebsiteId(website._id)"><span class="glyphicon glyphicon-cog pull-right"></span></a>
                     </div>
                 </div>
             </li>
@@ -71,7 +71,7 @@
                   id="website-description">This is the description of facebook website</textarea>
 
         <div class="bhr-button-padding">
-        <a href="website-list.view.client.html" class=" btn btn-danger btn-block">
+        <a ng-click="model.deleteWebsite()" class=" btn btn-danger btn-block">
             Delete
         </a>
         </div>
@@ -83,7 +83,7 @@
         <div class="navbar-header">
         </div>
         <div class="navbar-text col-xs-12">
-            <a href="../user/profile.view.client.html"> <span class="pull-right glyphicon glyphicon-user"></span></a>
+            <a ng-click="model.routeProfile()"> <span class="pull-right glyphicon glyphicon-user"></span></a>
         </div>
 
     </div>

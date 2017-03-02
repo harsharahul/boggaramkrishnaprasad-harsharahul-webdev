@@ -16,40 +16,75 @@
         </div>
     </div>
 </nav>
-<div class="container">
-    Name:
-    <input type="text"
-           ng-model="model.widget.widgetType"
-           placeholder="Your Name"
-           class="form-control"/>
-    Text:
-    <input type="text"
-           ng-model="model.widget.text"
-           placeholder="Text"
-           class="form-control"/>
-    URL:
-    <input type="text"
-           ng-model="model.widget.url"
-           placeholder="URL"
-           class="form-control"/>
-    Width:
-    <input type="text"
-           ng-model="model.widget.width"
-           placeholder="Width"
-           class="form-control"/>
-    Upload:
-    <input type="file" class="form-control"/>
-</div>
-<div class="container bhr-button-padding">
-    <a class="btn btn-primary btn-block"
-       href="#">Upload Image</a>
-</div>
-<div class="container bhr-button-padding">
-    <a class="btn btn-danger btn-block"
-       ng-click="model.deleteWidget()">Delete</a>
-</div>
+<!--<div class="container">-->
+    <!--Name:-->
+    <!--<input type="text"-->
+           <!--ng-model="model.widget.widgetType"-->
+           <!--placeholder="Your Name"-->
+           <!--class="form-control"/>-->
+    <!--Text:-->
+    <!--<input type="text"-->
+           <!--ng-model="model.widget.text"-->
+           <!--placeholder="Text"-->
+           <!--class="form-control"/>-->
+    <!--URL:-->
+    <!--<input type="text"-->
+           <!--ng-model="model.widget.url"-->
+           <!--placeholder="URL"-->
+           <!--class="form-control"/>-->
+    <!--Width:-->
+    <!--<input type="text"-->
+           <!--ng-model="model.widget.width"-->
+           <!--placeholder="Width"-->
+           <!--class="form-control"/>-->
+    <!--Upload:-->
+    <!--<input type="file" class="form-control"/>-->
+<!--</div>-->
+<!--<div class="container bhr-button-padding">-->
+    <!--<a class="btn btn-primary btn-block"-->
+       <!--href="#">Upload Image</a>-->
+<!--</div>-->
+<!--<div class="container bhr-button-padding">-->
+    <!--<a class="btn btn-danger btn-block"-->
+       <!--ng-click="model.deleteWidget()">Delete</a>-->
+<!--</div>-->
 
+    <form action="/api/upload" method="post" enctype="multipart/form-data">
+        <div class="container">
 
+            Name:
+            <input type="text" placeholder="Your Name" ng-model="model.widget.widgetType"
+                   class="form-control"/>
+            Text:
+            <input type="text" placeholder="Text" ng-model="model.widget.pageId"
+                   class="form-control"/>
+            URL:
+            <input type="url" placeholder="URL" ng-model="model.widget.url"
+                   class="form-control"/>
+            Width:
+            <input type="text" name="width" placeholder="Width" ng-model="model.widget.width"
+                   class="form-control"/>
+            Upload File:
+            <input type="file" name="myFile" class="form-control"/>
+
+        </div>
+{{model}}
+
+        <div class="container">
+            <input name="widgetId" value="{{model.widget._id}}" style="display: none"/>
+            <input name="userId" value="{{model.userId}}" style="display: none"/>
+            <input name="websiteId" value="{{model.websiteId}}" style="display: none"/>
+            <button class="btn btn-primary btn-block" type="submit" >
+                Upload Image
+            </button>
+        </div>
+
+        <div class="container">
+            <a class="btn btn-danger btn-block"
+               ng-click="model.deleteWidget()">Delete</a>
+        </div>
+
+    </form>
 
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
