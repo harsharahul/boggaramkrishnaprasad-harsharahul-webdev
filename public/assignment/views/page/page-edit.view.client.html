@@ -21,7 +21,7 @@
         </div>
         <div class="col-sm-8">
             <div class="navbar-text pull-left visible-xs">
-                <a>
+                <a ng-click="model.routePageList()">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
@@ -67,6 +67,12 @@
                   ng-model="model.pagess.description"
                   class="form-control"
                   id="website-description"></textarea>
+
+        <div class="bhr-button-padding">
+            <a ng-click="model.updatePage(model.pagess)" class=" btn btn-success btn-block">
+                Update
+            </a>
+        </div>
 
         <div class="bhr-button-padding">
             <a ng-click="model.deletePage()" class=" btn btn-danger btn-block">
