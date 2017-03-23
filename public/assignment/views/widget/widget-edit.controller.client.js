@@ -15,24 +15,25 @@
         vm.routeWidgetList = routeWidgetList;
         vm.updateWidget = updateWidget;
         vm.routeNewWidget = routeNewWidget;
+        vm.routeFlickr = routeFlickr;
 
         function init() {
             //vm.widget = WidgetService.findWidgetById(vm.widgetId);
-
+            console.log(vm.widgetId);
             WidgetService
                 .findWidgetById(vm.widgetId)
                 .then(function (response) {
                     if(response.data){
 
                         vm.widget = response.data;
-                        console.log(vm.widget.widgetType);
+                        console.log(vm.widget);
                     }
                 })
         }
         init();
 
         function getEditorTemplateUrl(type) {
-            //console.log(type+"hi");
+            //console.log(type.toString()+"hi");
             if(type){
                 return 'views/widget/widget-'+type+'-editor.view.client.html';
             }
@@ -70,5 +71,9 @@
         {
             $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/new");
         };
+
+        function routeFlickr() {
+            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+vm.widgetId+"/flickrsearch");
+        }
     }
 })();

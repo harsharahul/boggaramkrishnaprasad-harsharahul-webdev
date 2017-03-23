@@ -21,6 +21,7 @@
         vm.createNewYoutubeWidget=createNewYoutubeWidget;
         vm.createNewImageWidget = createNewImageWidget;
         vm.createNewHeaderWidget =createNewHeaderWidget;
+        vm.createNewTextWidget = createNewTextWidget;
 
 
         console.log("in widget new controller");
@@ -31,14 +32,18 @@
 
         function init() {
             //vm.widget = WidgetService.findWidgetById(vm.widgetId);
-
-            WidgetService
-                .findWidgetById(vm.widgetId)
-                .then(function (response) {
-                    if(response.data){
-                        vm.widget = response.data;
-                    }
-                })
+            if(vm.widgetId) {
+                WidgetService
+                    .findWidgetById(vm.widgetId)
+                    .then(function (response) {
+                        if (response.data) {
+                            vm.widget = response.data;
+                        }
+                    })
+                    .catch(function (err) {
+                        console.log("In the Widget-New controller");
+                    })
+            }
         }
         init();
 
@@ -60,6 +65,7 @@
                 .then(function (response) {
                     if(response.data){
                         var newWidgetId = response.data;
+                        console.log(newWidgetId.toString());
                         $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+newWidgetId);
                     }
                 })
@@ -104,9 +110,34 @@
                 .then(function (response) {
                     if(response.data){
                         var newWidgetId = response.data;
+                        //console.log("header create ");
+                        //console.log( newWidgetId);
 
                         $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+newWidgetId);
                     }
+                })
+                .catch(function (err) {
+                    console.log(err);
+                    console.log("Error in New Header create")
+                })
+        };
+
+        function createNewTextWidget() {
+            // var newWidget = WidgetService.createNewHeaderWidget();
+            // $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+newWidget);
+
+            WidgetService
+                .createNewTextWidget(vm.pageId)
+                .then(function (response) {
+                    if(response.data){
+                        var newWidgetId = response.data;
+
+                        $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+newWidgetId);
+                    }
+                })
+                .catch(function (err) {
+                    console.log(err);
+                    console.log("Error in New Header create")
                 })
         };
 

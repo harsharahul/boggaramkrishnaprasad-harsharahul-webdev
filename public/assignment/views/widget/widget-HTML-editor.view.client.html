@@ -17,25 +17,39 @@
         </div>
     </nav>
 
-<div class="container">
-    Text:
-    <input type="text" placeholder="Text" ng-model="model.widget.text"
-           class="form-control"/>
+<!--<div class="container">-->
+    <!--Text:-->
+    <!--<input type="text" placeholder="Text" ng-model="model.widget.text"-->
+           <!--class="form-control"/>-->
 
-</div>
-
-
-<div class="container dow">
-    <a class="btn btn-primary btn-block"
-       ng-click="model.updateWidget(model.widget)"> Update Widget</a>
-</div>
-<div class="container">
-    <a class="btn btn-danger btn-block"
-       ng-click="model.deleteWidget()">Delete</a>
-</div>
+<!--</div>-->
 
 
-</div>
+<!--<div class="container dow">-->
+    <!--<a class="btn btn-primary btn-block"-->
+       <!--ng-click="model.updateWidget(model.widget)"> Update Widget</a>-->
+<!--</div>-->
+<!--<div class="container">-->
+    <!--<a class="btn btn-danger btn-block"-->
+       <!--ng-click="model.deleteWidget()">Delete</a>-->
+<!--</div>-->
+
+
+<!--</div>-->
+
+    <div class="form-group">
+        <label for="model.widget.text">HTML Text</label>
+        <div id="model.widget.text" ng-model="model.widget.text"
+             text-angular
+             ta-toolbar="[['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'quote'],
+            ['bold','italics','underline','strikeThrough',  'ul', 'ol', 'redo', 'undo', 'clear'],
+            ['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+            ['indent','outdent'],['html']]">
+        </div>
+        <div class="form-group">
+            <button ng-click="model.deleteWidget()" class="btn btn-block btn-danger">Delete</button>
+        </div>
+    </div>
 
 
 

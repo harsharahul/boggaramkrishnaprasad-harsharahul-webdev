@@ -25,6 +25,16 @@
         this.createNewYoutubeWidget = createNewYoutubeWidget;
         this.createNewImageWidget = createNewImageWidget;
         this.createNewHeaderWidget = createNewHeaderWidget;
+        this.WidgetsOrderUpdate = WidgetsOrderUpdate;
+        this.createNewTextWidget = createNewTextWidget;
+        
+        
+        function WidgetsOrderUpdate(pageId, SI, EI) {
+            console.log(SI);
+            console.log(EI);
+
+            return $http.put("/page/" + pageId + "/widget?initial=" + SI + "&final=" + EI);
+        }
 
         function findAllWidgets(pageId) {
             // return widgets;
@@ -93,6 +103,10 @@
 
         };
 
+        function createNewTextWidget(pageId) {
+            return $http.post("/api/page/"+pageId+"/widget_text");
+        }
+
         function deleteWidgetById(widgetId){
             // for(var w in widgets){
             //     if(widgets[w]._id === widgetId) {
@@ -109,6 +123,8 @@
             //         widgets[w]= widget;
             //     }
             // }
+            console.log(widget+"daklsjdk");
+            console.log(widgetId+"dasndsn");
             return $http.put("/api/widget/"+widgetId,widget);
 
         }

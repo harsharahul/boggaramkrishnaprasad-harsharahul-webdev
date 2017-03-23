@@ -34,12 +34,12 @@
                         $location.url("/user/"+user._id);
                     }
                     else {
-
+                        console.log("hello 2");
                         vm.error = "user not found";
                     }
                 })
                 .catch(function (err) {
-                    vm.error = err.statusCode;
+                    vm.error = "User Not Found"
                 })
 
         }

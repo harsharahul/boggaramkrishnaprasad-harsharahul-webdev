@@ -16,38 +16,7 @@
         </div>
     </div>
 </nav>
-<!--<div class="container">-->
-    <!--Name:-->
-    <!--<input type="text"-->
-           <!--ng-model="model.widget.widgetType"-->
-           <!--placeholder="Your Name"-->
-           <!--class="form-control"/>-->
-    <!--Text:-->
-    <!--<input type="text"-->
-           <!--ng-model="model.widget.text"-->
-           <!--placeholder="Text"-->
-           <!--class="form-control"/>-->
-    <!--URL:-->
-    <!--<input type="text"-->
-           <!--ng-model="model.widget.url"-->
-           <!--placeholder="URL"-->
-           <!--class="form-control"/>-->
-    <!--Width:-->
-    <!--<input type="text"-->
-           <!--ng-model="model.widget.width"-->
-           <!--placeholder="Width"-->
-           <!--class="form-control"/>-->
-    <!--Upload:-->
-    <!--<input type="file" class="form-control"/>-->
-<!--</div>-->
-<!--<div class="container bhr-button-padding">-->
-    <!--<a class="btn btn-primary btn-block"-->
-       <!--href="#">Upload Image</a>-->
-<!--</div>-->
-<!--<div class="container bhr-button-padding">-->
-    <!--<a class="btn btn-danger btn-block"-->
-       <!--ng-click="model.deleteWidget()">Delete</a>-->
-<!--</div>-->
+
 
     <form action="/api/upload" method="post" enctype="multipart/form-data">
         <div class="container">
@@ -81,6 +50,8 @@
         <div class="container">
             <a class="btn btn-danger btn-block"
                ng-click="model.deleteWidget()">Delete</a>
+            <a class="btn btn-primary btn-block"
+               ng-click="model.routeFlickr()">Flickr Search</a>
         </div>
 
     </form>
