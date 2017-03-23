@@ -267,9 +267,11 @@ module.exports = function (app, widgetModel) {
     function uploadImage(req, res){
         console.log("Server side upload Image Func");
         console.log("HELLOOOO")
+
         var widgetId = req.body.widgetId;
         var width = req.body.width;
         var uid = req.body.userId;
+        var pid = req.body.pageId;
         var wid = req.body.websiteId;
         var myFile = req.file;
 
@@ -298,9 +300,16 @@ module.exports = function (app, widgetModel) {
                     .updateWidget(widgetId, widget)
                     .then(function (updated)
                     {
-                        console.log("successful change")
-                        res.redirect("/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget");
-                        //res.sendStatus(200);
+                        console.log("successful change");
+                        console.log(uid);
+                        console.log(wid);
+                        console.log(pid);
+
+                        res.redirect("/assignment/#!/user/" + uid + "/website/" + wid + "/page/" + pid + "/widget");
+                        //res.redirect("/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget");
+                        //res.redirect("/assignment/#!/user/58d21b3ae58af3db7bb006c9/website/58d2a61ea80f0de271362676/page/58d32af0afd508f3029769ea/widget");
+
+                        res.sendStatus(200);
                     }, function (error)
                     {
                         console.log(error)
