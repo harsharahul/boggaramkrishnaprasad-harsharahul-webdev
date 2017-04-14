@@ -3,7 +3,8 @@ module.exports = function (app, userModel) {
     var facebookConfig = {
         clientID     : "1909914955921576",
         clientSecret : "0ea82076939c8c12e973c4ffe0eb45cf",
-        callbackURL  : "http://localhost:3000/auth/facebook/callback"
+        //callbackURL  : "http://localhost:3000/auth/facebook/callback"
+        callbackURL  : "https://harsharahul-webdev.herokuapp.com/auth/facebook/callback"
     };
 
     var passport = require('passport');
