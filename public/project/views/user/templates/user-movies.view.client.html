@@ -1,0 +1,17 @@
+
+<div class="container-fluid marginTop">
+    <div class="row display-grid-layout">
+        <div class="container-fluid">
+            <div class="col-md-2 col-sm-4 col-xs-6" ng-repeat="movie in model.movies">
+                <div class="poster-wrapper">
+                <img ng-click="model.routeToDetails(movie.guideboxId)" class="img-rounded poster" width="100%"
+                     ng-src="{{movie.poster}}"/>
+                    <span ng-click="model.removeMovie(movie._id)" class="col-md-1
+                    glyphicon glyphicon-remove remove-gly poster-gly">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

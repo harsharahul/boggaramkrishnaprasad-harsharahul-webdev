@@ -1,0 +1,173 @@
+<!--<nav class="navbar navbar-default navbar-fixed-top">-->
+    <!--<div class="container-fluid">-->
+        <!--<div class="navbar-text pull-left">-->
+            <!--<a ng-click="model.routeWidgetList()">-->
+                <!--<span class="glyphicon glyphicon-chevron-left">-->
+            <!--</span>-->
+            <!--</a>-->
+        <!--</div>-->
+        <!--<div class="navbar-text pull-right">-->
+            <!--<a ng-click="model.updateWidget(model.widget)"> <span class="glyphicon glyphicon-ok"></span>-->
+            <!--</a>-->
+        <!--</div>-->
+        <!--<div class="navbar-header">-->
+            <!--<a class="navbar-brand" href="#">Widget Edit</a>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</nav>-->
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a ng-click="model.routeMainPage()">
+                <span class="glyphicon glyphicon-chevron-left" style="color: white">
+            </span>
+            </a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a href="" ng-click="model.logout()">
+                <i class="fa fa-sign-out logout-gly" aria-hidden="true">
+                    <label class="logout-label">Logout</label></i>
+            </a>
+        </div>
+        <div class="navbar-text pull-right ">
+            <a href="" ng-click="" class="admin-label">
+                <i class="fa fa-user-secret admin-label" aria-hidden="true">
+                    <label class="admin-label">Admin</label></i>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"><p class="brand-name">StreamHub</p></a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid marginTop backStyle" style="padding-top: 70px;padding-bottom: 50px" id="detailsPageView">
+
+    <div class="col-md-12">
+
+        <div class="col-md-3" >
+            <img src="{{model.media.poster_400x570}}"
+                 class="img-rounded poster" width="100%" alt="Cinque Terre" style="opacity: 1; cursor: default;">
+
+            <div style="margin-left: 10%">
+                <div style="padding-top: 5%; margin-top: 5%">
+                    <h5 style="color: white">Rating: {{model.media.rating}}</h5>
+                </div>
+                <div>
+                    <h5 style="color: white">Release Date: {{model.media.release_date}}</h5>
+                </div>
+                <div>
+                    <h5 style="color: white">Duration: {{model.media.duration/60}} min</h5>
+                </div>
+
+                <div style="padding-top: 5%; margin-top: 10%; margin-bottom: 15%; padding-bottom: 5%">
+                    <button style="cursor: pointer" ng-disabled="model.saved" ng-click="model.saveMedia()" type="button" class="btn btn-primary col-md-12 col-sm-12 col-xs-12">
+                        <span ng-if="model.saved==1">Saved !!</span>  <span ng-if="!model.saved">Save Movie</span>
+                    </button>
+                </div>
+                <div class="hidden-lg hidden-md"
+                     style="padding-top: 5%; margin-top: 10%; margin-bottom: 15%; padding-bottom: 5%">
+                    <button type="button" class="btn btn-primary col-md-12 col-sm-12 col-xs-12">Watch Trailer</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-8 col-md-push-1 details-data">
+            <div class="col-md-12">
+                <h2>{{model.media.title}} ({{model.media.release_year}})</h2>
+            </div>
+
+            <div class="col-md-12 details-data details-section pre-scrollable">
+                <p>
+                    {{model.media.overview}}
+                </p>
+
+                <div style="padding-top: 2%;">
+                    Starring: <span ng-repeat="star in model.media.cast">
+                       <a class="a-link" target="_blank" href="http://www.imdb.com/name/{{star.imdb}}"> {{star.name}} </a></span><br><br>
+                    Writers: <span ng-repeat="write in model.media.writers">
+                       <a class="a-link" target="_blank"href="http://www.imdb.com/name/{{write.imdb}}"> {{write.name}} </a> </span><br><br>
+                    Directors: <span ng-repeat="director in model.media.directors">
+                       <a class="a-link"  target="_blank" href="http://www.imdb.com/name/{{director.imdb}}"> {{director.name}} </a></span><br><br>
+                    Genre : <span style="color:#aaaaaa" ng-repeat="genre in model.media.genres"> {{genre.title}} </span>
+                    </p>
+                </div>
+
+            </div>
+
+            <div  class="col-md-12 col-xs-12 comment-section pre-scrollable" style= "margin-top:5%">
+                <div class="row">
+                    <div class="input-group">
+                        <input ng-model="model.comment" ng-model="searchText" type="text" class="form-control comment-bar"
+                               placeholder="Add comment here">
+                        <span class="input-group-btn">
+                                <a ng-click="model.addComment(model.comment)" class="btn btn-default search-button" type="button">
+                                    <span class="glyphicon glyphicon-plus search-gly"></span>
+                                </a>
+                           </span>
+                    </div>
+                </div>
+
+                <div ng-repeat="source in model.comments" class="row" style="margin-top: 2%; padding-top: 1%;">
+                        <div class="col-md-12 col-xs-12 single-comment">
+                            <h5 class="col-md-9">{{source.userName}}</h5>
+                            <h6 class="col-md-3 text-md-right" ng-bind="source.dateCreated | date:'medium'"></h6>
+                            <p class="col-md-12">
+                                {{source.comment}}
+                            </p>
+                        </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-12 col-xs-12">
+
+        <div class="col-md-7 hidden-md hidden-xs hidden-sm" style="padding-top: 10%;">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe  class="embed-responsive-item" src="{{model.mediaTrailer}}"
+                         frameborder="0" allowfullscreen ></iframe>
+            </div>
+        </div>
+
+
+        <div class="col-md-5 col-xs-12" style="padding-top: 5%">
+            <div class="panel panel-primary source-panel">
+                <div class="panel-heading">
+                    <center><h3 class="panel-title">Watch now on the below links</h3></center>
+                </div>
+                <div class="panel-body source-panel">
+
+                    <div ng-repeat="source in model.media.purchase_web_sources">
+                        <a target="_blank" href="{{source.link}}">
+                            <div class="row col-md-12 col-xs-12 single-comment media-links form-control">
+                                {{source.display_name}}
+                                <span class="pull-right hidden-xs hidden-sm">
+                                   &nbsp{{source.formats[0].type}} {{source.formats[0].format}} {{source.formats[0].price}}&nbsp&nbsp
+                               </span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right ">
+            <a ng-click="model.routeProfile()">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+    </div>
+</nav>
+

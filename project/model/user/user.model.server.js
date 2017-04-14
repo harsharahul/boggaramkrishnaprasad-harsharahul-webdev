@@ -1,11 +1,9 @@
-/**
- * Created by harsharahul on 16/03/17.
- */
+
 module.exports = function () {
 
     var mongoose = require("mongoose");
-    var UserSchema = require('./user.schema.server')();
-    var UserModel = mongoose.model('UserModel', UserSchema);
+    var UsersSchema = require('./user.schema.server')();
+    var UsersModel = mongoose.model('UsersModel', UsersSchema);
     var model = null;
 
 
@@ -16,16 +14,26 @@ module.exports = function () {
         "findUserByCredentials":findUserByCredentials,
         "deleteUser":deleteUser,
         "updateUser":updateUser,
-        "setModel":setModel
+        "setModel":setModel,
+        "getUsername":getUsername,
+        "findUserByFacebookId": findUserByFacebookId,
+        "getAllUsers": getAllUsers
     };
 
     return api;
+    
+    function findUserByFacebookId(facebookId) {
+        return UsersModel.findOne({"facebook.id": facebookId});
+    }
 
     function setModel(_model) {
         model = _model;
     }
 
 
+    function getAllUsers() {
+        return UsersModel.find();
+    }
 
     function recursiveDelete(websitesOfUser, userId) {
         if(websitesOfUser.length == 0){
@@ -51,32 +59,50 @@ module.exports = function () {
 
     function createUser(user) {
         delete user._id;
-        return UserModel.create(user);
+        user.dateCreated = Date.now();
+        return UsersModel.create(user);
     }
 
     function findUserById(userId) {
-        return UserModel.findById(userId);
+        return UsersModel.findById(userId);
     }
 
     function findUserbyUsername(username) {
-        return UserModel.findOne({"username":username});
+        return UsersModel.findOne({"username":username});
     }
 
     function findUserByCredentials(_username, _password) {
-        return UserModel.find({username:_username, password: _password});
+        return UsersModel.find({username:_username, password: _password});
     }
 
     function deleteUser(userId) {
-        return UserModel.findById({_id: userId})
+        return UsersModel.findById({_id: userId})
             .then(function (user) {
-                var websitesOfUser = user.websites;
-                return recursiveDelete(websitesOfUser, userId);
+
+                return UsersModel.remove({_id: userId});
+                //var websitesOfUser = user.websites;
+                //return recursiveDelete(websitesOfUser, userId);
             }, function (err) {
                 return err;
             });
     }
     function updateUser(userId, updatedUser) {
-        return UserModel.update({_id:userId},{$set:updatedUser});
+        return UsersModel.update({_id:userId},{$set:updatedUser});
+    }
+
+    function getUsername(uid) {
+
+        // //var UserNameFound = '';
+        //
+        //     return UsersModel.findOne({'_id':uid},function (err,docs) {
+        //         // console.log(docs.firstName + " " + docs.lastName)
+        //         return docs.firstName + " " + docs.lastName;
+        //     })
+        //
+        // //return UserNameFound
+
+        // console.log(uid);
+         return UsersModel.findById({_id:uid});
     }
 
 };

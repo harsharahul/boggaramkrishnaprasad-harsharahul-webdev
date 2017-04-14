@@ -1,0 +1,83 @@
+<!--<link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Pacifico|Shadows+Into+Light" rel="stylesheet">-->
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a ng-click="model.routeWidgetList()">
+                <span class="glyphicon glyphicon-chevron-left">
+            </span>
+            </a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a ng-click="model.updateWidget(model.widget)"> <span class="glyphicon glyphicon-ok"></span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand brand-name" href="#">StreamHub</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid marginTop backStyle" style="padding-top: 70px;" >
+
+    <div class="col-md-12 col-sm-12 col-xs-12" style="padding-bottom: 5%">
+        <div class="col-md-3 col-sm-12 col-xs-12 user-block" >
+            <div class="col-md-12" style="padding-top: 5%; padding-bottom: 37%">
+                <center>
+                    <span style="font-size:8em;" class="glyphicon glyphicon-user user-gly"></span>
+                    <h3 class="user-name"> ADMIN </h3></center>
+
+                <ul class="nav in">
+
+                    <li class="user-menu">
+                        <button ng-click="model.setDisplayMode('MOVIES')" type="button" class="btn btn-outline btn-primary btn-lg btn-block user-button">
+                            <span class="glyphicon glyphicon-facetime-video user-action-gly"></span>
+                            Movies</button>
+                    </li>
+
+                    <li class="user-menu">
+                        <button ng-click="model.setDisplayMode('COMMENTS')" type="button" class="btn btn-outline btn-primary btn-lg btn-block user-button">
+                            <span class="glyphicon glyphicon-comment user-action-gly"></span>
+                            Comments </button>
+                    </li>
+
+                    <li class="user-menu">
+                        <button ng-click="model.setDisplayMode('SETTINGS')" type="button" class="btn btn-outline btn-primary btn-lg btn-block user-button ">
+                            <span class="glyphicon glyphicon-cog user-action-gly"></span>
+                            Settings </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-9 col-sm-12 col-xs-12 user-view-block pre-scrollable" >
+
+            <div  ng-switch="model.mode">
+                <div ng-switch-default>
+                    <ng-include src="'views/user/templates/user-movies.view.client.html'"></ng-include>
+                </div>
+                <div ng-switch-when="MOVIES">
+                    <ng-include src="'views/user/templates/user-movies.view.client.html'"></ng-include>
+                </div>
+                <div ng-switch-when="SETTINGS">
+                    <ng-include src="'views/user/templates/profile-settings.view.client.html'"></ng-include>
+                </div>
+                <div ng-switch-when="COMMENTS">
+                    <ng-include src="'views/user/templates/user-comments.view.client.html'"></ng-include>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right ">
+            <a ng-click="model.routeProfile()">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </div>
+    </div>
+</nav>

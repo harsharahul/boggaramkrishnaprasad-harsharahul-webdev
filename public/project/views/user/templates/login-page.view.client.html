@@ -1,0 +1,49 @@
+
+<div ng-show="model.error" class="alert alert-danger" role="alert">
+    {{model.error}}
+</div>
+<div class="container-fluid" style="padding-top: 10px;" >
+
+    <div class="row col-md-12 col-md-push-3" style="margin-top: 5%">
+
+        <div class="col-md-4 col-sm-12 col-xs-12">
+
+                <div class="row loginControl">
+                    <h1 style="color: white">Login</h1>
+                    <p class="text-muted">Sign In to your account</p>
+                    <div class="input-group">
+                    <input ng-model="model.user.username" type="text" class="form-control loginControl" placeholder="Username">
+                    <input ng-model="model.user.password" type="password" class="form-control loginControl" placeholder="Password">
+                    </div>
+                </div>
+
+                <div class="row loginControl">
+                    <div class="col-md-6 col-md-pull-1 col-sm-6 col-xs-12 " style="padding-bottom: 2%">
+                        <button ng-click="model.login(model.user)" type="button" class="btn btn-block btn-primary">Login</button>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <a href="/auth/facebook" class="btn btn-block btn-social btn-facebook text">
+                            <span class="fa fa-facebook"></span> <center>Sign in Facebook</center>
+                        </a>
+                    </div>
+                </div>
+        </div>
+
+            <div class="col-md-3 col-sm-12 col-xs-12 signup-box">
+                <h2 style="color: white">Sign Up</h2>
+                <p class="text-muted"> Search movies/shows.Create a profile.Save your favorites and check them out
+                when ever you want. Get links to binge watch all your favourites </p>
+                <button ng-click="model.routeRegister()" type="button" class="btn btn-block btn-primary active">Register Now!</button>
+            </div>
+    </div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right ">
+            <!--<a ng-click="model.routeProfile()">-->
+                <!--<span class="glyphicon glyphicon-user"></span>-->
+            <!--</a>-->
+            <a style="color:whitesmoke;">&copy Copyright Harsha Rahul 2017</a>
+        </div>
+    </div>
+</nav>

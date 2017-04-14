@@ -1,0 +1,63 @@
+<div class="container-fluid marginTop backStyle" style="padding-top: 5%">
+    <div class="col-md-12">
+        <form>
+            <div class="form-group">
+                <label class="register-label" for="username">Username</label>
+                <!--<input type="text" class="form-control" id="username" placeholder="Username">-->
+                <input class="form-control" ng-model="model.user.username" type="text" placeholder="Username"/>
+
+            </div>
+            <div class="form-group">
+                <label class="register-label" for="email">Email address</label>
+                <!--<input type="email" class="form-control" id="email" placeholder="alice@wonderland.com">-->
+                <input class="form-control" ng-model="model.user.email"
+                                  id="email"
+                                  
+                                  type="email"
+                                  placeholder="Email"/>
+
+            </div>
+            <div class="form-group">
+                <label class="register-label" for="first-name">First Name</label>
+                <!--<input type="text" class="form-control" id="first-name" placeholder="Alice">-->
+                <input class="form-control" ng-model="model.user.firstName"
+                                  id="first"
+                                  
+                                  type="text"
+                                  placeholder="First Name"/>
+            </div>
+            <div class="form-group">
+                <label class="register-label" for="last-name">Last Name</label>
+                <!--<input type="text" class="form-control" id="last-name" placeholder="Wonderland">-->
+                <input class="form-control" ng-model="model.user.lastName"
+                                  id="last"
+                                  
+                                  type="text"
+                                  placeholder="Last Name"/>
+            </div>
+            <div class="form-group">
+                <label class="register-label">Password</label>
+                    <input class="form-control" type="password" ng-model="model.user.password"/>
+            </div>
+
+            <div class="form-group" style="padding-top: 2%">
+                <button ng-click="model.updateUser(model.user)" type="button"
+                        class="btn btn-primary col-md-12 col-sm-12 col-xs-12">Update
+                </button>
+            </div>
+
+            <div class="form-group" style="padding-top: 7%">
+                <button ng-click="model.deleteUser()" type="button"
+                        class="btn btn-danger col-md-12 col-sm-12 col-xs-12">Delete
+                </button>
+            </div>
+
+            <div class="form-group" style="padding-top: 7%">
+                <button ng-click="model.logout()" type="button"
+                        class="btn btn-danger col-md-12 col-sm-12 col-xs-12">Logout
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>

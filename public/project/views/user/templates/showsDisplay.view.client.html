@@ -1,0 +1,67 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a ng-click="model.routeToMain()">
+                <span class="glyphicon glyphicon-chevron-left" style="color: white">
+            </span>
+            </a>
+        </div>
+        <div ng-show="model.logged" class="navbar-text pull-right">
+            <a href="" ng-click="model.logout()">
+                <i class="fa fa-sign-out logout-gly" aria-hidden="true">
+                    <label class="logout-label">Logout</label></i>
+            </a>
+        </div>
+        <div ng-hide="model.logged" class="navbar-text pull-right">
+            <a href="" ng-click="model.routeLogin()">
+                <i class="fa fa-sign-in logout-gly" aria-hidden="true">
+                    <label class="logout-label">Login</label></i>
+            </a>
+        </div>
+        <div class="navbar-text pull-right ">
+            <a href="" ng-click="" class="admin-label">
+                <i class="fa fa-user-secret admin-label" aria-hidden="true">
+                    <label class="admin-label">Admin</label></i>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"><p class="brand-name">StreamHub</p></a>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid marginTop" style="padding-top: 70px">
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+    <div class="container">
+        <div class="input-group">
+            <input ng-model="searchText" type="text" class="form-control search-bar" placeholder="Search Movies all you like!" ng-keyup="$event.keyCode == 13 && model.searchMovies()" >
+            <span class="input-group-btn">
+            <a ng-click="model.searchShows(searchText)" class="btn btn-default search-button" type="button">
+                <span class="glyphicon glyphicon-search search-gly"></span>
+            </a>
+        </span>
+        </div>
+    </div>
+    <div class="row display-grid-layout">
+        <div class="container-fluid">
+            <div class="col-md-2 col-sm-4 col-xs-6" ng-repeat="movie in model.movies.results">
+                <!--<p>TITLE: {{movie.original_title}}</p>-->
+                <img ng-click="model.routeToDetails(movie.id)" class="img-rounded poster" width="100%"
+                     ng-src="{{movie.artwork_608x342}}"/>
+                <!--<img ng-if="{{movie.artwork_448x252}}" ng-click="model.routeToDetails(movie.id)" class="img-rounded poster" width="100%"-->
+                <!--ng-src="{{movie.artwork_448x252}}"/>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right ">
+            <a ng-click="model.routeToProfile()" style="cursor: pointer">
+                <span class="glyphicon glyphicon-user profile-gly"></span>
+            </a>
+        </div>
+    </div>
+</nav>

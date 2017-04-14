@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="input-group">
+        <input ng-model="model.editingComment"  type="text" class="form-control comment-bar"
+               placeholder="Edit comment here">
+        <span class="input-group-btn">
+            <a ng-click="model.okClick()" class="btn btn-default search-button" type="button">
+                <span class="glyphicon glyphicon-ok search-gly"></span>
+            </a>
+        </span>
+    </div>
+</div>
+
+<div class="row user-single-comment"  ng-repeat="comment in model.comments" style="margin-top: 2%; padding-top: 1%;">
+    <div class="col-md-12 col-xs-12">
+        <h5 class="col-md-8">{{comment.userName}}</h5>
+        <h6 class="col-md-3">{{comment.dateCreated}}</h6>
+
+        <a ng-show="model.config" ng-click="model.ediComment(comment._id,comment.comment)" class="col-md-1 glyphicon glyphicon-cog cog-gly"></a>
+
+        <a ng-show="model.edit" ng-click="model.removeComment(comment._id)" class="col-md-1 glyphicon glyphicon-remove remove-gly"></a>
+
+        <p class="col-md-12">
+            {{comment.comment}}
+        </p>
+
+    </div>
+</div>
