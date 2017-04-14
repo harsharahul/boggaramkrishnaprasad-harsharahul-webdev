@@ -114,6 +114,10 @@
         }
 
         function addComment(comment) {
+
+            if(!comment)
+                return;
+
             var thread = new Object();
 
             thread.comment = comment;

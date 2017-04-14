@@ -3,28 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>Web Dev Course Home Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/styles.css">
+
 </head>
 <body>
+
+<div class="flip section container-fluid">
     <h1>Web Dev Course Home Page</h1>
 
     <p>
-        Customize this home page to your linking.
+        Welcome to my CS5610 Web Development Home page.
+        You can navigate to my work using the below links
     </p>
 
     <h2>Required links</h2>
-    <ul>
-        <li>
-            <a href="project/index.html">Project</a>
+    <ul class="list-group">
+        <li class="list-group-item myLi">
+        <a href="project/"><span data-hover="Project">Project</span></a>
         </li>
-        <li>
-            <a href="assignment/">Assignment</a>
+
+        <li class="list-group-item myLi">
+        <a href="assignment/"><span data-hover="Assignment">Assignment</span></a>
         </li>
-        <li>
-            <a href="test/index.html">Test MongoDB</a>
+        <li class="list-group-item myLi">
+        <a href="test/index.html"><span data-hover="Test MongoDB">Test MongoDB</span></a>
         </li>
-        <li>
-            <a href="https://github.com/harsharahul/boggaramkrishnaprasad-harsharahul-webdev.git">Your public repository at GitHub.com</a>
+
+        <li class="list-group-item myLi">
+        <a href="https://github.com/harsharahul/boggaramkrishnaprasad-harsharahul-webdev.git"><span data-hover="My GitHub Repo">My GitHub Repo</span>
+        </a>
         </li>
     </ul>
+
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right ">
+            <!--<a ng-click="model.routeProfile()">-->
+            <!--<span class="glyphicon glyphicon-user"></span>-->
+            <!--</a>-->
+            <a style="color:whitesmoke;"><span style="color: #34495e">&copy Harsha Rahul Boggaram</span></a>
+        </div>
+    </div>
+</nav>
 </body>
 </html>

@@ -29,18 +29,41 @@
         vm.ediComment = ediComment;
         vm.okClick = okClick;
 
-        function ediComment(id,comment) {
+        function ediComment(comment) {
+
             vm.edit = true;
             vm.config = false;
-            vm.editingComment = comment;
-            vm.editingId = id;
+            vm.editingComment = comment.comment;
+            vm.editingId = comment._id;
+            vm.commentObj = comment;
+
+
+            // SocialService.updateThread(id,)
         }
 
-        function okClick() {
+        function okClick(updateMessage) {
             vm.edit = false;
             vm.config = true;
-            console.log(id);
             vm.editingComment = null;
+
+            vm.commentObj.comment = updateMessage;
+            console.log(vm.commentObj);
+
+            var promise =  SocialService.updateThread(vm.commentObj._id,vm.commentObj);
+
+            promise
+                .then(function (respose) {
+                    if(respose.data){
+                        console.log("Updated thread successfully");
+                    }
+                    else
+                        console.log("Update thread error");
+
+                })
+                .catch(function (err) {
+                    console.log("Update thread error");
+
+                })
         }
 
         vm.logout = logout;

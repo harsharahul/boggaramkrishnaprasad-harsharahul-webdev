@@ -34,6 +34,7 @@
                         console.log("before rootscope")
                         $rootScope.currentUser = user;
                         console.log("after rootscope")
+                        console.log($rootScope.currentUser);
 
                         $location.url("/");
                         console.log("after route")

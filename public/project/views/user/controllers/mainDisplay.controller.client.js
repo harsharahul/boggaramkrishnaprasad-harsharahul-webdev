@@ -15,6 +15,7 @@
         vm.routeToAdmin = routeToAdmin;
         vm.showShows = false;
         vm.routeToShows = routeToShows;
+        vm.parseIntoHttps =parseIntoHttps;
         //vm.logged = true;
 
         function loadInitialData() {
@@ -111,6 +112,10 @@
 
         function routeToShows() {
             $location.url("/shows");
+        }
+
+        function parseIntoHttps(url) {
+            return url.replace("http","https");
         }
     }
 })();

@@ -3,7 +3,7 @@
         <input ng-model="model.editingComment"  type="text" class="form-control comment-bar"
                placeholder="Edit comment here">
         <span class="input-group-btn">
-            <a ng-click="model.okClick()" class="btn btn-default search-button" type="button">
+            <a ng-click="model.okClick(model.editingComment)" class="btn btn-default search-button" type="button">
                 <span class="glyphicon glyphicon-ok search-gly"></span>
             </a>
         </span>
@@ -15,7 +15,7 @@
         <h5 class="col-md-8">{{comment.userName}}</h5>
         <h6 class="col-md-3">{{comment.dateCreated}}</h6>
 
-        <a ng-show="model.config" ng-click="model.ediComment(comment._id,comment.comment)" class="col-md-1 glyphicon glyphicon-cog cog-gly"></a>
+        <a ng-show="model.config" ng-click="model.ediComment(comment)" class="col-md-1 glyphicon glyphicon-cog cog-gly"></a>
 
         <a ng-show="model.edit" ng-click="model.removeComment(comment._id)" class="col-md-1 glyphicon glyphicon-remove remove-gly"></a>
 
