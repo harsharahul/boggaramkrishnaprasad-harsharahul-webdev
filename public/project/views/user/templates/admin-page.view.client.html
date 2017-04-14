@@ -67,15 +67,28 @@
                 </div>
             </div>
 
-            <div class="row" ng-hide="model.usersCall" ng-repeat="user in model.users"  style="margin-top: 2%; padding-top: 1%;">
-                <div ng-click="model.editUser(user._id)" class="col-md-12 col-xs-12 single-comment" style="padding-top: 1%;">
-                        <p class="col-md-4"><b>User Name:</b> {{user.username}}</p>
-                        <!--<p class="col-md-4 "><b>Password:</b> {{user.password}}</p>-->
-                        <p class="col-md-3"><b>Date Created:</b> {{user.dateCreated}}</p>
-                        <span class="col-md-1 glyphicon glyphicon-remove remove-gly"></span>
-                        <p class="col-md-4"><b>First Name:</b> {{user.firstName}}</p>
-                        <p class="col-md-4"><b>Last Name:</b> {{user.lastName}}</p>
-                        <p class="col-md-4"><b>Email:</b> {{user.email}}</p>
+            <!--<div class="row" ng-hide="model.usersCall" ng-repeat="user in model.users"  style="margin-top: 2%; padding-top: 1%;">-->
+                <!--<div ng-click="model.editUser(user._id)" class="col-md-12 col-xs-12 single-comment" style="padding-top: 1%;">-->
+                        <!--<p class="col-md-4"><b>User Name:</b> {{user.username}}</p>-->
+                        <!--&lt;!&ndash;<p class="col-md-4 "><b>Password:</b> {{user.password}}</p>&ndash;&gt;-->
+                        <!--<p class="col-md-3"><b>Date Created:</b> {{user.dateCreated}}</p>-->
+                        <!--<span class="col-md-1 glyphicon glyphicon-remove remove-gly"></span>-->
+                        <!--<p class="col-md-4"><b>First Name:</b> {{user.firstName}}</p>-->
+                        <!--<p class="col-md-4"><b>Last Name:</b> {{user.lastName}}</p>-->
+                        <!--<p class="col-md-4"><b>Email:</b> {{user.email}}</p>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--Here insertinf the ng divs-->
+            <div ng-switch="model.loadProfileEditdiv">
+                <div ng-switch-default>
+                    <ng-include src="'views/user/templates/allUserShow-Admin.view.client.html'"></ng-include>
+                </div>
+                <div ng-switch-when="USERVIEW">
+                    <ng-include src="'views/user/templates/allUserShow-Admin.view.client.html'"></ng-include>
+                </div>
+                <div ng-switch-when="EDITVIEW">
+                    <ng-include src="'views/user/templates/profile-settings.view.client.html'"></ng-include>
                 </div>
             </div>
 

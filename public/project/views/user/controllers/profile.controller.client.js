@@ -25,12 +25,15 @@
         vm.config = true;
         vm.edit = false;
 
+        vm.editBarDisable = true;
+
 
         vm.ediComment = ediComment;
         vm.okClick = okClick;
 
         function ediComment(comment) {
 
+            vm.editBarDisable = false;
             vm.edit = true;
             vm.config = false;
             vm.editingComment = comment.comment;
@@ -48,6 +51,7 @@
 
             vm.commentObj.comment = updateMessage;
             console.log(vm.commentObj);
+            vm.editBarDisable = true;
 
             var promise =  SocialService.updateThread(vm.commentObj._id,vm.commentObj);
 

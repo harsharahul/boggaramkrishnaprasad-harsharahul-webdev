@@ -81,6 +81,7 @@
                         $location.url("/");
                         vm.logged = false;
                         vm.showAdmin = false;
+                        vm.showShows = false;
                         console.log("Logged Out");
                     })
                 .catch(function (err) {

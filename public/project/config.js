@@ -14,8 +14,8 @@
 
             $rootScope.errorMessage = null;
 
-            //console.log("In check logged in");
-            //console.log(user);
+            console.log("In check logged in");
+            console.log(user);
 
             if (user.data !== '0') {
 
@@ -80,7 +80,7 @@
                     //console.log("reject")
 
                     //deferred.reject();
-                    //$location.url('/');
+                    $location.url('/');
                 }
             });
         //return deferred.promise;

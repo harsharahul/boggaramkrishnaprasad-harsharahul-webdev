@@ -16,6 +16,7 @@
         vm.routeMainPage = routeMainPage;
         vm.logout = logout;
         vm.routeProfile =routeProfile;
+        vm.parseIntoHttps =parseIntoHttps;
         //vm.loggedin = loggedin.role;
 
 
@@ -36,7 +37,11 @@
                 .then(function (response) {
                     if(response.data){
                         vm.media = response.data;
+                        //console.log(vm.media)
                         vm.mediaTrailer = getVideoFroMedia(vm.media.trailers.web[0].embed);
+                        vm.mediaTrailerLink = vm.media.trailers.web[0].link;
+                        vm.mediaTrailerEmbedded = vm.media.trailers.web[0].embed;
+                        //console.log(vm.media.trailers.web[0].embed);
 
                     }
                     else{
@@ -69,6 +74,7 @@
         }
 
         function getVideoFroMedia(mediaUrl) {
+            //console.log(mediaUrl);
             return $sce.trustAsResourceUrl(mediaUrl);
         }
 
@@ -159,5 +165,8 @@
                 })
         }
 
+        function parseIntoHttps(url) {
+            return url.replace("http","https");
+        }
     }
 })();

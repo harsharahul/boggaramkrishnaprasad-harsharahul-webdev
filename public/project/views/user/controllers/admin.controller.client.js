@@ -8,9 +8,11 @@
         vm.showUsers = showUsers;
         vm.showComments = showComments;
         vm.showDashboard = showDashboard;
+        vm.showEditUser = showEditUser;
         vm.usersCall = true;
         vm.commentsCall = true;
         vm.dashboardCall = false;
+        vm.loadProfileEditdiv = "USERVIEW";
 
 
         function init(){
@@ -65,6 +67,12 @@
             vm.usersCall = true;
             vm.commentsCall = true;
             vm.dashboardCall = false;
+        }
+
+        function showEditUser(user) {
+            console.log("Editing user")
+            vm.loadProfileEditdiv = "EDITVIEW";
+            vm.user = user;
         }
 
         // //vm.login = login;

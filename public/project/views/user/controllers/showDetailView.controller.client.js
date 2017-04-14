@@ -16,6 +16,7 @@
         vm.routeMainPage = routeMainPage;
         vm.logout = logout;
         vm.routeProfile =routeProfile;
+        vm.parseIntoHttps=parseIntoHttps;
         //vm.loggedin = loggedin.role;
 
 
@@ -153,6 +154,10 @@
                 .catch(function (err) {
                     console.log(err);
                 })
+        }
+
+        function parseIntoHttps(url) {
+            return url.replace("http","https");
         }
 
     }

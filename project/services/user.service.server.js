@@ -121,23 +121,26 @@ module.exports = function (app, userModel) {
 
         userModel
             .createUser(user)
-            .then(function(user){
+            .then(function(createdUser){
                     // console.log("success in sever service register")
                     // console.log(user)
 
-                    if(user){
+                    if(createdUser){
                         //console.log("In if user")
-                        res.json(user);
+                        //res.json(createdUser);
 
-                        // req.login(user, function(err) {
-                        //     if(err) {
-                        //         console.log("In err")
-                        //         res.status(400).send(err);
-                        //     } else {
-                        //         console.log("success");
-                        //         res.json(user);
-                        //     }
-                        // });
+                        req.login(createdUser, function(err) {
+                            if(err) {
+                                console.log("In err")
+                                res.status(400).send(err);
+                            } else {
+                                console.log("success");
+                                res.json(user);
+                            }
+                        });
+                    }
+                    else {
+                        console.log("error in creating user");
                     }
                 }
             )
