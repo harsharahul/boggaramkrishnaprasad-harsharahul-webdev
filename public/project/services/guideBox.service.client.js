@@ -7,8 +7,8 @@
         var key = "8e5af978b3471be36a5ed879a009d9ea80689bf9";
         var limit = 100;
         //var secret = "2eed5e6405478860";
-        var urlBase = "http://api-public.guidebox.com/v2/TYPE?api_key=API_KEY&limit=LIMIT";
-        var searchUrlBase = "http://api-public.guidebox.com/v2/search?api_key=API_KEY&type=TYPE&field=title&query=KEY";
+        var urlBase = "https://api-public.guidebox.com/v2/TYPE?api_key=API_KEY&limit=LIMIT";
+        var searchUrlBase = "https://api-public.guidebox.com/v2/search?api_key=API_KEY&type=TYPE&field=title&query=KEY";
 
         var api = {
             "getMovies":getMovies,
@@ -33,13 +33,13 @@
         //
         // }
         function getMovieDetails(id) {
-            var urlDetailsBase = "http://api-public.guidebox.com/v2/movies/ID?api_key=API_KEY";
+            var urlDetailsBase = "https://api-public.guidebox.com/v2/movies/ID?api_key=API_KEY";
             var url = urlDetailsBase.replace("API_KEY", key).replace("ID",id);
             return $http.get(url);
         }
 
         function getShowDetails(id) {
-            var urlDetailsBase = "http://api-public.guidebox.com/v2/shows/ID?api_key=API_KEY";
+            var urlDetailsBase = "https://api-public.guidebox.com/v2/shows/ID?api_key=API_KEY";
             var url = urlDetailsBase.replace("API_KEY", key).replace("ID",id);
             return $http.get(url);
         }
