@@ -59,6 +59,33 @@
         return deferred.promise;
     };
 
+    var checkIsShow = function($q, $timeout, $http, $location, $rootScope) {
+        var deferred = $q.defer();
+
+        $http.get('/api/isshow')
+            .then(function(user) {
+
+                $rootScope.errorMessage = null;
+
+                if (user.data !== '0') {
+
+                    console.log("resolved")
+                    console.log(user)
+                    //$rootScope.currentUser = user;
+                    deferred.resolve();
+                    //$location.url('/user');
+                } else {
+                    console.log("reject")
+
+                    deferred.reject();
+                    $location.url('/');
+                }
+            });
+        return deferred.promise;
+    };
+
+
+
 
     var loggedUser = function($q, $timeout, $http, $location, $rootScope) {
         //var deferred = $q.defer();
@@ -127,7 +154,7 @@
                 templateUrl:"views/user/templates/showDetail.view.client.html",
                 controller: 'showDetailViewController',
                 controllerAs: 'model',
-                //resolve: { loggedin: checkLoggedin }
+                resolve: { checkIsShow: checkIsShow }
             })
             .when("/register",{
                 templateUrl:"views/user/templates/register-page.view.client.html",
@@ -143,8 +170,8 @@
             .when("/shows",{
                 templateUrl:"views/user/templates/showsDisplay.view.client.html",
                 controller: 'showsDisplayController',
-                controllerAs: 'model'
-                //resolve: { isAdmin: checkIsAdmin }
+                controllerAs: 'model',
+                resolve: { checkIsShow: checkIsShow }
             })
             // .when("/profile/:uid",{
             //     templateUrl:"views/user/templates/profile-page.view.client.html",
@@ -166,9 +193,10 @@
                 controllerAs: 'model'
             })
             .otherwise({
-                templateUrl: "views/user/templates/login-page.view.client.html",
-                controller: 'loginController',
-                controllerAs: 'model'
+                templateUrl:"views/user/templates/mainDisplay.view.client.html",
+                controller: 'mainDisplayController',
+                controllerAs: 'model',
+                resolve: { user: loggedUser }
             })
     }
 

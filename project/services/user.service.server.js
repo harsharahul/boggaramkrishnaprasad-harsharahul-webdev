@@ -27,6 +27,7 @@ module.exports = function (app, userModel) {
     app.post("/api/register", register);
     app.get("/api/loggedin", loggedin);
     app.get("/api/isadmin", isadmin);
+    app.get("/api/isshow",isShow);
     //app.get("/api/loggeduser",loggeduser);
     // app.get("/universalSearch/api/user/all",getAllUsers);
     // app.get("/universalSearch/api/user", findUser);
@@ -137,6 +138,20 @@ module.exports = function (app, userModel) {
             .catch(function (err) {
                 done(null,false);
             })
+    }
+
+    function isShow(req,res) {
+        if(req.isAuthenticated()){
+            if(req.user.role == "SHOW" || req.user.role=="ADMIN"){
+                res.send(req.user);
+            }
+            else {
+                res.send('0');
+            }
+        }
+        else {
+            res.send('0');
+        }
     }
 
     function isadmin(req, res) {
