@@ -17,6 +17,7 @@
         vm.logout = logout;
         vm.routeProfile =routeProfile;
         vm.parseIntoHttps =parseIntoHttps;
+        vm.showRefresh = false;
         //vm.loggedin = loggedin.role;
 
 
@@ -25,7 +26,7 @@
             // $location.hash("detailsPageView");
             // $anchorScroll();
 
-
+            vm.showRefresh = true;
 
 
             var promise = GuideBoxService.getMovieDetails(guideBoxId);
@@ -38,6 +39,7 @@
                         vm.mediaTrailer = getVideoFroMedia(vm.media.trailers.web[0].embed);
                         vm.mediaTrailerLink = vm.media.trailers.web[0].link;
                         vm.mediaTrailerEmbedded = vm.media.trailers.web[0].embed;
+                        vm.showRefresh = false;
                         //console.log(vm.media.trailers.web[0].embed);
 
                     }

@@ -26,6 +26,10 @@
         </div>
         <div class="navbar-header">
             <a class="navbar-brand" href="#"><p class="brand-name">StreamHub</p></a>
+            <div ng-if="model.showRefresh" class="navbar-header" style="padding-top: 10px">
+                <i class=" fa fa-refresh fa-spin fa-2x fa-fw" style="color: whitesmoke;"></i>
+                <label class="" style="color: whitesmoke;">Loading movies...</label>
+            </div>
         </div>
     </div>
 </nav>

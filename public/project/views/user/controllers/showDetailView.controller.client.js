@@ -18,6 +18,7 @@
         vm.routeProfile =routeProfile;
         vm.parseIntoHttps=parseIntoHttps;
         vm.routeShows=routeShows;
+        vm.showRefresh = false;
         //vm.loggedin = loggedin.role;
 
 
@@ -25,7 +26,7 @@
 
             // $location.hash("detailsPageView");
             // $anchorScroll();
-
+            vm.showRefresh = true;
 
 
             console.log("testein")
@@ -37,6 +38,7 @@
                         vm.media = response.data;
                         //vm.mediaTrailer = getVideoFroMedia(vm.media.trailers.web[0].embed);
                         console.log(vm.media);
+
                     }
                     else{
                         vm.error = "Error fetching the Movie details\n Please contact the administrator";
@@ -61,6 +63,7 @@
                                 if(res.data){
                                     vm.allEpisodes = res.data.results;
                                     console.log(vm.allEpisodes);
+                                    vm.showRefresh = false;
                                 }
                             })
                     }

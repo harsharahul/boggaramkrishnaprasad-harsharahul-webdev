@@ -16,9 +16,11 @@
         vm.showShows = false;
         vm.routeToShows = routeToShows;
         vm.parseIntoHttps =parseIntoHttps;
+        vm.showRefresh = false;
         //vm.logged = true;
 
         function loadInitialData() {
+            vm.showRefresh = true;
             var promise = GuideBoxService
                 .getMovies();
 
@@ -26,6 +28,7 @@
                 .then(function (response) {
                     if(response.data){
                         vm.movies = response.data;
+                        vm.showRefresh = false;
                         console.log(vm.movies);
                     }
                     else{
@@ -53,6 +56,8 @@
             }
 
             console.log($rootScope.currentUser);
+
+
 
         }
 

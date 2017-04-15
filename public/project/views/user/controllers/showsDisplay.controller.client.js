@@ -13,9 +13,13 @@
         vm.routeLogin = routeLogin;
         vm.currentUser = $rootScope.currentUser;
         vm.routeToMain =routeToMain;
+        vm.showRefresh= false;
         //vm.logged = true;
 
         function loadInitialData() {
+
+            vm.showRefresh = true;
+
             var promise = GuideBoxService
                 .getSeries();
 
@@ -23,6 +27,7 @@
                 .then(function (response) {
                     if(response.data){
                         vm.movies = response.data;
+                        vm.showRefresh = false;
                         console.log(vm.movies);
                     }
                     else{

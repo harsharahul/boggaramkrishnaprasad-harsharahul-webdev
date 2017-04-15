@@ -19,12 +19,24 @@
             <!--</a>-->
         <!--</div>-->
         <div class="navbar-header">
-            <a class="navbar-brand" href="#"><p class="brand-name">StreamHub</p></a>
+            <a class="navbar-brand" href="#">
+                <p class="brand-name">StreamHub</p>
+            </a>
+            <div ng-if="model.showRefresh" class="navbar-header" style="padding-top: 10px">
+                <i class=" fa fa-refresh fa-spin fa-2x fa-fw" style="color: whitesmoke;"></i>
+                <label class="" style="color: whitesmoke;">Loading episodes...</label>
+            </div>
         </div>
+
+        <!--<button class="btn btn-lg btn-warning">-->
+            <!--<span class="glyphicon glyphicon-refresh glyphicon-facetime-video fa-spin" style="color: whitesmoke"></span> Loading...-->
+        <!--</button>-->
+        <!--<i class="faa-spin animated" style="color:whitesmoke;"></i>-->
     </div>
 </nav>
 
 <div class="container-fluid marginTop backStyle" style="padding-top: 70px;padding-bottom: 50px" id="detailsPageView">
+
 
     <div class="col-md-12">
 
