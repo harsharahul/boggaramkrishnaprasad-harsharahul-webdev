@@ -117,13 +117,15 @@
             <div class="col-md-2 col-sm-4 col-xs-6" ng-repeat="movie in model.allEpisodes">
                 <!--<p>TITLE: {{movie.original_title}}</p>-->
 
-                <div class="detail-caption">
+                <a href="{{movie.purchase_web_sources[0].link}}">
+                <div  class="detail-caption">
                     <label>Season: {{movie.season_number}}</label><br>
                     <label>Episode: {{movie.episode_number}}</label>
                 </div>
 
-                <img ng-click="" class="img-rounded poster" width="100%"
+                <img class="img-rounded poster" width="100%"
                      ng-src="{{movie.thumbnail_608x342}}"/>
+                </a>
                 <!--<img ng-if="model.currentUser" ng-click="model.routeToDetails(movie.id)" class="img-rounded poster" width="100%"-->
                      <!--ng-src="{{model.parseIntoHttps(movie.poster_400x570)}}"/>-->
                 <!--<img ng-if="!model.currentUser" data-toggle="tooltip" title="Please Login to Continue"  class="img-rounded poster red-tooltip" width="100%"-->

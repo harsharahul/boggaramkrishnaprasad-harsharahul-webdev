@@ -66,13 +66,13 @@
                 <!--<span class="register-label">SHOWS</span>-->
             <!--</div>-->
             <label class="register-label user-type-class">
-                <input ng-checked="true" class="radio-inline" type="radio" name="TYPE" value="MOVIE"  ng-model="model.user.role">
+                <input class="form-group radio-inline" type="radio" name="TYPE" value="MOVIE"  ng-model="model.user.role">
                 MOVIES</label>
             <label class="register-label user-type-class">
-                <input class="radio-inline" type="radio" name="TYPE" value="SHOW" ng-model="model.user.role" >
+                <input class="form-group radio-inline" type="radio" name="TYPE" value="SHOW" ng-model="model.user.role" >
                 SHOWS + MOVIES</label>
             <label ng-if="model.showAdmin" class="register-label user-type-class">
-                <input ng-if="model.showAdmin" class="radio-inline" type="radio" name="TYPE" value="ADMIN" ng-model="model.user.role" >
+                <input ng-if="model.showAdmin" class="form-group radio-inline" type="radio" name="TYPE" value="ADMIN" ng-model="model.user.role" >
                 ADMIN</label>
 
 

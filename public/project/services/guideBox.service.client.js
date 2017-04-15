@@ -55,7 +55,7 @@
         }
 
         function getallepisodes(showId,limit) {
-            var urlBuilder = "https://api-public.guidebox.com/v2/shows/SHOWID/episodes?api_key=KEY&limit=LIMIT"
+            var urlBuilder = "https://api-public.guidebox.com/v2/shows/SHOWID/episodes?api_key=KEY&include_links=true&limit=LIMIT"
             var urlQuery = urlBuilder.replace("SHOWID",showId).replace("KEY",key).replace("LIMIT",limit);
             return $http.get(urlQuery);
 
