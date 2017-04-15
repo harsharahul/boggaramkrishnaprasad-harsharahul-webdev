@@ -17,6 +17,7 @@
         vm.logout = logout;
         vm.routeProfile =routeProfile;
         vm.parseIntoHttps=parseIntoHttps;
+        vm.routeShows=routeShows;
         //vm.loggedin = loggedin.role;
 
 
@@ -30,15 +31,15 @@
             //     vm.validUser = false;
 
 
-
+            console.log("testein")
             var promise = GuideBoxService.getShowDetails(guideBoxId);
 
             promise
                 .then(function (response) {
                     if(response.data){
                         vm.media = response.data;
-                        vm.mediaTrailer = getVideoFroMedia(vm.media.trailers.web[0].embed);
-
+                        //vm.mediaTrailer = getVideoFroMedia(vm.media.trailers.web[0].embed);
+                        console.log(vm.media);
                     }
                     else{
                         vm.error = "Error fetching the Movie details\n Please contact the administrator";
@@ -92,8 +93,8 @@
             //media.user = uid;
             media.guideboxId = vm.media.id;
             media.title = vm.media.title;
-            media.type = "MOVIE";
-            media.poster = vm.media.poster_400x570;
+            media.type = "SHOW";
+            media.poster = vm.media.poster;
             media.desc = vm.media.overview;
 
             var promsise = MediaService.saveMedia(media);
@@ -158,6 +159,10 @@
 
         function parseIntoHttps(url) {
             return url.replace("http","https");
+        }
+
+        function routeShows() {
+            $location.url("/shows");
         }
 
     }

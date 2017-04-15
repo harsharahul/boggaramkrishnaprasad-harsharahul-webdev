@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text pull-left">
-            <a ng-click="model.routeMainPage()">
+            <a ng-click="model.routeShows()">
                 <span class="glyphicon glyphicon-chevron-left" style="color: white">
             </span>
             </a>
@@ -40,7 +40,7 @@
                     <h5 style="color: white">First Aired: {{model.media.first_aired}}</h5>
                 </div>
                 <div>
-                    <h5 style="color: white">Duration: {{model.media.runtime/60}} min</h5>
+                    <h5 style="color: white">Duration: {{model.media.runtime}} min</h5>
                 </div>
 
                 <div style="padding-top: 5%; margin-top: 10%; margin-bottom: 15%; padding-bottom: 5%">
@@ -48,10 +48,10 @@
                         <span ng-if="model.saved==1">Saved !!</span>  <span ng-if="!model.saved">Save Movie</span>
                     </button>
                 </div>
-                <div class="hidden-lg hidden-md"
-                     style="padding-top: 5%; margin-top: 10%; margin-bottom: 15%; padding-bottom: 5%">
-                    <button type="button" class="btn btn-primary col-md-12 col-sm-12 col-xs-12">Watch Trailer</button>
-                </div>
+                <!--<div class="hidden-lg hidden-md"-->
+                     <!--style="padding-top: 5%; margin-top: 10%; margin-bottom: 15%; padding-bottom: 5%">-->
+                    <!--<button type="button" class="btn btn-primary col-md-12 col-sm-12 col-xs-12">Watch Trailer</button>-->
+                <!--</div>-->
             </div>
 
         </div>
@@ -79,7 +79,7 @@
 
             </div>
 
-            <div ng-show="model.validUser" class="col-md-12 col-xs-12 comment-section pre-scrollable" style= "margin-top:5%">
+            <div class="col-md-12 col-xs-12 comment-section pre-scrollable" style= "margin-top:5%">
                 <div class="row">
                     <div class="input-group">
                         <input ng-model="model.comment" ng-model="searchText" type="text" class="form-control comment-bar"
@@ -119,26 +119,28 @@
         </div>
 
 
-        <div ng-show="model.validUser" class="col-md-5 col-xs-12" style="padding-top: 5%">
-            <div class="panel panel-primary source-panel">
-                <div class="panel-heading">
-                    <center><h3 class="panel-title">Watch now on the below links</h3></center>
-                </div>
-                <div class="panel-body source-panel">
+        <!--<div class="col-md-5 col-xs-12" style="padding-top: 5%">-->
+            <!--<div class="panel panel-primary source-panel">-->
+                <!--<div class="panel-heading">-->
+                    <!--<center><h3 class="panel-title">Watch now on the below links</h3></center>-->
+                <!--</div>-->
+                <!--<div class="panel-body source-panel">-->
 
-                    <div ng-repeat="source in model.media.purchase_web_sources">
-                        <a target="_blank" href="{{source.link}}">
-                            <div class="row col-md-12 col-xs-12 single-comment media-links form-control">
-                                {{source.display_name}}
-                                <span class="pull-right hidden-xs hidden-sm">
-                                   &nbsp{{source.formats[0].type}} {{source.formats[0].format}} {{source.formats[0].price}}&nbsp&nbsp
-                               </span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    <!--<div ng-repeat="source in model.media.purchase_web_sources">-->
+                        <!--<a target="_blank" href="{{source.link}}">-->
+                            <!--<div class="row col-md-12 col-xs-12 single-comment media-links form-control">-->
+                                <!--{{source.display_name}}-->
+                                <!--<span class="pull-right hidden-xs hidden-sm">-->
+                                   <!--&nbsp{{source.formats[0].type}} {{source.formats[0].format}} {{source.formats[0].price}}&nbsp&nbsp-->
+                               <!--</span>-->
+                            <!--</div>-->
+                        <!--</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
     </div>
 </div>
 
