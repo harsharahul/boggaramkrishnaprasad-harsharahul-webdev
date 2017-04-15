@@ -158,13 +158,13 @@
         }
 
         function updateUser(user) {
-            user.role = "USER";
             var promise = UserService.updateUser(user);
 
             promise
                 .then(function (response) {
                     if(response){
                         console.log("Updated successfully")
+                        init();
                     }
                 })
                 .catch(function (err) {
@@ -181,6 +181,7 @@
                     .then(function (response) {
                         if(response){
                             console.log("Successfully deleted the user")
+                            logout();
                         }
                         else {
                             console.log("Error deleting the user")

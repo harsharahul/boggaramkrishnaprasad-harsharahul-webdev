@@ -22,7 +22,7 @@
                 vm.error = "Please give a valid Input";
             }
             if(!user.role)
-                user.role = "MOVIES";
+                user.role = "SHOW";
             var promise = UserService.register(user);
 
             promise
