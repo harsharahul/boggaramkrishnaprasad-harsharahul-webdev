@@ -4,7 +4,7 @@
         .controller("showDetailViewController", showDetailViewController);
 
     function showDetailViewController(UserService,SocialService,GuideBoxService,
-                                  $location, $routeParams,$sce,$anchorScroll,MediaService) {
+                                  $location, $routeParams,$sce,$anchorScroll,MediaService,$rootScope) {
         var vm = this;
         //vm.login = login;
         vm.error = "";
