@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top" xmlns="http://www.w3.org/1999/html">
     <div class="container-fluid">
         <div class="navbar-text pull-left">
             <a ng-click="model.routeShows()">
@@ -45,7 +45,7 @@
 
                 <div style="padding-top: 5%; margin-top: 10%; margin-bottom: 15%; padding-bottom: 5%">
                     <button style="cursor: pointer" ng-disabled="model.saved" ng-click="model.saveMedia()" type="button" class="btn btn-primary col-md-12 col-sm-12 col-xs-12">
-                        <span ng-if="model.saved==1">Saved !!</span>  <span ng-if="!model.saved">Save Movie</span>
+                        <span ng-if="model.saved==1">Saved !!</span>  <span ng-if="!model.saved">Save Media</span>
                     </button>
                 </div>
                 <!--<div class="hidden-lg hidden-md"-->
@@ -58,7 +58,7 @@
 
         <div class="col-md-8 col-md-push-1 details-data">
             <div class="col-md-12">
-                <h2>{{model.media.title}} ({{model.media.release_year}})</h2>
+                <h2>{{model.media.title}} </h2>
             </div>
 
             <div class="col-md-12 details-data details-section pre-scrollable">
@@ -69,11 +69,15 @@
                 <div style="padding-top: 2%;">
                     Starring: <span ng-repeat="star in model.media.cast">
                        <a class="a-link" target="_blank" href="http://www.imdb.com/name/{{star.imdb}}"> {{star.name}} </a></span><br><br>
-                    Writers: <span ng-repeat="write in model.media.writers">
-                       <a class="a-link" target="_blank"href="http://www.imdb.com/name/{{write.imdb}}"> {{write.name}} </a> </span><br><br>
-                    Directors: <span ng-repeat="director in model.media.directors">
-                       <a class="a-link"  target="_blank" href="http://www.imdb.com/name/{{director.imdb}}"> {{director.name}} </a></span><br><br>
+                    Status: <span style="color:#aaaaaa">{{model.media.status}}</span>
+                    <!--<span ng-repeat="write in model.media.status">-->
+                       <!--<a class="a-link" target="_blank"href="http://www.imdb.com/name/{{write.imdb}}"> {{write.name}} </a> </span><br><br>-->
+                    <!--Directors: <span ng-repeat="director in model.media.directors">-->
+                       <!--<a class="a-link"  target="_blank" href="http://www.imdb.com/name/{{director.imdb}}"> {{director.name}} </a></span><br><br>-->
+                    <br><br>
                     Genre : <span style="color:#aaaaaa" ng-repeat="genre in model.media.genres"> {{genre.title}} </span>
+                    <br><br>
+                    Air-Time : <span style="color:#aaaaaa" > ({{model.media.air_day_of_week}} : {{model.media.air_time}}) </span>
                     </p>
                 </div>
 
@@ -108,39 +112,26 @@
         </div>
     </div>
 
+    <div class="row display-grid-layout show-grid">
+        <div class="col-md-12 col-sm-12 col-xs-12 pre-scrollable" >
+            <div class="col-md-2 col-sm-4 col-xs-6" ng-repeat="movie in model.allEpisodes">
+                <!--<p>TITLE: {{movie.original_title}}</p>-->
 
-    <div class="col-md-12 col-xs-12">
+                <div class="detail-caption">
+                    <label>Season: {{movie.season_number}}</label><br>
+                    <label>Episode: {{movie.episode_number}}</label>
+                </div>
 
-        <div class="col-md-7 hidden-md hidden-xs hidden-sm" style="padding-top: 10%;">
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe  class="embed-responsive-item" src="{{model.mediaTrailer}}"
-                         frameborder="0" allowfullscreen ></iframe>
+                <img ng-click="" class="img-rounded poster" width="100%"
+                     ng-src="{{movie.thumbnail_608x342}}"/>
+                <!--<img ng-if="model.currentUser" ng-click="model.routeToDetails(movie.id)" class="img-rounded poster" width="100%"-->
+                     <!--ng-src="{{model.parseIntoHttps(movie.poster_400x570)}}"/>-->
+                <!--<img ng-if="!model.currentUser" data-toggle="tooltip" title="Please Login to Continue"  class="img-rounded poster red-tooltip" width="100%"-->
+                     <!--ng-src="{{model.parseIntoHttps(movie.poster_400x570)}}"/>-->
+                <!--<img ng-if="{{movie.artwork_448x252}}" ng-click="model.routeToDetails(movie.id)" class="img-rounded poster" width="100%"-->
+                <!--ng-src="{{movie.artwork_448x252}}"/>-->
             </div>
         </div>
-
-
-        <!--<div class="col-md-5 col-xs-12" style="padding-top: 5%">-->
-            <!--<div class="panel panel-primary source-panel">-->
-                <!--<div class="panel-heading">-->
-                    <!--<center><h3 class="panel-title">Watch now on the below links</h3></center>-->
-                <!--</div>-->
-                <!--<div class="panel-body source-panel">-->
-
-                    <!--<div ng-repeat="source in model.media.purchase_web_sources">-->
-                        <!--<a target="_blank" href="{{source.link}}">-->
-                            <!--<div class="row col-md-12 col-xs-12 single-comment media-links form-control">-->
-                                <!--{{source.display_name}}-->
-                                <!--<span class="pull-right hidden-xs hidden-sm">-->
-                                   <!--&nbsp{{source.formats[0].type}} {{source.formats[0].format}} {{source.formats[0].price}}&nbsp&nbsp-->
-                               <!--</span>-->
-                            <!--</div>-->
-                        <!--</a>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-
-
     </div>
 </div>
 

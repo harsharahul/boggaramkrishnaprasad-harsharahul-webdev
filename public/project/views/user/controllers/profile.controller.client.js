@@ -163,12 +163,14 @@
             promise
                 .then(function (response) {
                     if(response){
-                        console.log("Updated successfully")
+                        console.log("Updated successfully");
+                        vm.success = "Updated successfully";
                         init();
                     }
                 })
                 .catch(function (err) {
-                    console.log(err);
+                    //console.log(err);
+                    vm.error = "Error Updating the user";
                 })
         }
 
@@ -180,7 +182,8 @@
                 promise
                     .then(function (response) {
                         if(response){
-                            console.log("Successfully deleted the user")
+                            console.log("Successfully deleted the user");
+                            //vm.mode = ""
                             logout();
                         }
                         else {

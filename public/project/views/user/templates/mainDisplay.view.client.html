@@ -40,7 +40,7 @@
     </div>
     <div class="container">
         <div class="input-group">
-            <input ng-model="searchText" type="text" class="form-control search-bar" placeholder="Search Movies all you like!" ng-keyup="$event.keyCode == 13 && model.searchMovies()" >
+            <input ng-model="searchText" type="text" class="form-control search-bar" placeholder="Search Movies all you like!" ng-keyup="$event.keyCode == 13 && model.searchMovies(searchText)" >
             <span class="input-group-btn">
             <a ng-click="model.searchMovies(searchText)" class="btn btn-default search-button" type="button">
                 <span class="glyphicon glyphicon-search search-gly"></span>

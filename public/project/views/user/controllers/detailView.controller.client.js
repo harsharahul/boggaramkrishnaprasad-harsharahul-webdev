@@ -137,6 +137,7 @@
                     if(response.data){
                         console.log("Thread saved successfully");
                         loadComments();
+                        vm.comment = null;
                     }
                 })
                 .catch(function (err) {

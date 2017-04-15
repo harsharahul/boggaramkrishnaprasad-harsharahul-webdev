@@ -578,3 +578,36 @@ html, body, .container-table {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     padding: 1%;
 }
+
+.empty-movie-label{
+    font-size: x-large;
+    font-family: 'Pacifico', cursive;
+    color: #00ccff;
+}
+
+.show-grid {
+    height: 80%;
+    padding-bottom: 5%;
+}
+
+
+.detail-caption {
+    position: absolute;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 25%;
+    color:white;
+}
+
+.poster:hover + .detail-caption {
+    position: absolute;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 25%;
+    color:white;
+    cursor : pointer;
+}
+
+.detail-caption:hover + .poster {
+    zoom: 100%;
+    opacity: 1;
+    cursor : pointer;
+}

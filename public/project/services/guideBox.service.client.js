@@ -16,7 +16,8 @@
             "searchMovies":searchMovies,
             "getSeries":getSeries,
             "searchShows":searchShows,
-            "getShowDetails":getShowDetails
+            "getShowDetails":getShowDetails,
+            "getallepisodes":getallepisodes
         };
         return api;
 
@@ -51,6 +52,31 @@
         function searchShows(searchKey) {
             var url = searchUrlBase.replace("TYPE","show").replace("API_KEY", key).replace("KEY",searchKey);
             return $http.get(url);
+        }
+
+        function getallepisodes(showId,limit) {
+            var urlBuilder = "https://api-public.guidebox.com/v2/shows/SHOWID/episodes?api_key=KEY&limit=LIMIT"
+            var urlQuery = urlBuilder.replace("SHOWID",showId).replace("KEY",key).replace("LIMIT",limit);
+            return $http.get(urlQuery);
+
+            // promise
+            //     .then(function (response) {
+            //         if(response.data){
+            //             var totalEpisodes = response.data.total_results;
+            //
+            //             if(totalEpisodes>250){
+            //                 totalEpisodes = 250;
+            //             }
+            //
+            //             var mainUrl = urlBuilder.replace("SHOWID",showId).replace("KEY",key).replace("LIMIT",totalEpisodes);
+            //
+            //             return $http.get(mainUrl);
+            //         }
+            //     })
+            //     .catch(function (err) {
+            //         console.log("Error getAll Espisodes");
+            //     })
+
         }
     }
 })();

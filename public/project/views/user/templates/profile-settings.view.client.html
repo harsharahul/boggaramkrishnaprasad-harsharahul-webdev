@@ -1,4 +1,10 @@
 <div class="container-fluid marginTop backStyle" style="padding-top: 5%">
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+    <div ng-show="model.success" class="alert alert-info" role="alert">
+        {{model.success}}
+    </div>
     <div class="col-md-12">
         <form>
             <div class="form-group">

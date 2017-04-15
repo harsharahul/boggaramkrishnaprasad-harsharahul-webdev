@@ -48,6 +48,29 @@
                 .catch(function (err) {
                     vm.error = "Error loading, Please contact the administrator";
                 })
+
+
+            var allEpisodePromise = GuideBoxService.getallepisodes(guideBoxId,1);
+            allEpisodePromise
+                .then(function (response) {
+                    if(response.data){
+                        var totalCount = response.data.total_results;
+                        if(totalCount >= 250){
+                            totalCount = 240;
+                        }
+                        GuideBoxService
+                            .getallepisodes(guideBoxId,totalCount)
+                            .then(function (res) {
+                                if(res.data){
+                                    vm.allEpisodes = res.data.results;
+                                    console.log(vm.allEpisodes);
+                                }
+                            })
+                    }
+                })
+                .catch(function (err) {
+                    console.log("Error in fetching all the episodes");
+                })
         }
 
 
@@ -116,6 +139,10 @@
         }
 
         function addComment(comment) {
+
+            if(!comment){
+                return;
+            }
             var thread = new Object();
 
             thread.comment = comment;
@@ -129,6 +156,7 @@
                     if(response.data){
                         console.log("Thread saved successfully");
                         loadComments();
+                        vm.comment = "";
                     }
                 })
                 .catch(function (err) {

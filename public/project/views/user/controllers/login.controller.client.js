@@ -29,18 +29,7 @@
                         console.log(user);
                         $rootScope.currentUser = user;
                         $location.url("/");
-                        // if(user.role == "USER"){
-                        //     $rootScope.currentUser = user;
-                        //     $location.url("/user/"+user._id);
-                        // }
-                        // else if (user.role == "ADMIN"){
-                        //     $rootScope.currentUser = user;
-                        //     $location.url("/admin/"+user._id);
-                        // }
-                        // else{
-                        //     $rootScope.currentUser = user;
-                        //     $location.url("/guest/"+user._id);
-                        // }
+
 
                     }
                     else {
