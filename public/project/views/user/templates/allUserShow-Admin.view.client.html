@@ -2,8 +2,8 @@
     <div ng-click="model.showEditUser(user)" class="col-md-12 col-xs-12 single-comment" style="padding-top: 1%;">
         <p class="col-md-4"><b>User Name:</b> {{user.username}}</p>
         <!--<p class="col-md-4 "><b>Password:</b> {{user.password}}</p>-->
-        <p class="col-md-3"><b>Date Created:</b> {{user.dateCreated}}</p>
-        <span class="col-md-1 glyphicon glyphicon-remove remove-gly"></span>
+        <p class="col-md-3" ng-bind="user.dateCreated | date:'medium'"><b>Date Created:</b> </p>
+        <span class="col-md-1 glyphicon glyphicon-cog remove-gly"></span>
         <p class="col-md-4"><b>First Name:</b> {{user.firstName}}</p>
         <p class="col-md-4"><b>Last Name:</b> {{user.lastName}}</p>
         <p class="col-md-4"><b>Email:</b> {{user.email}}</p>

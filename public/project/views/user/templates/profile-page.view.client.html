@@ -3,13 +3,21 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text pull-left">
-            <a ng-click="model.routeWidgetList()">
+            <a href="#!/">
                 <span class="glyphicon glyphicon-chevron-left">
             </span>
             </a>
         </div>
         <div class="navbar-text pull-right">
-            <a ng-click="model.updateWidget(model.widget)"> <span class="glyphicon glyphicon-ok"></span>
+            <a ng-click="model.logout()">
+                <i class="fa fa-sign-out logout-gly" aria-hidden="true">
+                    <label class="logout-label">Logout</label></i>
+            </a>
+        </div>
+        <div ng-show="model.showAdmin" class="navbar-text pull-right ">
+            <a href="" ng-click="model.routeAdmin()" class="admin-label">
+                <i class="fa fa-user-secret admin-label" aria-hidden="true">
+                    <label class="admin-label">Admin</label></i>
             </a>
         </div>
         <div class="navbar-header">
@@ -76,7 +84,7 @@
     <div class="container-fluid">
         <div class="navbar-text pull-right ">
             <a ng-click="model.routeProfile()">
-                <span class="glyphicon glyphicon-user"></span>
+                <span class="glyphicon glyphicon-user profile-gly"></span>
             </a>
         </div>
     </div>

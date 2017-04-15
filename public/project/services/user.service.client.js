@@ -18,9 +18,17 @@
             "getAllUsers": getAllUsers,
             "login":login,
             "logout": logout,
-            "register": register
+            "register": register,
+            "deleteUserById":deleteUserById,
+            "updateUserByID":updateUserByID
         };
         return api;
+
+        function deleteUserById(id) {
+            console.log(id);
+            console.log("client service user");
+            return $http.delete("/universalSearch/api/user/"+id);
+        }
 
         function register(user) {
             return $http.post("/api/register", user);
@@ -68,6 +76,10 @@
 
         function updateUser(user) {
             return $http.put("/universalSearch/api/user", user);
+        }
+
+        function updateUserByID(user) {
+            return $http.put("/universalSearch/api/user/"+user._id, user);
         }
         // function deleteUser(userId) {
         //     return $http.delete('/universalSearch/api/user/'+userId);

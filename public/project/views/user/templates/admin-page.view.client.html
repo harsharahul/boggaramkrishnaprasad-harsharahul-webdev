@@ -8,7 +8,9 @@
             </a>
         </div>
         <div class="navbar-text pull-right">
-            <a ng-click="model.updateWidget(model.widget)"> <span class="glyphicon glyphicon-ok"></span>
+            <a ng-click="model.logout()">
+                <i class="fa fa-sign-out logout-gly" aria-hidden="true">
+                    <label class="logout-label">Logout</label></i>
             </a>
         </div>
         <div class="navbar-header">
@@ -23,7 +25,7 @@
             <div class="col-md-12" style="padding-top: 5%">
                 <center>
                 <span style="font-size:8em;" class="glyphicon glyphicon-user user-gly"></span>
-                <h3 class="user-name"> ADMIN </h3></center>
+                <h3 class="user-name"> Administrator </h3></center>
             </div>
 
             <ul class="nav in">
@@ -46,26 +48,26 @@
                         Comments </button>
                 </li>
 
-                <li class="user-menu">
-                    <button type="button" class="btn btn-outline btn-primary btn-lg btn-block user-button ">
-                   <span class="glyphicon glyphicon-cog user-action-gly"></span>
-                        Settings </button>
-                </li>
+                <!--<li class="user-menu">-->
+                    <!--<button type="button" class="btn btn-outline btn-primary btn-lg btn-block user-button ">-->
+                   <!--<span class="glyphicon glyphicon-cog user-action-gly"></span>-->
+                        <!--Settings </button>-->
+                <!--</li>-->
             </ul>
         </div>
 
         <div class="col-md-9 user-view-block pre-scrollable" >
 
-            <div class="row user-single-comment" ng-hide="model.commentsCall" ng-repeat="comment in model.comments" style="margin-top: 2%; padding-top: 1%;">
-                <div class="col-md-12 col-xs-12">
-                    <h5 class="col-md-8">{{comment.userName}}</h5>
-                    <h6 class="col-md-3">{{comment.dateCreated}}</h6>
-                    <span class="col-md-1 glyphicon glyphicon-remove remove-gly"></span>
-                    <p class="col-md-12">
-                        {{comment.comment}}
-                    </p>
-                </div>
-            </div>
+            <!--<div class="row user-single-comment" ng-hide="model.commentsCall" ng-repeat="comment in model.comments" style="margin-top: 2%; padding-top: 1%;">-->
+                <!--<div class="col-md-12 col-xs-12">-->
+                    <!--<h5 class="col-md-8">{{comment.userName}}</h5>-->
+                    <!--<h6 class="col-md-3">{{comment.dateCreated}}</h6>-->
+                    <!--<span class="col-md-1 glyphicon glyphicon-remove remove-gly"></span>-->
+                    <!--<p class="col-md-12">-->
+                        <!--{{comment.comment}}-->
+                    <!--</p>-->
+                <!--</div>-->
+            <!--</div>-->
 
             <!--<div class="row" ng-hide="model.usersCall" ng-repeat="user in model.users"  style="margin-top: 2%; padding-top: 1%;">-->
                 <!--<div ng-click="model.editUser(user._id)" class="col-md-12 col-xs-12 single-comment" style="padding-top: 1%;">-->
@@ -82,7 +84,7 @@
             <!--Here insertinf the ng divs-->
             <div ng-switch="model.loadProfileEditdiv">
                 <div ng-switch-default>
-                    <ng-include src="'views/user/templates/allUserShow-Admin.view.client.html'"></ng-include>
+                    <ng-include src="'views/user/templates/admin-dashboard-comp.view.client.html'"></ng-include>
                 </div>
                 <div ng-switch-when="USERVIEW">
                     <ng-include src="'views/user/templates/allUserShow-Admin.view.client.html'"></ng-include>
@@ -90,56 +92,59 @@
                 <div ng-switch-when="EDITVIEW">
                     <ng-include src="'views/user/templates/profile-settings.view.client.html'"></ng-include>
                 </div>
-            </div>
-
-            <div class="col-md-5"  ng-hide="model.dashboardCall" style="margin-top: 20%">
-                <div class="panel panel-primary">
-                    <div class="panel-heading" style="background-color:black">
-                        <div class="row">
-                            <div class="col-md-6">
-                               <center>
-                                   <i class="fa fa-comments fa-5x"></i>
-                               </center>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="data-numbers">{{model.commentCount}}</div>
-                            </div>
-                        </div>
-                    </div>
-
-                        <div class="panel-footer"
-                             style="background-color: black;color: white;">
-                            <center>
-                                <h4>Total Number of Comments</h4>
-                            </center>
-                        </div>
+                <div ng-switch-when="EDITCOMMENTS">
+                    <ng-include src="'views/user/templates/user-comments.view.client.html'"></ng-include>
                 </div>
             </div>
 
-            <div class="col-md-5 col-md-push-1" ng-hide="model.dashboardCall" style="margin-top: 20%">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <center>
-                                    <i class="fa fa-users fa-5x"></i>
-                                </center>
-                            </div>
+            <!--<div class="col-md-5"  ng-hide="model.dashboardCall" style="margin-top: 20%">-->
+                <!--<div class="panel panel-primary">-->
+                    <!--<div class="panel-heading" style="background-color:black">-->
+                        <!--<div class="row">-->
+                            <!--<div class="col-md-6">-->
+                               <!--<center>-->
+                                   <!--<i class="fa fa-comments fa-5x"></i>-->
+                               <!--</center>-->
+                            <!--</div>-->
 
-                            <div class="col-md-6">
-                                <div class="data-numbers">{{model.userCount}}</div>
-                            </div>
-                        </div>
-                    </div>
+                            <!--<div class="col-md-6">-->
+                                <!--<div class="data-numbers">{{model.commentCount}}</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
 
-                    <div class="panel-footer">
-                        <center>
-                            <h4>Total Number of Users</h4>
-                        </center>
-                    </div>
-                </div>
-            </div>
+                        <!--<div class="panel-footer"-->
+                             <!--style="background-color: black;color: white;">-->
+                            <!--<center>-->
+                                <!--<h4>Total Number of Comments</h4>-->
+                            <!--</center>-->
+                        <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="col-md-5 col-md-push-1" ng-hide="model.dashboardCall" style="margin-top: 20%">-->
+                <!--<div class="panel panel-primary">-->
+                    <!--<div class="panel-heading">-->
+                        <!--<div class="row">-->
+                            <!--<div class="col-md-6">-->
+                                <!--<center>-->
+                                    <!--<i class="fa fa-users fa-5x"></i>-->
+                                <!--</center>-->
+                            <!--</div>-->
+
+                            <!--<div class="col-md-6">-->
+                                <!--<div class="data-numbers">{{model.userCount}}</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="panel-footer">-->
+                        <!--<center>-->
+                            <!--<h4>Total Number of Users</h4>-->
+                        <!--</center>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
 
 
         </div>
@@ -152,7 +157,8 @@
     <div class="container-fluid">
         <div class="navbar-text pull-right ">
             <a ng-click="model.routeProfile()">
-                <span class="glyphicon glyphicon-user"></span>
+                <span class="glyphicon glyphicon-user profile-gly"></span>
+                <a style="color: white" href="#">Administrator Page</a>
             </a>
         </div>
     </div>

@@ -10,6 +10,7 @@
         var vm = this;
         vm.register = register;
         vm.routeLogin = routeLogin;
+        vm.showAdmin = false;
 
 
 

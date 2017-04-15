@@ -40,13 +40,14 @@
                 vm.logged = true;
                 if(vm.currentUser.role == "ADMIN"){
                     vm.showAdmin = true;
+                    vm.showShows = true;
                 }
                 else if(vm.currentUser.role == "SHOW"){
                     vm.showShows = true;
                 }
             }
             else {
-                //vm.disableDetailPage = true;
+                vm.disableDetailPage = true;
                 vm.logged = false;
                 vm.showAdmin = false;
             }
@@ -90,12 +91,15 @@
         }
 
         function routeToDetails(id) {
-            //if(!vm.disableDetailPage) {
+            if(!vm.disableDetailPage) {
                 if (id) {
                     //$location.url("/user/"+vm.uid+"/movie/"+id);
                     $location.url("/user/movie/" + id);
                 }
-            //}
+            }
+            else {
+                //vm.error
+            }
         }
 
         function routeToProfile() {

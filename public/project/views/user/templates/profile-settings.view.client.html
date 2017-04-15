@@ -40,6 +40,20 @@
                     <input class="form-control" type="password" ng-model="model.user.password"/>
             </div>
 
+            <div class="">
+                <label class="register-label user-type-class">Service Type</label>
+
+                <label class="register-label user-type-class">
+                    <input class="radio-inline" type="radio" name="TYPE" value="MOVIE"  ng-model="model.user.role">
+                    MOVIES</label>
+                <label class="register-label user-type-class">
+                <input class="radio-inline" type="radio" name="TYPE" value="SHOW" ng-model="model.user.role" >
+                SHOWS</label>
+                <label ng-if="model.showAdmin" class="register-label user-type-class">
+                <input ng-if="model.showAdmin" class="radio-inline" type="radio" name="TYPE" value="ADMIN" ng-model="model.user.role" >
+               ADMIN</label>
+            </div>
+
             <div class="form-group" style="padding-top: 2%">
                 <button ng-click="model.updateUser(model.user)" type="button"
                         class="btn btn-primary col-md-12 col-sm-12 col-xs-12">Update
@@ -47,7 +61,7 @@
             </div>
 
             <div class="form-group" style="padding-top: 7%">
-                <button ng-click="model.deleteUser()" type="button"
+                <button ng-click="model.deleteUser(model.user)" type="button"
                         class="btn btn-danger col-md-12 col-sm-12 col-xs-12">Delete
                 </button>
             </div>

@@ -39,8 +39,54 @@ module.exports = function (app, userModel) {
     app.get("/universalSearch/api/user", findUser);
     app.get("/universalSearch/api/loggeduser", findUserById);
     app.put("/universalSearch/api/user", updateUser);
+    app.put("/universalSearch/api/user/:uid", updateUserById);
+
     app.post("/universalSearch/api/user", createUser);
     app.delete("/universalSearch/api/user", deleteUser);
+    app.delete("/universalSearch/api/user/:uid", deleteUserByID);
+
+    function deleteUserByID(req,res) {
+        var uid = req.params.uid;
+
+        console.log(uid);
+        var promise = userModel.deleteUser(uid);
+        promise
+            .then(function (response) {
+                res.sendStatus(200);
+            },function (err) {
+                res.sendStatus(404);
+            });
+
+    }
+
+    function updateUserById(req,res) {
+        var uid = req.params.uid;
+
+        var newUser = req.body;
+        //console.log(uid);
+        //console.log(newUser);
+
+        var promise = userModel.updateUser(uid,newUser);
+
+        promise
+            .then(function (response) {
+                if(response.nModified === 1){
+                    // Update was successful
+                    userModel
+                        .findUserById(uid)
+                        .then(function (response) {
+                            res.json(response);
+                        },function () {
+                            res.sendStatus(404);
+                        })
+                }
+                else{
+                    res.sendStatus(404);
+                }
+            },function () {
+                res.sendStatus(404);
+            });
+    }
     
     function facebookStrategy(token, refreshToken, profile, done) {
         var fbid = profile.id;

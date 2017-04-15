@@ -18,6 +18,8 @@
         vm.deleteUser = deleteUser;
         vm.removeMovie = removeMovie;
         vm.removeComment = removeComment;
+        vm.routeAdmin=routeAdmin;
+        vm.showAdmin= false;
 
         vm.editingComment = '';
         vm.editingId = 0;
@@ -90,6 +92,11 @@
 
         function init(){
 
+            if($rootScope.currentUser){
+                if($rootScope.currentUser.role == "ADMIN"){
+                    vm.showAdmin = true;
+                }
+            }
             var moviePromise = MediaService.findMediaByUserId();
 
             moviePromise
@@ -165,7 +172,7 @@
                 })
         }
 
-        function deleteUser() {
+        function deleteUser(user) {
             var response = confirm("Are you sure you want to delete " + vm.user.username)
             if (response === true){
                 console.log("Deleting User");
@@ -223,6 +230,10 @@
                     console.log("Error deleting the comment")
 
                 })
+        }
+
+        function routeAdmin() {
+            $location.url("/admin");
         }
     }
 })();

@@ -573,3 +573,8 @@ html, body, .container-table {
 .edit-com {
     border-color: #00ccff;
 }
+
+.user-type-class {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 1%;
+}

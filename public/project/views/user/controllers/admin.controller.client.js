@@ -3,16 +3,28 @@
         .module("UniversalSearchApp")
         .controller("adminViewController", adminViewController);
 
-    function adminViewController(SocialService,UserService, $location, $routeParams,$sce,$anchorScroll,MediaService) {
+    function adminViewController(SocialService,UserService, $location,
+                                 $routeParams,$sce,$anchorScroll,MediaService,$rootScope) {
         var vm = this;
         vm.showUsers = showUsers;
         vm.showComments = showComments;
         vm.showDashboard = showDashboard;
         vm.showEditUser = showEditUser;
+        vm.logout=logout;
+        vm.routeProfile=routeProfile;
+        vm.okClick = okClick;
+        vm.ediComment =ediComment;
+        vm.removeComment =removeComment;
+        vm.updateUser=updateUser;
+        vm.deleteUser=deleteUser;
         vm.usersCall = true;
         vm.commentsCall = true;
         vm.dashboardCall = false;
-        vm.loadProfileEditdiv = "USERVIEW";
+        vm.loadProfileEditdiv = "DASHBOARD";
+        vm.config = true;
+        vm.edit = false;
+        vm.editBarDisable = true;
+        vm.showAdmin = true;
 
 
         function init(){
@@ -55,24 +67,149 @@
             vm.usersCall = false;
             vm.commentsCall = true
             vm.dashboardCall = true;
+            vm.loadProfileEditdiv = "USERVIEW";
+
         }
 
         function showComments() {
             vm.commentsCall = false;
             vm.usersCall = true;
             vm.dashboardCall = true;
+            vm.loadProfileEditdiv = "EDITCOMMENTS";
         }
 
         function  showDashboard() {
             vm.usersCall = true;
             vm.commentsCall = true;
             vm.dashboardCall = false;
+            vm.loadProfileEditdiv = "DASHBOARD";
         }
 
         function showEditUser(user) {
             console.log("Editing user")
             vm.loadProfileEditdiv = "EDITVIEW";
             vm.user = user;
+        }
+
+        function logout() {
+            UserService
+                .logout()
+                .then(
+                    function(response) {
+                        console.log("Logout successful")
+                        $rootScope.currentUser = null;
+                        $location.url("/");
+                        //vm.logged = false;
+                        //vm.showAdmin = false;
+                        //vm.showShows = false;
+                        console.log("Logged Out");
+                    })
+                .catch(function (err) {
+                    console.log(err);
+                })
+        }
+
+        function routeProfile() {
+            $location.url("/profile");
+        }
+
+        function removeComment(id) {
+            var promise = SocialService.deleteThread(id);
+
+            promise
+                .then(function (response) {
+                    if(response.data){
+                        init();
+                    }
+                    else {
+                        console.log("Error deleting the comment")
+                    }
+                })
+                .catch(function (err) {
+                    console.log("Error deleting the comment")
+
+                })
+        }
+
+        function ediComment(comment) {
+
+            vm.editBarDisable = false;
+            vm.edit = true;
+            vm.config = false;
+            vm.editingComment = comment.comment;
+            vm.editingId = comment._id;
+            vm.commentObj = comment;
+
+
+            // SocialService.updateThread(id,)
+        }
+
+        function okClick(updateMessage) {
+            vm.edit = false;
+            vm.config = true;
+            vm.editingComment = null;
+
+            vm.commentObj.comment = updateMessage;
+            console.log(vm.commentObj);
+            vm.editBarDisable = true;
+
+            var promise =  SocialService.updateThread(vm.commentObj._id,vm.commentObj);
+
+            promise
+                .then(function (respose) {
+                    if(respose.data){
+                        console.log("Updated thread successfully");
+                    }
+                    else
+                        console.log("Update thread error");
+
+                })
+                .catch(function (err) {
+                    console.log("Update thread error");
+
+                })
+        }
+
+        function updateUser(user) {
+            //user.role = "USER";
+            var promise = UserService.updateUserByID(user);
+
+            promise
+                .then(function (response) {
+                    if(response){
+                        init();
+                        console.log("Updated successfully")
+                    }
+                })
+                .catch(function (err) {
+                    console.log(err);
+                })
+        }
+
+        function deleteUser(user) {
+
+            console.log(user);
+            var response = confirm("Are you sure you want to delete " + vm.user.username)
+            if (response === true){
+                console.log("Deleting User");
+                var promise = UserService.deleteUserById(user._id);
+                promise
+                    .then(function (response) {
+                        if(response){
+                            init();
+                            console.log("Successfully deleted the user")
+                        }
+                        else {
+                            console.log("Error deleting the user")
+
+                        }
+                    })
+                    .catch(function (err) {
+                        console.log(err);
+
+                    })
+
+            }
         }
 
         // //vm.login = login;

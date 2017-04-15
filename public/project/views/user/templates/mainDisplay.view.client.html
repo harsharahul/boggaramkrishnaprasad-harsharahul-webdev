@@ -52,7 +52,9 @@
         <div class="container-fluid">
             <div class="col-md-2 col-sm-4 col-xs-6" ng-repeat="movie in model.movies.results">
                 <!--<p>TITLE: {{movie.original_title}}</p>-->
-                <img ng-click="model.routeToDetails(movie.id)" class="img-rounded poster" width="100%"
+                <img ng-if="model.currentUser" ng-click="model.routeToDetails(movie.id)" class="img-rounded poster" width="100%"
+                     ng-src="{{model.parseIntoHttps(movie.poster_400x570)}}"/>
+                <img ng-if="!model.currentUser" data-toggle="tooltip" title="Please Login to Continue"  class="img-rounded poster red-tooltip" width="100%"
                      ng-src="{{model.parseIntoHttps(movie.poster_400x570)}}"/>
                 <!--<img ng-if="{{movie.artwork_448x252}}" ng-click="model.routeToDetails(movie.id)" class="img-rounded poster" width="100%"-->
                      <!--ng-src="{{movie.artwork_448x252}}"/>-->
