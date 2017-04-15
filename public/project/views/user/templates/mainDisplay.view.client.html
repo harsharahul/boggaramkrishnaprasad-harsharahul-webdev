@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
+    <div class="container-fluid col-xs-12 col-md-12">
         <div class="navbar-text pull-left">
 
         </div>
@@ -15,13 +15,7 @@
                     <label class="logout-label">Login</label></i>
             </a>
         </div>
-        <div ng-show="model.showAdmin" class="navbar-text pull-right ">
-            <a href="" ng-click="model.routeToAdmin()" class="admin-label">
-                <i class="fa fa-user-secret admin-label" aria-hidden="true">
-                    <label class="admin-label">Admin</label></i>
-            </a>
-        </div>
-        <div ng-show="model.showShows" class="navbar-text pull-right ">
+        <div ng-show="model.showShows" class="navbar-text pull-right " style="padding-right: 10px">
             <a href="" ng-click="model.routeToShows()" class="admin-label">
                 <span>Shows</span>
                 <span class="glyphicon glyphicon-facetime-video" aria-hidden="true">
@@ -64,10 +58,17 @@
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
+    <div class="container-fluid col-md-12 col-xs-12">
+
         <div class="navbar-text pull-right ">
             <a ng-click="model.routeToProfile()" style="cursor: pointer">
                 <span class="glyphicon glyphicon-user profile-gly"></span>
+            </a>
+        </div>
+        <div ng-show="model.showAdmin" class="navbar-text col-xs-pull-2 pull-right" style="padding-right: 10px">
+            <a href="" ng-click="model.routeToAdmin()" class="admin-label">
+                <i class="fa fa-user-secret admin-label" aria-hidden="true">
+                    <label class="admin-label">Admin</label></i>
             </a>
         </div>
     </div>

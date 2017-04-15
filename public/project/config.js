@@ -44,13 +44,13 @@
 
                 if (user.data !== '0') {
 
-                    console.log("resolved")
-                    console.log(user)
-                    //$rootScope.currentUser = user;
+                    // console.log("resolved")
+                    // console.log(user)
+                    // $rootScope.currentUser = user;
                     deferred.resolve();
                     //$location.url('/user');
                 } else {
-                    console.log("reject")
+                    // console.log("reject")
 
                     deferred.reject();
                     $location.url('/');
@@ -69,13 +69,13 @@
 
                 if (user.data !== '0') {
 
-                    console.log("resolved")
-                    console.log(user)
+                    // console.log("resolved")
+                    // console.log(user)
                     //$rootScope.currentUser = user;
                     deferred.resolve();
                     //$location.url('/user');
                 } else {
-                    console.log("reject")
+                    // console.log("reject")
 
                     deferred.reject();
                     $location.url('/');
@@ -83,8 +83,6 @@
             });
         return deferred.promise;
     };
-
-
 
 
     var loggedUser = function($q, $timeout, $http, $location, $rootScope) {
@@ -97,8 +95,8 @@
 
                 if (user.data !== '0') {
 
-                    console.log("resolved");
-                    console.log(user.data);
+                    // console.log("resolved");
+                    // console.log(user.data);
                     $rootScope.currentUser = user.data;
                     //$rootScope.currentUser = user;
                     //deferred.resolve();
@@ -133,17 +131,6 @@
                 controllerAs: 'model',
                 //resolve: { loggedin: checkLoggedin }
             })
-            // .when("/user/:uid",{
-            //     templateUrl:"views/user/templates/mainDisplay.view.client.html",
-            //     controller: 'mainDisplayController',
-            //     controllerAs: 'model'
-            // })
-
-            // .when("/user/:uid/movie/:mid",{
-            //     templateUrl:"views/user/templates/details-page.view.client.html",
-            //     controller: 'detailViewController',
-            //     controllerAs: 'model'
-            // })
             .when("/user/movie/:mid",{
                 templateUrl:"views/user/templates/details-page.view.client.html",
                 controller: 'detailViewController',
@@ -173,24 +160,12 @@
                 controllerAs: 'model',
                 resolve: { checkIsShow: checkIsShow }
             })
-            // .when("/profile/:uid",{
-            //     templateUrl:"views/user/templates/profile-page.view.client.html",
-            //     controller: 'profileViewController',
-            //     controllerAs: 'model',
-            //     resolve: { loggedin: checkLoggedin }
-            //
-            // })
             .when("/profile",{
                 templateUrl:"views/user/templates/profile-page.view.client.html",
                 controller: 'profileViewController',
                 controllerAs: 'model',
                 resolve: { loggedin: checkLoggedin }
 
-            })
-            .when("/test",{
-                templateUrl:"views/user/templates/test-page.view.client.html",
-                controller: 'profileViewController',
-                controllerAs: 'model'
             })
             .otherwise({
                 templateUrl:"views/user/templates/mainDisplay.view.client.html",

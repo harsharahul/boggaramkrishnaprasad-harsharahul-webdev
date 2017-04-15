@@ -23,12 +23,9 @@
 
         function init() {
 
-            //$location.hash("detailsPageView");
-            //$anchorScroll();
-            // if(loggedin.role == "USER" || loggedin.role == "GUEST")
-            //     vm.validUser = true;
-            // else
-            //     vm.validUser = false;
+            // $location.hash("detailsPageView");
+            // $anchorScroll();
+
 
 
             console.log("testein")

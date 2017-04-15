@@ -15,13 +15,14 @@
         </div>
     </div>
 </nav>
-<div ng-show="model.error" class="alert alert-danger" role="alert">
-    {{model.error}}
-</div>
-<div class="alert alert-success" ng-show="model.message">
-    {{model.message}}
-</div>
+
 <div class="container-fluid marginTop backStyle" style="padding-top: 70px;padding-bottom: 70px" >
+    <div ng-show="model.error" class="alert alert-danger" role="alert" >
+        {{model.error}}
+    </div>
+    <div class="alert alert-success" ng-show="model.message">
+        {{model.message}}
+    </div>
     <div class="col-md-8">
         <form>
             <div class="form-group">
