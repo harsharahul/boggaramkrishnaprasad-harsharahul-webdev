@@ -9,19 +9,56 @@
         </div>
         <div class="navbar-text pull-right">
             <a ng-click="model.logout()">
-                <i class="fa fa-sign-out logout-gly" aria-hidden="true">
+                <i class="fa fa-sign-out logout-gly hidden-xs" aria-hidden="true">
                     <label class="logout-label">Logout</label></i>
             </a>
+            <i  class=" hidden-sm hidden-md hidden-lg fa fa-bars admin-label" aria-hidden="true"
+                data-toggle = "collapse" data-target = "#example-navbar-collapse" >
+                <!--<i class="fa fa-bars" aria-hidden="true"></i>-->
+            </i>
         </div>
         <div class="navbar-header">
             <a class="navbar-brand brand-name" href="#">StreamHub</a>
         </div>
     </div>
+    <div class = "collapse navbar-collapse" id = "example-navbar-collapse">
+
+        <ul class = "nav navbar-nav hidden-sm hidden-md hidden-lg">
+            <li class="col-sm-12">
+                <a ng-click="model.showDashboard()">
+                    <label class="admin-label">Dashboard</label>
+                </a>
+            </li>
+            <li class="col-sm-12">
+                <a  ng-click="model.showUsers()">
+                    <label class="admin-label">Users</label>
+                </a>
+            </li>
+            <li class="col-sm-12">
+                <a  ng-click="model.showComments()">
+                    <label class="admin-label">Comments</label>
+                </a>
+            </li>
+            <!--<li class="col-sm-12">-->
+                <!--<a ng-click="model.routeAdmin()" class="admin-label">-->
+                    <!--<i class="fa fa-user-secret admin-label" aria-hidden="true">-->
+                        <!--<label class="admin-label">Admin</label></i>-->
+                <!--</a>-->
+            <!--</li>-->
+            <li class="col-sm-12">
+                <a ng-click="model.logout()">
+                    <i class="fa fa-sign-out logout-gly" aria-hidden="true">
+                        <label class="logout-label">Logout</label></i>
+                </a>
+            </li>
+
+        </ul>
+    </div>
 </nav>
 
 <div class="container-fluid marginTop backStyle" style="padding-top: 70px;padding-bottom: 50px" >
     <div class="col-md-12">
-        <div class="col-md-3 user-block" >
+        <div class="col-md-3 user-block hidden-xs" >
             <div class="col-md-12" style="padding-top: 5%">
                 <center>
                 <span style="font-size:8em;" class="glyphicon glyphicon-user user-gly"></span>
