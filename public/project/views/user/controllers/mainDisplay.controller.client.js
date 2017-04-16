@@ -17,6 +17,8 @@
         vm.routeToShows = routeToShows;
         vm.parseIntoHttps =parseIntoHttps;
         vm.showRefresh = false;
+        vm.loadMore =loadMore;
+        vm.pageNumber = 100;
         //vm.logged = true;
 
         function loadInitialData() {
@@ -64,15 +66,25 @@
         loadInitialData();
         
         function searchMovies(key) {
+
+
+
+            if(!key){
+                return;
+            }
+            vm.showRefresh = true;
             var promise = GuideBoxService.searchMovies(key);
 
             promise
                 .then(function (response) {
                     if(response.data){
                         vm.movies = response.data;
+                        vm.showRefresh = false;
                     }
+                    vm.showRefresh = false;
                 })
                 .catch(function (err) {
+                    vm.showRefresh = false;
                     vm.error = "Error fetching the Search results";
                 })
         }
@@ -126,6 +138,32 @@
 
         function parseIntoHttps(url) {
             return url.replace("http","https");
+        }
+
+        function loadMore() {
+
+            console.log("function loadmore");
+            vm.showRefresh = true;
+            var promise = GuideBoxService.getMoviesfromOffset(vm.pageNumber);
+
+            promise
+                .then(function (response) {
+                    if(response.data){
+
+                        for (var i = 0, len = response.data.results.length; i < len; i++) {
+                            vm.movies.results.push(response.data.results[0]);
+                        }
+
+
+                        //vm.movies = response.data;
+                        vm.showRefresh = false;
+                        vm.pageNumber = vm.pageNumber + 100;//100 is the limit which is getting set everytime.
+                    }
+                })
+                .catch(function (err) {
+                    vm.error = "Not able to load any more";
+                })
+
         }
     }
 })();

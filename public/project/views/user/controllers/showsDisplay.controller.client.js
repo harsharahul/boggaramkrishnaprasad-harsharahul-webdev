@@ -59,16 +59,25 @@
         loadInitialData();
 
         function searchShows(key) {
+
+            if(!key){
+                return;
+            }
+
+            vm.showRefresh = true;
             var promise = GuideBoxService.searchShows(key);
 
             promise
                 .then(function (response) {
                     if(response.data){
                         vm.movies = response.data;
+                        vm.showRefresh = false;
                     }
+                    vm.showRefresh = false;
                 })
                 .catch(function (err) {
                     vm.error = "Error fetching the Search results";
+                    vm.showRefresh = false;
                 })
         }
 

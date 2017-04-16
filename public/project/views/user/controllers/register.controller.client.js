@@ -20,24 +20,12 @@
                 return false;
             }
 
-            if(user.username && user.firstName && user.lastName && user.email && user.password)
+            if(user.username && user.password)
             {
                 ret = true;
-                var username = user.username.toString().trim();
-                 if(username == String.empty()){
-                     ret = false;
-                     vm.error = "Username cannot be empty";
-                 }
-                var pass = user.password.toString().trim();
-                 if(pass == String.empty()){
-                     ret = false;
-                     vm.error ="Password cannot be empty";
-                 }
 
             }
-            else {
-                vm.error ="Please enter all Details."
-            }
+
             return ret;
         }
 
@@ -46,9 +34,12 @@
             // console.log(user);
 
             if(!validateData(user)){
+                console.log("invalid")
+
                 return;
             }
-            // console.log("Validatred")
+
+             //console.log("Validatred")
 
             if(!user){
                 vm.error = "Please give a valid Input";
