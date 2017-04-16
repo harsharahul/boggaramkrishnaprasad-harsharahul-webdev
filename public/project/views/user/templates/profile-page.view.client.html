@@ -47,8 +47,8 @@
                     <label class="admin-label">Settings</label>
                 </a>
             </li>
-            <li class="col-sm-12">
-                <a ng-click="model.routeAdmin()" class="admin-label">
+            <li ng-show="model.showAdmin"  class="col-sm-12">
+                <a  ng-click="model.routeAdmin()" class="admin-label">
                     <i class="fa fa-user-secret admin-label" aria-hidden="true">
                         <label class="admin-label">Admin</label></i>
                 </a>

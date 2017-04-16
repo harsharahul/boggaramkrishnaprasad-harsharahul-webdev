@@ -48,7 +48,8 @@
         </div>
     </div>
     <div class="row display-grid-layout">
-        <div class="container-fluid">
+        <!--<div infinite-scroll="model.loadMore()" infinite-scroll-disabled='model.showRefresh' infinite-scroll-distance="2">-->
+        <div class="container-fluid" >
             <div class="col-md-2 col-sm-4 col-xs-6" ng-repeat="movie in model.movies.results">
                 <!--<p>TITLE: {{movie.original_title}}</p>-->
                 <img ng-if="model.currentUser" ng-click="model.routeToDetails(movie.id)" class="img-rounded poster" width="100%"
@@ -59,11 +60,16 @@
                      <!--ng-src="{{movie.artwork_448x252}}"/>-->
             </div>
         </div>
+    <!--</div>-->
+
     </div>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid col-md-12 col-xs-12">
+        <div class="navbar-text pull-left">
+            <a style="color:whitesmoke;">&copy Harsha Rahul</a>
+        </div>
 
         <div class="navbar-text pull-right ">
             <a ng-click="model.routeToProfile()" style="cursor: pointer">

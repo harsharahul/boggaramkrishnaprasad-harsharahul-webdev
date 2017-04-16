@@ -35,7 +35,7 @@
 
             if(!validateData(user)){
                 console.log("invalid")
-
+                vm.error = "Username and Password are required fields";
                 return;
             }
 
