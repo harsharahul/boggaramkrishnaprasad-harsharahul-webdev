@@ -58,8 +58,19 @@
             return $http.get("/universalSearch/api/loggeduser");
         }
 
-        function findUserByCredentials(username, password) {
-            return $http.get("/universalSearch/api/user?username="+username+"&password="+password);
+        function findUserByCredentials(username, password, usernameAvail) {
+            if(username && password){
+                console.log("Username and password")
+                return $http.get("/universalSearch/api/user?username="+username+"&password="+password);
+            }
+            else if(usernameAvail){
+                return $http.get("/universalSearch/api/user?username="+username+"&useravail="+true);
+            }
+            else {
+                console.log("Only usernmae")
+                return $http.get("/universalSearch/api/user?username="+username);
+            }
+
         }
 
         function createUser(user) {

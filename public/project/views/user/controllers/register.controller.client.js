@@ -46,35 +46,48 @@
             }
             if(!user.role)
                 user.role = "SHOW";
-            var promise = UserService.register(user);
 
-            promise
-                .then(function (response) {
-                    // console.log("success");
-                    // console.log(response);
-                    if(response){
-                        var user = response.data;
+            var checkPromise = UserService.findUserByCredentials(user.username,null,true);
 
-                        // console.log("before rootscope")
-                        $rootScope.currentUser = user;
-                        // console.log("after rootscope")
-                        // console.log($rootScope.currentUser);
+            checkPromise
+                .then(function (res) {
+                    console.log("username available");
+                    var promise = UserService.register(user);
 
-                        $location.url("/");
-                        // console.log("after route")
+                    promise
+                        .then(function (response) {
+                            // console.log("success");
+                            // console.log(response);
+                            if(response){
+                                var user = response.data;
 
-                    }
-                    else{
-                        // console.log("error 1");
+                                // console.log("before rootscope")
+                                $rootScope.currentUser = user;
+                                // console.log("after rootscope")
+                                // console.log($rootScope.currentUser);
 
-                        vm.error = "Error in creating user";
-                    }
+                                $location.url("/");
+                                // console.log("after route")
+
+                            }
+                            else{
+                                // console.log("error 1");
+
+                                vm.error = "Error in creating user";
+                            }
+                        })
+                        .catch(function (err) {
+                            // console.log("error 2");
+
+                            vm.error = "Error in  creating User";
+                        })
+
                 })
                 .catch(function (err) {
-                    // console.log("error 2");
-
-                    vm.error = "Error in  creating User";
+                    vm.error = "Username Not available, Please use another Username";
                 })
+
+
         }
 
         function routeLogin() {

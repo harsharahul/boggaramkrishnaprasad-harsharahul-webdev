@@ -271,6 +271,12 @@ module.exports = function (app, userModel, socialModel, mediaModel) {
     function findUser(req, res) {
         var username = req.query.username;
         var password = req.query.password;
+        var useravail = req.query.useravail;
+
+        if(useravail){
+            checkUsernameAvailibility(req,res);
+        }
+
         if(username && password){
             findUserByCredentials(req,res);
         }
@@ -278,6 +284,44 @@ module.exports = function (app, userModel, socialModel, mediaModel) {
             findUserbyUsername(req,res);
         }
     }
+
+    function checkUsernameAvailibility(req,res) {
+        var username = req.query.username;
+
+        var promise = userModel.findUserbyUsername(username);
+
+        promise.then(function (users) {
+
+            if(users){
+                res.sendStatus(409);
+            }
+            else {
+                res.sendStatus(200);
+            }
+        })
+            .catch(function (err) {
+                res.sendStatus(400);
+            })
+    }
+
+    function findUserByCredentials(req, res) {
+        var username  = req.query.username;
+        var password = req.query.password;
+
+        var promise = userModel.findUserByCredentials(username,password);
+        promise
+            .then(function (users) {
+                if(users.length != 0){
+                    res.json(users[0]);
+                }
+                else{
+                    res.sendStatus(404);
+                }
+            },function (err) {
+                res.sendStatus(404);
+            });
+    }
+
     function findUserbyUsername(req, res) {
         var username  = req.query.username;
 
