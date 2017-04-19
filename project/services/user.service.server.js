@@ -184,7 +184,7 @@ module.exports = function (app, userModel, socialModel, mediaModel) {
                             if(err) {
                                 res.status(400).send(err);
                             } else {
-                                res.json(user);
+                                res.json(createdUser);
                             }
                         });
                     }
