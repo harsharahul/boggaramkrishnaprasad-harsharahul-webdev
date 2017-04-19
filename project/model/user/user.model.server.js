@@ -35,27 +35,6 @@ module.exports = function () {
         return UsersModel.find();
     }
 
-    function recursiveDelete(websitesOfUser, userId) {
-        // if(websitesOfUser.length == 0){
-        //     return UserModel.remove({_id: userId})
-        //         .then(function (response) {
-        //             if(response.result.n == 1 && response.result.ok == 1){
-        //                 return response;
-        //             }
-        //         }, function (err) {
-        //             return err;
-        //         });
-        // }
-        //
-        // return model.websiteModel.deleteWebsiteAndChildren(websitesOfUser.shift())
-        //     .then(function (response) {
-        //         if(response.result.n == 1 && response.result.ok == 1){
-        //             return recursiveDelete(websitesOfUser, userId);
-        //         }
-        //     }, function (err) {
-        //         return err;
-        //     });
-    };
 
     function createUser(user) {
         delete user._id;
@@ -79,10 +58,8 @@ module.exports = function () {
 
         return UsersModel.findById({_id: userId})
             .then(function (user) {
-
                 return UsersModel.remove({_id: userId});
-                //var websitesOfUser = user.websites;
-                //return recursiveDelete(websitesOfUser, userId);
+
             }, function (err) {
                 return err;
             });

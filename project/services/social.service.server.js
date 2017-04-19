@@ -48,12 +48,10 @@ module.exports = function (app, socialModel, userModel) {
 
         var promise = socialModel.findThreadByMedia(id);
 
-        console.log("IM HERE IN FIND THREAD BY MEDIA")
         promise
             .then(function (thread) {
                 if(thread){
                     res.json(thread);
-                    console.log(thread)
                 }
                 else {
                     res.sendStatus(404);
@@ -123,13 +121,10 @@ module.exports = function (app, socialModel, userModel) {
 
         userModel.getUsername(localThread.user)
             .then(function (response) {
-                // console.log("In social server service");
-                //console.log(res);
                 if(!response.firstName && !response.lastName)
                     localThread.userName = response.firstName+ " "+ response.lastName;
                 else
                     localThread.userName = response.username;
-                // console.log(localThread.userName);
                 var promise = socialModel.createThread(localThread);
 
                 promise

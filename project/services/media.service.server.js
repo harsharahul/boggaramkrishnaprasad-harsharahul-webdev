@@ -75,18 +75,13 @@ module.exports = function (app, mediaModel) {
     }
 
     function saveMedia(req,res) {
-        //console.log(req);
-        //console.log(req.cookie);
-        //console.log(req.sessionID);
-        //console.log(req.session);
-        //console.log(req.user);
+
         if(!req.sessionID)
             res.sendStatus(419);
 
         var newMedia = req.body;
         newMedia.user = req.user._id;
 
-        console.log(newMedia);
 
         var promise = mediaModel.saveMedia(newMedia);
 

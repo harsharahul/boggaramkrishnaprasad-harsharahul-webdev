@@ -74,8 +74,7 @@ module.exports = function (app, userModel, socialModel, mediaModel) {
         var uid = req.params.uid;
 
         var newUser = req.body;
-        //console.log(uid);
-        //console.log(newUser);
+
 
         var promise = userModel.updateUser(uid,newUser);
 
@@ -103,22 +102,12 @@ module.exports = function (app, userModel, socialModel, mediaModel) {
         var fbid = profile.id;
         var promise = userModel.findUserByFacebookId(fbid);
 
-        console.log(profile);
-
-        console.log("Inside facebook strategy");
         promise
             .then(function (user) {
-                //console.log("HERREEE");
-                //console.log(user);
                 if(user){
-                    //console.log("User already exists");
                     done(null, user);
                 }
                 else{
-                    //console.log("Creating new user");
-                    // console.log(profile);
-                    // console.log(profile.id);
-                    // console.log(token);
                     var newUser = new Object();
                     newUser.role="MOVIE";
 
@@ -131,8 +120,6 @@ module.exports = function (app, userModel, socialModel, mediaModel) {
                         .createUser(newUser)
                         .then(function (createduser) {
                             if(createduser){
-                                //console.log("Created new user");
-                                //console.log(createduser);
                                 done(null,createduser);
                             }
                             else{
@@ -142,7 +129,6 @@ module.exports = function (app, userModel, socialModel, mediaModel) {
                         .catch(function (err) {
                             done(null,false);
                         })
-                    //userModel.createUser()
                 }
             })
             .catch(function (err) {
@@ -185,27 +171,19 @@ module.exports = function (app, userModel, socialModel, mediaModel) {
 
     function register (req, res) {
 
-        //console.log("Inside server register function")
         var user = req.body;
-        //console.log(req.body);
         user.password = bcrypt.hashSync(user.password);
 
         userModel
             .createUser(user)
             .then(function(createdUser){
-                    // console.log("success in sever service register")
-                    // console.log(user)
 
                     if(createdUser){
-                        //console.log("In if user")
-                        //res.json(createdUser);
 
                         req.login(createdUser, function(err) {
                             if(err) {
-                                console.log("In err")
                                 res.status(400).send(err);
                             } else {
-                                console.log("success");
                                 res.json(user);
                             }
                         });
@@ -216,7 +194,6 @@ module.exports = function (app, userModel, socialModel, mediaModel) {
                 }
             )
             .catch(function (err) {
-                console.log("catch error in register")
                 res.status(400).send(err);
             });
     }
@@ -224,8 +201,6 @@ module.exports = function (app, userModel, socialModel, mediaModel) {
 
     function logout(req, res) {
         req.logOut();
-        // res.send(200);
-        console.log("logging out the user");
         res.sendStatus(200);
     }
 
@@ -240,23 +215,15 @@ module.exports = function (app, userModel, socialModel, mediaModel) {
             .findUserbyUsername(username)
             .then(
                 function(user) {
-                    //console.log(user);
-                    //console.log(username);
-                    //console.log(password);
-                    //console.log(user.password);
                     if(user && bcrypt.compareSync(password, user.password)) {
-                        //console.log("Found user");
-                        //console.log(user);
 
                         return done(null, user);
                     } else {
-                        console.log("user not found 123");
                         return done(null, false);
                     }
                 },
                 function(err) {
                     if (err) {
-                        console.log("user not found 74979234793412");
                         return done(err);
                     }
                 }
@@ -327,24 +294,7 @@ module.exports = function (app, userModel, socialModel, mediaModel) {
                 res.sendStatus(404);
             });
     }
-    // function findUserByCredentials(req, res) {
-    //     var username = req.query["username"];
-    //     var password = req.query["password"];
-    //
-    //     var promise = userModel.findUserByCredentials(username,password);
-    //     promise
-    //         .then(function (response) {
-    //             if(response.length != 0){
-    //                 res.json(response[0]);
-    //             }
-    //             else{
-    //                 res.sendStatus(400);
-    //             }
-    //         },function (err) {
-    //             res.sendStatus(404);
-    //         });
-    //
-    // }
+
     function findUserById(req, res) {
         //var userId = req.params.userId;
 
@@ -395,19 +345,16 @@ module.exports = function (app, userModel, socialModel, mediaModel) {
                 res.sendStatus(404);
             });
     }
+
     function createUser(req, res){
         var user = req.body;
-        //var userId = (parseInt(users[users.length -1]._id) + 1).toString();
         var newUser = {
-            //_id: userId,
             username: user.username,
             password: user.password,
             role: user.role,
             email: user.email,
             firstName: user.firstName,
             lastName: user.lastName};
-        // users.push(newUser);
-        // res.json(newUser);
 
         var promise = userModel.createUser(newUser);
         promise
@@ -423,17 +370,7 @@ module.exports = function (app, userModel, socialModel, mediaModel) {
             res.sendStatus(419);
         }
         var userId = req.user._id;
-        // var userId = req.params.userId;
 
-        console.log("Here in service delete");
-        // var promise = userModel.deleteUser(userId);
-        // promise
-        //     .then(function (response) {
-        //
-        //         res.sendStatus(200);
-        //     },function (err) {
-        //         res.sendStatus(404);
-        //     });
 
         nestedDelete(userId,res);
     }
