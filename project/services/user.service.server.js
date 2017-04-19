@@ -1,4 +1,4 @@
-module.exports = function (app, userModel) {
+module.exports = function (app, userModel, socialModel, mediaModel) {
 
     var facebookConfig = {
         clientID     : "1909914955921576",
@@ -28,13 +28,7 @@ module.exports = function (app, userModel) {
     app.get("/api/loggedin", loggedin);
     app.get("/api/isadmin", isadmin);
     app.get("/api/isshow",isShow);
-    //app.get("/api/loggeduser",loggeduser);
-    // app.get("/universalSearch/api/user/all",getAllUsers);
-    // app.get("/universalSearch/api/user", findUser);
-    // app.get("/universalSearch/api/user/:userId", findUserById);
-    // app.put("/universalSearch/api/user/:userId", updateUser);
-    // app.post("/universalSearch/api/user", createUser);
-    // app.delete("/universalSearch/api/user/:userId", deleteUser);
+
 
     app.get("/universalSearch/api/user/all",getAllUsers);
     app.get("/universalSearch/api/user", findUser);
@@ -49,15 +43,31 @@ module.exports = function (app, userModel) {
     function deleteUserByID(req,res) {
         var uid = req.params.uid;
 
+        return nestedDelete(uid,res);
+
+    }
+
+    function nestedDelete(uid,res) {
         console.log(uid);
         var promise = userModel.deleteUser(uid);
         promise
             .then(function (response) {
-                res.sendStatus(200);
+
+                //Adding logic to delete the user data recursively
+                socialModel
+                    .deleteThreadByUserId(uid)
+                    .then(function (thread) {
+                        mediaModel
+                            .deleteMediaByUser(uid)
+                            .then(function (media) {
+                                res.sendStatus(200);
+                            })
+                    })
+
+
             },function (err) {
                 res.sendStatus(404);
             });
-
     }
 
     function updateUserById(req,res) {
@@ -339,7 +349,7 @@ module.exports = function (app, userModel) {
         //var userId = req.params.userId;
 
         if(!req.sessionID){
-            res,sendStatus(419);
+            res.sendStatus(419);
         }
 
         var userId = req.user._id;
@@ -360,6 +370,8 @@ module.exports = function (app, userModel) {
         var userId = req.user._id;
         // var userId = req.params.userId;
         var newUser = req.body;
+
+        newUser.password = bcrypt.hashSync(newUser.password);
 
 
         var promise = userModel.updateUser(userId,newUser);
@@ -413,13 +425,16 @@ module.exports = function (app, userModel) {
         var userId = req.user._id;
         // var userId = req.params.userId;
 
-console.log("Here in service delete");
-        var promise = userModel.deleteUser(userId);
-        promise
-            .then(function (response) {
-                res.sendStatus(200);
-            },function (err) {
-                res.sendStatus(404);
-            });
+        console.log("Here in service delete");
+        // var promise = userModel.deleteUser(userId);
+        // promise
+        //     .then(function (response) {
+        //
+        //         res.sendStatus(200);
+        //     },function (err) {
+        //         res.sendStatus(404);
+        //     });
+
+        nestedDelete(userId,res);
     }
 }

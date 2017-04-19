@@ -487,3 +487,12 @@ body {
     font-size:18px;
 
 }
+
+.fNamediv{
+    font-family: 'Gorditas', cursive;
+    font-size: x-large;
+}
+
+.lNamediv{
+    font-family: Pacifico, cursive;
+}

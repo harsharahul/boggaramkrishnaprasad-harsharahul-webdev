@@ -9,7 +9,10 @@
     <meta name="description" content="Home Page">
     <meta name="author" content="Harsha Rahul">
 
-    <title>Web Development CS5610 Home Page</title>
+    <title>Harsha Profile</title>
+    <link rel="icon"
+          type="image/png"
+          href="favicon-header.ico">
 
     <!-- Bootstrap Core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -20,6 +23,8 @@
           rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
           rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Pacifico|Shadows+Into+Light" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amarante|Averia+Gruesa+Libre|Bungee+Inline|Gorditas|IM+Fell+Double+Pica|IM+Fell+Great+Primer|Inknut+Antiqua|Jacques+Francois|Rosarivo|Sahitya|Wendy+One" rel="stylesheet">
 
     <!-- Plugin CSS -->
     <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
@@ -46,7 +51,7 @@
                     data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand page-scroll" href="#page-top">Welcome</a>
+            <a class="navbar-brand page-scroll" href="#page-top">Hello!</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -72,16 +77,31 @@
 </nav>
 
 <header>
+
     <div class="container-full">
+
+
         <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
+
+            <div class="header-content"  style="z-index: 90;position: absolute">
+                <div class="header-content-inner" >
+                    <h1 id="homeHeading" class="fNamediv"> <span class="lNamediv" style="font-size: larger">H</span>arsha <span class="lNamediv" style="font-size: larger">R</span>ahul <span class="lNamediv">
+                        Boggaram</span></h1>
+                    <hr class="hidden-xs">
+                    <p>Computer Science Graduate Student in Northeastern University </p>
+                    <a href="#about" class="btn btn-primary btn-xl page-scroll">About Me!</a>
+                </div>
+            </div>
+
             <!-- Indicators -->
             <ol class="carousel-indicators">
+
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                 <li data-target="#myCarousel" data-slide-to="1"></li>
                 <li data-target="#myCarousel" data-slide-to="2"></li>
                 <li data-target="#myCarousel" data-slide-to="3"></li>
                 <li data-target="#myCarousel" data-slide-to="4"></li>
-                <li data-target="#myCarousel" data-slide-to="5"></li>
+                <!--<li data-target="#myCarousel" data-slide-to="5"></li>-->
             </ol>
 
             <!-- Wrapper for slides -->
@@ -111,11 +131,11 @@
                     </div>
                 </div>
 
-                <div class="item">
-                    <img src="./images/5.jpg" alt="Flower" width="100%">
-                    <div class="carousel-caption">
-                    </div>
-                </div>
+                <!--<div class="item">-->
+                    <!--<img src="./images/5.jpg" alt="Flower" width="100%">-->
+                    <!--<div class="carousel-caption">-->
+                    <!--</div>-->
+                <!--</div>-->
 
                 <div class="item">
                     <img src="./images/6.jpg" alt="Flower" width="100%">
@@ -123,18 +143,16 @@
                     </div>
                 </div>
 
+
             </div>
         </div>
+
+
+
     </div>
 
 
-    <div class="header-content"  >
-        <div class="header-content-inner" >
-            <h1 id="homeHeading" >Harsha Rahul Boggaram</h1>
-            <p></p>
-            <a href="#about" class="btn btn-primary btn-xl page-scroll">About Me!</a>
-        </div>
-    </div>
+
 </header>
 
 <section class="bg-primary" id="about">
@@ -158,13 +176,13 @@
 
         <div class="flip section myLi">
 
-            <a href="project/" class="col-md-3  myBut" style="padding: 10px;"><span  class="flip-div" data-hover="Project" style="padding-top: 5%;" >Project</span></a>
+            <a href="project/" class="col-md-3 col-xs-12 myBut" style="padding: 10px;"><span  class="flip-div" data-hover="Project" style="padding-top: 5%;" >Project</span></a>
 
-            <a href="assignment/" class="col-md-3  myBut" style="padding: 10px"><span  class="flip-div" data-hover="Assignment" style="padding-top: 5%;" >Assignment</span></a>
+            <a href="assignment/" class="col-md-3  col-xs-12 myBut" style="padding: 10px"><span  class="flip-div" data-hover="Assignment" style="padding-top: 5%;" >Assignment</span></a>
 
-            <a href="test/index.html" class="col-md-3  myBut" style="padding: 10px"><span  class="flip-div" data-hover="Test MongoDB" style="padding-top: 5%;">Test MongoDB</span></a>
+            <a href="test/index.html" class="col-md-3 col-xs-12 myBut" style="padding: 10px"><span  class="flip-div" data-hover="Test MongoDB" style="padding-top: 5%;">Test MongoDB</span></a>
 
-            <a href="https://github.com/harsharahul/boggaramkrishnaprasad-harsharahul-webdev.git" class="col-md-3  myBut" style="padding: 10px"><span class="flip-div"
+            <a href="https://github.com/harsharahul/boggaramkrishnaprasad-harsharahul-webdev.git" class="col-md-3 col-xs-12  myBut" style="padding: 10px"><span class="flip-div"
                                                                                                                                                       data-hover="My GitHub Repo" style="padding-top: 5%;">My GitHub Repo</span>
             </a>
 

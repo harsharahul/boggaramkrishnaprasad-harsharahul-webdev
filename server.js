@@ -12,9 +12,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
  var session       = require('express-session');
 
 app.use(session({
-    secret: "hahaha!!!"//process.env.SESSION_SECRET, //Store it in process.env.SESSION_SECRET
-    //resave: true,
-    //saveUninitialized: true
+    secret: "hahaha!!!",//process.env.SESSION_SECRET, //Store it in process.env.SESSION_SECRET
+    resave: true,
+    saveUninitialized: true
 }));
  app.use(cookieParser());
  app.use(passport.initialize());

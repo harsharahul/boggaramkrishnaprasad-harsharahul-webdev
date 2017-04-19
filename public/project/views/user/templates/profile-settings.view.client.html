@@ -6,44 +6,77 @@
         {{model.success}}
     </div>
     <div class="col-md-12">
-        <form>
+        <form action="#/profile"
+              name="form"
+              novalidate
+              method="POST">
             <div class="form-group">
                 <label class="register-label" for="username">Username</label>
                 <!--<input type="text" class="form-control" id="username" placeholder="Username">-->
-                <input class="form-control" ng-model="model.user.username" type="text" placeholder="Username"/>
+                <input required name="username" class="form-control" ng-model="model.user.username" type="text" placeholder="Username"/>
 
+            </div>
+            <div ng-show="form.$submitted || form.username.$touched"
+                 class="">
+                <div ng-show="form.username.$error.required" class="alert" style="color: whitesmoke">
+                    username cannot be blank
+                </div>
             </div>
             <div class="form-group">
                 <label class="register-label" for="email">Email address</label>
                 <!--<input type="email" class="form-control" id="email" placeholder="alice@wonderland.com">-->
-                <input class="form-control" ng-model="model.user.email"
+                <input required name="email" class="form-control" ng-model="model.user.email"
                                   id="email"
                                   
                                   type="email"
                                   placeholder="Email"/>
 
             </div>
+            <div ng-show="form.$submitted || form.email.$touched"
+                 class="">
+                <div ng-show="form.email.$error.email || form.email.$error.required" class="alert" style="color: whitesmoke">
+                    Please enter a valid email address
+                </div>
+            </div>
             <div class="form-group">
                 <label class="register-label" for="first-name">First Name</label>
                 <!--<input type="text" class="form-control" id="first-name" placeholder="Alice">-->
-                <input class="form-control" ng-model="model.user.firstName"
+                <input required name="firstname" class="form-control" ng-model="model.user.firstName"
                                   id="first"
                                   
                                   type="text"
                                   placeholder="First Name"/>
             </div>
+            <div ng-show="form.$submitted || form.firstname.$touched"
+                 class="">
+                <div ng-show="form.firstname.$error.required" class="alert" style="color: whitesmoke">
+                    Please enter your first name
+                </div>
+            </div>
             <div class="form-group">
                 <label class="register-label" for="last-name">Last Name</label>
                 <!--<input type="text" class="form-control" id="last-name" placeholder="Wonderland">-->
-                <input class="form-control" ng-model="model.user.lastName"
+                <input required name="lastname" class="form-control" ng-model="model.user.lastName"
                                   id="last"
                                   
                                   type="text"
                                   placeholder="Last Name"/>
             </div>
+            <div ng-show="form.$submitted || form.lastname.$touched"
+                 class="">
+                <div ng-show="form.lastname.$error.required" class="alert" style="color: whitesmoke">
+                    Please enter your last name
+                </div>
+            </div>
             <div class="form-group">
                 <label class="register-label">Password</label>
-                    <input class="form-control" type="password" ng-model="model.user.password"/>
+                    <input required name="password" class="form-control" type="password" ng-model="model.user.password"/>
+            </div>
+            <div ng-show="form.$submitted || form.password.$touched"
+                 class="">
+                <div ng-show="form.password.$error.required" class="alert" style="color: whitesmoke">
+                    Please choose a password
+                </div>
             </div>
 
             <div class="">
@@ -61,7 +94,7 @@
             </div>
 
             <div class="form-group" style="padding-top: 2%">
-                <button ng-click="model.updateUser(model.user)" type="button"
+                <button ng-click="form.$valid && model.updateUser(model.user)" type="button"
                         class="btn btn-primary col-md-12 col-sm-12 col-xs-12">Update
                 </button>
             </div>

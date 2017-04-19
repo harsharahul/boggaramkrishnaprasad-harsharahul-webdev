@@ -21,10 +21,15 @@ module.exports = function () {
          "findThreadById": findThreadById,
          "updateThread": updateThread,
          "deleteThread": deleteThread,
-         "getAllComments": getAllComments
+         "getAllComments": getAllComments,
+         "deleteThreadByUserId":deleteThreadByUserId
     };
 
     return api;
+
+    function deleteThreadByUserId(uid) {
+        return SocialModel.remove({"user":uid});
+    }
 
     function getAllComments() {
         return SocialModel.find();

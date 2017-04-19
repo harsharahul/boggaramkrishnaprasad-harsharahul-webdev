@@ -76,6 +76,7 @@ module.exports = function () {
     }
 
     function deleteUser(userId) {
+
         return UsersModel.findById({_id: userId})
             .then(function (user) {
 
@@ -91,17 +92,6 @@ module.exports = function () {
     }
 
     function getUsername(uid) {
-
-        // //var UserNameFound = '';
-        //
-        //     return UsersModel.findOne({'_id':uid},function (err,docs) {
-        //         // console.log(docs.firstName + " " + docs.lastName)
-        //         return docs.firstName + " " + docs.lastName;
-        //     })
-        //
-        // //return UserNameFound
-
-        // console.log(uid);
          return UsersModel.findById({_id:uid});
     }
 
