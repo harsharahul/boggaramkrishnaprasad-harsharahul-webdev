@@ -120,7 +120,7 @@
 
         $routeProvider
             .when("/",{
-                templateUrl:"views/user/templates/mainDisplay.view.client.html",
+                templateUrl:"views/movies/templates/mainDisplay.view.client.html",
                 controller: 'mainDisplayController',
                 controllerAs: 'model',
                 resolve: { user: loggedUser }
@@ -132,13 +132,13 @@
                 //resolve: { loggedin: checkLoggedin }
             })
             .when("/user/movie/:mid",{
-                templateUrl:"views/user/templates/details-page.view.client.html",
+                templateUrl:"views/movies/templates/details-page.view.client.html",
                 controller: 'detailViewController',
                 controllerAs: 'model',
                 resolve: { loggedin: checkLoggedin }
             })
             .when("/user/show/:mid",{
-                templateUrl:"views/user/templates/showDetail.view.client.html",
+                templateUrl:"views/shows/templates/showDetail.view.client.html",
                 controller: 'showDetailViewController',
                 controllerAs: 'model',
                 resolve: { checkIsShow: checkIsShow }
@@ -155,7 +155,7 @@
                 resolve: { isAdmin: checkIsAdmin }
             })
             .when("/shows",{
-                templateUrl:"views/user/templates/showsDisplay.view.client.html",
+                templateUrl:"views/shows/templates/showsDisplay.view.client.html",
                 controller: 'showsDisplayController',
                 controllerAs: 'model',
                 resolve: { checkIsShow: checkIsShow }
@@ -168,7 +168,7 @@
 
             })
             .otherwise({
-                templateUrl:"views/user/templates/mainDisplay.view.client.html",
+                templateUrl:"views/movies/templates/mainDisplay.view.client.html",
                 controller: 'mainDisplayController',
                 controllerAs: 'model',
                 resolve: { user: loggedUser }

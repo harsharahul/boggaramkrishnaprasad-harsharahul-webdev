@@ -616,3 +616,4 @@ html, body, .container-table {
     padding-top: 15px;
 }
 
+input[type="text"]:disabled{background-color:#999999;}

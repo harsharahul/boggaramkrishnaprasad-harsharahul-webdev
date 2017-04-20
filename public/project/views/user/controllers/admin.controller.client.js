@@ -176,11 +176,11 @@
                 .then(function (response) {
                     if(response){
                         init();
-                        console.log("Updated successfully")
+                        vm.success = "Updated User Successfully";
                     }
                 })
                 .catch(function (err) {
-                    console.log(err);
+                    vm.error = "Error updating the User";
                 })
         }
 

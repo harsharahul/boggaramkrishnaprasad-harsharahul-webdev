@@ -76,26 +76,8 @@ module.exports = function (app, userModel, socialModel, mediaModel) {
         var newUser = req.body;
 
 
-        var promise = userModel.updateUser(uid,newUser);
+        updateUserHelper(uid,newUser,res);
 
-        promise
-            .then(function (response) {
-                if(response.nModified === 1){
-                    // Update was successful
-                    userModel
-                        .findUserById(uid)
-                        .then(function (response) {
-                            res.json(response);
-                        },function () {
-                            res.sendStatus(404);
-                        })
-                }
-                else{
-                    res.sendStatus(404);
-                }
-            },function () {
-                res.sendStatus(404);
-            });
     }
     
     function facebookStrategy(token, refreshToken, profile, done) {
@@ -365,29 +347,9 @@ module.exports = function (app, userModel, socialModel, mediaModel) {
         // var userId = req.params.userId;
         var newUser = req.body;
 
-        newUser.password = bcrypt.hashSync(newUser.password);
+        updateUserHelper(userId,newUser,res);
 
 
-        var promise = userModel.updateUser(userId,newUser);
-
-        promise
-            .then(function (response) {
-                if(response.nModified === 1){
-                    // Update was successful
-                    userModel
-                        .findUserById(userId)
-                        .then(function (response) {
-                            res.json(response);
-                        },function () {
-                            res.sendStatus(404);
-                        })
-                }
-                else{
-                    res.sendStatus(404);
-                }
-            },function () {
-                res.sendStatus(404);
-            });
     }
 
     function createUser(req, res){
@@ -417,5 +379,53 @@ module.exports = function (app, userModel, socialModel, mediaModel) {
 
 
         nestedDelete(userId,res);
+    }
+
+
+    function updateUserHelper(uid, user, res) {
+
+        if(!user){
+            res.sendStatus(400);
+        }
+
+        var promise = userModel.findUserById(uid);
+        promise
+            .then(function (obtainedUser) {
+
+
+                if(obtainedUser){
+
+                    if(user.password == obtainedUser.password){
+
+                        var updatePromise = userModel.updateUser(uid, user);
+                        updatePromise
+                            .then(function (response) {
+                                res.json(obtainedUser);
+                            })
+                            .catch(function (err) {
+                                res.sendStatus(400);
+                            })
+                    }
+                    else{
+
+                        user.password = bcrypt.hashSync(user.password);
+                        var updatePromise = userModel.updateUser(uid, user);
+                        updatePromise
+                            .then(function (response) {
+                                res.json(obtainedUser);
+                            })
+                            .catch(function (err) {
+                                res.sendStatus(400);
+                            })
+
+                    }
+                }
+                else{
+                    res.sendStatus(404);
+                }
+            },function (err) {
+                res.sendStatus(404);
+            });
+
     }
 }
