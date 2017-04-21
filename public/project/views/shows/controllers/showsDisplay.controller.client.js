@@ -6,7 +6,6 @@
     function showsDisplayController(UserService,GuideBoxService, $location,$routeParams,$rootScope) {
         var vm = this;
         vm.routeToDetails = routeToDetails;
-        //vm.uid = $routeParams.uid;
         vm.routeToProfile = routeToProfile;
         vm.logout = logout;
         vm.searchShows = searchShows;
@@ -14,7 +13,6 @@
         vm.currentUser = $rootScope.currentUser;
         vm.routeToMain =routeToMain;
         vm.showRefresh= false;
-        //vm.logged = true;
 
         function loadInitialData() {
 
@@ -28,7 +26,6 @@
                     if(response.data){
                         vm.movies = response.data;
                         vm.showRefresh = false;
-                        console.log(vm.movies);
                     }
                     else{
                         vm.error = "Error Fetching Media.\n Please contact Admin";
@@ -36,7 +33,6 @@
                 })
                 .catch(function (error) {
                     vm.error = "Error Fetching Media.\n Please contact Admin";
-                    console.log("Error from the API")
                 });
             if(vm.currentUser){
                 vm.logged = true;
@@ -95,17 +91,13 @@
         }
 
         function routeToDetails(id) {
-            //if(!vm.disableDetailPage) {
                 if (id) {
-                    //$location.url("/user/"+vm.uid+"/movie/"+id);
                     $location.url("/user/show/" + id);
                 }
-            //}
         }
 
         function routeToProfile() {
             $location.url("/profile/");
-            // $location.url("/profile/"+vm.uid);
         }
 
         function routeLogin() {

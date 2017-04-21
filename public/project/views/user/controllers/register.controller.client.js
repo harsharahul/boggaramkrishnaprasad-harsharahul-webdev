@@ -30,16 +30,12 @@
         }
 
         function register(user) {
-            // console.log("register controller")
-            // console.log(user);
 
             if(!validateData(user)){
-                console.log("invalid")
                 vm.error = "Username and Password are required fields";
                 return;
             }
 
-             //console.log("Validatred")
 
             if(!user){
                 vm.error = "Please give a valid Input";
@@ -51,33 +47,23 @@
 
             checkPromise
                 .then(function (res) {
-                    console.log("username available");
                     var promise = UserService.register(user);
 
                     promise
                         .then(function (response) {
-                            // console.log("success");
-                            // console.log(response);
                             if(response){
                                 var user = response.data;
 
-                                // console.log("before rootscope")
                                 $rootScope.currentUser = user;
-                                // console.log("after rootscope")
-                                // console.log($rootScope.currentUser);
 
                                 $location.url("/");
-                                // console.log("after route")
 
                             }
                             else{
-                                // console.log("error 1");
-
                                 vm.error = "Error in creating user";
                             }
                         })
                         .catch(function (err) {
-                            // console.log("error 2");
 
                             vm.error = "Error in  creating User";
                         })

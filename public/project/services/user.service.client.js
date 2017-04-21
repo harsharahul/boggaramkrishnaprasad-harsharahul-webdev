@@ -7,13 +7,11 @@
 
 
         var api = {
-            //"users": users,
             "updateUser": updateUser,
             "findUserByCredentials": findUserByCredentials,
             "getCurrentUser": getCurrentUser,
             "createUser": createUser,
             "findUserByUsername":findUserByUsername,
-            //"updateUser":updateUser,
             "deleteUser":deleteUser,
             "getAllUsers": getAllUsers,
             "login":login,
@@ -25,8 +23,6 @@
         return api;
 
         function deleteUserById(id) {
-            console.log(id);
-            console.log("client service user");
             return $http.delete("/universalSearch/api/user/"+id);
         }
 
@@ -43,16 +39,10 @@
             return $http.post("/api/login", user);
         }
 
-        // function updateUser(userId, newUser) {
-        //     return $http.put("/universalSearch/api/user/"+userId, newUser);
-        // }
 
         function getAllUsers() {
             return $http.get("/universalSearch/api/user/all");
         }
-        // function findUserById(uid) {
-        //     return $http.get("/universalSearch/api/user/"+uid)
-        // }
 
         function getCurrentUser() {
             return $http.get("/universalSearch/api/loggeduser");
@@ -60,14 +50,12 @@
 
         function findUserByCredentials(username, password, usernameAvail) {
             if(username && password){
-                console.log("Username and password")
                 return $http.get("/universalSearch/api/user?username="+username+"&password="+password);
             }
             else if(usernameAvail){
                 return $http.get("/universalSearch/api/user?username="+username+"&useravail="+true);
             }
             else {
-                console.log("Only usernmae")
                 return $http.get("/universalSearch/api/user?username="+username);
             }
 
@@ -81,9 +69,6 @@
             return $http.get("/universalSearch/api/user?username="+username);
         }
 
-        // function updateUser(userId, user) {
-        //     return $http.put("/universalSearch/api/user/"+userId, user);
-        // }
 
         function updateUser(user) {
             return $http.put("/universalSearch/api/user", user);
@@ -92,9 +77,6 @@
         function updateUserByID(user) {
             return $http.put("/universalSearch/api/user/"+user._id, user);
         }
-        // function deleteUser(userId) {
-        //     return $http.delete('/universalSearch/api/user/'+userId);
-        // }
 
         function deleteUser() {
             return $http.delete('/universalSearch/api/user');

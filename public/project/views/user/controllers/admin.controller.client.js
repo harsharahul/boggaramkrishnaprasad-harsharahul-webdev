@@ -37,12 +37,12 @@
                         vm.userCount = vm.users.length;
                     }
                     else{
-                        console.log("Error getting the all users");
+                        vm.error = "Error getting the all users";
                     }
                 })
                 .catch(function (err) {
-                    console.log("Error getting all the users")
-                })
+                    vm.error = "Error getting the all users";
+                });
 
             var commentPromise = SocialService.getAllComments();
 
@@ -53,11 +53,11 @@
                         vm.commentCount = vm.comments.length;
                     }
                     else{
-                        console.log("Error getting the all comments");
+                        vm.error = "Error getting the all comments";
                     }
                 })
                 .catch(function (err) {
-                    console.log("Error getting all the comments")
+                    vm.error = "Error getting the all comments";
                 })
         }
 
@@ -86,7 +86,6 @@
         }
 
         function showEditUser(user) {
-            console.log("Editing user")
             vm.loadProfileEditdiv = "EDITVIEW";
             vm.user = user;
         }
@@ -96,16 +95,11 @@
                 .logout()
                 .then(
                     function(response) {
-                        console.log("Logout successful")
                         $rootScope.currentUser = null;
                         $location.url("/");
-                        //vm.logged = false;
-                        //vm.showAdmin = false;
-                        //vm.showShows = false;
-                        console.log("Logged Out");
                     })
                 .catch(function (err) {
-                    console.log(err);
+                    vm.error = "logout Error, Contact Admin";
                 })
         }
 
@@ -120,12 +114,11 @@
                         init();
                     }
                     else {
-                        console.log("Error deleting the comment")
+                        vm.error = "Error deleting the comment";
                     }
                 })
                 .catch(function (err) {
-                    console.log("Error deleting the comment")
-
+                    vm.error = "Error deleting the comment";
                 })
         }
 
@@ -138,8 +131,6 @@
             vm.editingId = comment._id;
             vm.commentObj = comment;
 
-
-            // SocialService.updateThread(id,)
         }
 
         function okClick(updateMessage) {
@@ -156,20 +147,19 @@
             promise
                 .then(function (respose) {
                     if(respose.data){
-                        console.log("Updated thread successfully");
+                        vm.success = "Updated thread successfully";
                     }
-                    else
-                        console.log("Update thread error");
+                    else{
+                        vm.error = "Update thread error";
+                    }
 
                 })
                 .catch(function (err) {
-                    console.log("Update thread error");
-
+                    vm.error = "Update thread error";
                 })
         }
 
         function updateUser(user) {
-            //user.role = "USER";
             var promise = UserService.updateUserByID(user);
 
             promise
@@ -186,24 +176,22 @@
 
         function deleteUser(user) {
 
-            console.log(user);
             var response = confirm("Are you sure you want to delete " + vm.user.username)
             if (response === true){
-                console.log("Deleting User");
                 var promise = UserService.deleteUserById(user._id);
                 promise
                     .then(function (response) {
                         if(response){
                             init();
-                            console.log("Successfully deleted the user")
+                            vm.success = "Successfully deleted the user";
                         }
                         else {
-                            console.log("Error deleting the user")
+                            vm.error = "Error deleting the user";
 
                         }
                     })
                     .catch(function (err) {
-                        console.log(err);
+                        vm.error = "Error deleting the user";
 
                     })
 
@@ -211,7 +199,6 @@
         }
 
         function routeProfile() {
-            console.log("routeing to profile");
             $location.url("/profile");
         }
 

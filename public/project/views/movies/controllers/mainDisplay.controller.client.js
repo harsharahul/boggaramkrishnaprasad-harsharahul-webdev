@@ -6,7 +6,6 @@
     function mainDisplayController(UserService,GuideBoxService, $location,$routeParams,$rootScope) {
         var vm = this;
         vm.routeToDetails = routeToDetails;
-        //vm.uid = $routeParams.uid;
         vm.routeToProfile = routeToProfile;
         vm.logout = logout;
         vm.searchMovies = searchMovies;
@@ -19,7 +18,6 @@
         vm.showRefresh = false;
         vm.loadMore =loadMore;
         vm.pageNumber = 100;
-        //vm.logged = true;
 
         function loadInitialData() {
             vm.showRefresh = true;
@@ -31,7 +29,6 @@
                     if(response.data){
                         vm.movies = response.data;
                         vm.showRefresh = false;
-                        console.log(vm.movies);
                     }
                     else{
                         vm.error = "Error Fetching Media.\n Please contact Admin";
@@ -39,7 +36,6 @@
                 })
                 .catch(function (error) {
                     vm.error = "Error Fetching Media.\n Please contact Admin";
-                    console.log("Error from the API")
                 });
             if(vm.currentUser){
                 vm.logged = true;
@@ -56,9 +52,6 @@
                 vm.logged = false;
                 vm.showAdmin = false;
             }
-
-            console.log($rootScope.currentUser);
-
 
 
         }
@@ -100,7 +93,6 @@
                         vm.logged = false;
                         vm.showAdmin = false;
                         vm.showShows = false;
-                        console.log("Logged Out");
                     })
                 .catch(function (err) {
                     console.log(err);
@@ -110,18 +102,13 @@
         function routeToDetails(id) {
             if(!vm.disableDetailPage) {
                 if (id) {
-                    //$location.url("/user/"+vm.uid+"/movie/"+id);
                     $location.url("/user/movie/" + id);
                 }
-            }
-            else {
-                //vm.error
             }
         }
 
         function routeToProfile() {
                 $location.url("/profile/");
-                // $location.url("/profile/"+vm.uid);
         }
 
         function routeLogin() {
@@ -142,7 +129,6 @@
 
         function loadMore() {
 
-            console.log("function loadmore");
             vm.showRefresh = true;
             var promise = GuideBoxService.getMoviesfromOffset(vm.pageNumber);
 
@@ -155,7 +141,6 @@
                         }
 
 
-                        //vm.movies = response.data;
                         vm.showRefresh = false;
                         vm.pageNumber = vm.pageNumber + 100;//100 is the limit which is getting set everytime.
                     }

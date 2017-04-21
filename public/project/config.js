@@ -14,18 +14,12 @@
 
             $rootScope.errorMessage = null;
 
-            console.log("In check logged in");
-            console.log(user);
 
             if (user.data !== '0') {
 
-                console.log("resolved")
-                //console.log(user)
                 $rootScope.currentUser = user.data;
                 deferred.resolve();
-                //$location.url('/user');
             } else {
-                console.log("reject")
 
                 deferred.reject();
                 $location.url('/');
@@ -44,13 +38,9 @@
 
                 if (user.data !== '0') {
 
-                    // console.log("resolved")
-                    // console.log(user)
                     // $rootScope.currentUser = user;
                     deferred.resolve();
-                    //$location.url('/user');
                 } else {
-                    // console.log("reject")
 
                     deferred.reject();
                     $location.url('/');
@@ -69,13 +59,8 @@
 
                 if (user.data !== '0') {
 
-                    // console.log("resolved")
-                    // console.log(user)
-                    //$rootScope.currentUser = user;
                     deferred.resolve();
-                    //$location.url('/user');
                 } else {
-                    // console.log("reject")
 
                     deferred.reject();
                     $location.url('/');
@@ -95,16 +80,8 @@
 
                 if (user.data !== '0') {
 
-                    // console.log("resolved");
-                    // console.log(user.data);
                     $rootScope.currentUser = user.data;
-                    //$rootScope.currentUser = user;
-                    //deferred.resolve();
-                    //$location.url('/user');
                 } else {
-                    //console.log("reject")
-
-                    //deferred.reject();
                     $location.url('/');
                 }
             });

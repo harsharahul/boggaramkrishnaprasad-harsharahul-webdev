@@ -6,10 +6,8 @@
     function detailViewController(UserService,SocialService,GuideBoxService,
                                   $location, $routeParams,$sce,$anchorScroll,MediaService,loggedin,$rootScope) {
         var vm = this;
-        //vm.login = login;
         vm.error = "";
         var guideBoxId = $routeParams.mid;
-        //var uid = $routeParams.uid;
         vm.getVideoFroMedia = getVideoFroMedia;
         vm.saveMedia =saveMedia;
         vm.addComment=addComment;
@@ -18,7 +16,6 @@
         vm.routeProfile =routeProfile;
         vm.parseIntoHttps =parseIntoHttps;
         vm.showRefresh = false;
-        //vm.loggedin = loggedin.role;
 
 
         function init() {
@@ -35,12 +32,10 @@
                 .then(function (response) {
                     if(response.data){
                         vm.media = response.data;
-                        //console.log(vm.media)
                         vm.mediaTrailer = getVideoFroMedia(vm.media.trailers.web[0].embed);
                         vm.mediaTrailerLink = vm.media.trailers.web[0].link;
                         vm.mediaTrailerEmbedded = vm.media.trailers.web[0].embed;
                         vm.showRefresh = false;
-                        //console.log(vm.media.trailers.web[0].embed);
 
                     }
                     else{
@@ -64,16 +59,14 @@
                 .then(function (response) {
                     if(response.data){
                         vm.comments = response.data;
-                        console.log(vm.comments);
                     }
                 })
                 .catch(function (err) {
-                    console.log("Error in lodaing the comments")
+                    vm.error = "Error in loading the comments";
                 })
         }
 
         function getVideoFroMedia(mediaUrl) {
-            //console.log(mediaUrl);
             return $sce.trustAsResourceUrl(mediaUrl);
         }
 
@@ -93,7 +86,6 @@
         function saveMedia() {
 
             var media = new Object();
-            //media.user = uid;
             media.guideboxId = vm.media.id;
             media.title = vm.media.title;
             media.type = "MOVIE";
@@ -106,7 +98,6 @@
                 .then(function (response) {
                     if(response.data){
                         vm.message = "Successfully saved the media";
-                        console.log("Successfully saved media");
                         vm.saved = true;
                     }
                     else {
@@ -126,7 +117,6 @@
             var thread = new Object();
 
             thread.comment = comment;
-            //thread.user = uid;
             thread.guideBoxMediaId = guideBoxId;
 
             var promise = SocialService.saveThread(thread);
@@ -134,13 +124,12 @@
             promise
                 .then(function (response) {
                     if(response.data){
-                        console.log("Thread saved successfully");
                         loadComments();
                         vm.comment = null;
                     }
                 })
                 .catch(function (err) {
-                    console.log("Error saving the comment");
+                    vm.error = "Error Saving the Comment, Contact Admin";
                 })
         }
 

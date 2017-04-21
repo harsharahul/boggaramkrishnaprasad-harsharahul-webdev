@@ -19,7 +19,6 @@
         return api;
 
         function getAllComments() {
-            console.log("sevice cient")
             return $http.get("/universalSearch/api/social/all");
         }
 

@@ -43,7 +43,6 @@
             vm.commentObj = comment;
 
 
-            // SocialService.updateThread(id,)
         }
 
         function okClick(updateMessage) {
@@ -52,7 +51,6 @@
             vm.editingComment = null;
 
             vm.commentObj.comment = updateMessage;
-            console.log(vm.commentObj);
             vm.editBarDisable = true;
 
             var promise =  SocialService.updateThread(vm.commentObj._id,vm.commentObj);
@@ -60,21 +58,21 @@
             promise
                 .then(function (respose) {
                     if(respose.data){
-                        console.log("Updated thread successfully");
+                        vm.success = "Updated thread successfully";
                     }
-                    else
-                        console.log("Update thread error");
+                    else{
+                        vm.error = "Update thread error";
+                    }
 
                 })
                 .catch(function (err) {
-                    console.log("Update thread error");
+                    vm.error = "Update thread error";
 
                 })
         }
 
         vm.logout = logout;
 
-        console.log(loggedin);
 
         function logout() {
             UserService
@@ -85,7 +83,7 @@
                         $location.url("/");
                     })
                 .catch(function (err) {
-                    console.log(err);
+                    vm.error = "Error Logging out";
                 })
         }
 
@@ -105,11 +103,11 @@
                         vm.movies = response.data;
                     }
                     else{
-                        console.log("Error getting the all movies");
+                        vm.error = "Error getting the all movies";
                     }
                 })
                 .catch(function (err) {
-                    console.log("Error getting all the movies")
+                    vm.error = "Error getting the all movies";
                 })
 
             var commentPromise = SocialService.findThreadByUserId(uid);
@@ -120,11 +118,12 @@
                         vm.comments = response.data;
                     }
                     else{
+                        vm.error = "Error getting the all comments";
                         console.log("Error getting the all comments");
                     }
                 })
                 .catch(function (err) {
-                    console.log("Error getting all the comments")
+                    vm.error = "Error getting the all comments";
                 })
 
             var userPromise = UserService.getCurrentUser();
@@ -135,11 +134,11 @@
                         vm.user = response.data;
                     }
                     else{
-                        console.log("Error getting the user !!");
+                        vm.error = "Error getting the User Information!";
                     }
                 })
                 .catch(function (err) {
-                    console.log("Error getting all user")
+                    vm.error = "Error getting the User Information!";
                 })
 
         }
@@ -153,7 +152,6 @@
         function routeToDetails(id) {
             if(id){
                 $location.url("/user/movie/"+id);
-                // $location.url("/user/"+uid+"/movie/"+id);
             }
         }
 
@@ -163,13 +161,11 @@
             promise
                 .then(function (response) {
                     if(response){
-                        console.log("Updated successfully");
                         vm.success = "Updated successfully";
                         init();
                     }
                 })
                 .catch(function (err) {
-                    //console.log(err);
                     vm.error = "Error Updating the user";
                 })
         }
@@ -177,13 +173,10 @@
         function deleteUser(user) {
             var response = confirm("Are you sure you want to delete " + vm.user.username)
             if (response === true){
-                console.log("Deleting User");
                 var promise = UserService.deleteUser();
                 promise
                     .then(function (response) {
                         if(response){
-                            console.log("Successfully deleted the user");
-                            //vm.mode = ""
                             logout();
                         }
                         else {
@@ -192,7 +185,7 @@
                         }
                     })
                     .catch(function (err) {
-                        console.log(err);
+                        vm.error = "Error Deleting the User";
 
                     })
 
@@ -200,21 +193,19 @@
         }
 
         function removeMovie(id) {
-            //console.log("Removing movie:"+ id);
             var promise = MediaService.deleteMedia(id);
 
             promise
                 .then(function (response) {
                     if(response.data){
                         init();
-                        console.log("Movie successsfuly removed")
                     }
                     else{
-                        console.log("error removing movie")
+                        vm.error = "error removing movie";
                     }
                 })
                 .catch(function (err) {
-                    console.log("error removing movie")
+                    vm.error = "error removing movie";
                 })
         }
 
@@ -227,11 +218,11 @@
                         init();
                     }
                     else {
-                        console.log("Error deleting the comment")
+                        vm.error = "Error deleting the comment";
                     }
                 })
                 .catch(function (err) {
-                    console.log("Error deleting the comment")
+                    vm.error = "Error deleting the comment";
 
                 })
         }

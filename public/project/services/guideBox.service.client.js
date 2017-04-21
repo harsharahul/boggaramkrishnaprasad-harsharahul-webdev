@@ -37,9 +37,7 @@
             var url = urlBase.replace("API_KEY", key).replace("TYPE","shows").replace("LIMIT",limit);
             return $http.get(url);
         }
-        // function getSeries() {
-        //
-        // }
+
         function getMovieDetails(id) {
             var urlDetailsBase = "https://api-public.guidebox.com/v2/movies/ID?api_key=API_KEY";
             var url = urlDetailsBase.replace("API_KEY", key).replace("ID",id);

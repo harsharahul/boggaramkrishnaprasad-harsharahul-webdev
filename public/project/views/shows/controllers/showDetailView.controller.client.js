@@ -6,10 +6,8 @@
     function showDetailViewController(UserService,SocialService,GuideBoxService,
                                   $location, $routeParams,$sce,$anchorScroll,MediaService,$rootScope) {
         var vm = this;
-        //vm.login = login;
         vm.error = "";
         var guideBoxId = $routeParams.mid;
-        //var uid = $routeParams.uid;
         vm.getVideoFroMedia = getVideoFroMedia;
         vm.saveMedia =saveMedia;
         vm.addComment=addComment;
@@ -19,7 +17,6 @@
         vm.parseIntoHttps=parseIntoHttps;
         vm.routeShows=routeShows;
         vm.showRefresh = false;
-        //vm.loggedin = loggedin.role;
 
 
         function init() {
@@ -29,15 +26,12 @@
             vm.showRefresh = true;
 
 
-            console.log("testein")
             var promise = GuideBoxService.getShowDetails(guideBoxId);
 
             promise
                 .then(function (response) {
                     if(response.data){
                         vm.media = response.data;
-                        //vm.mediaTrailer = getVideoFroMedia(vm.media.trailers.web[0].embed);
-                        console.log(vm.media);
 
                     }
                     else{
@@ -62,14 +56,13 @@
                             .then(function (res) {
                                 if(res.data){
                                     vm.allEpisodes = res.data.results;
-                                    console.log(vm.allEpisodes);
                                     vm.showRefresh = false;
                                 }
                             })
                     }
                 })
                 .catch(function (err) {
-                    console.log("Error in fetching all the episodes");
+                    vm.error = "Error in fetching all the episodes";
                 })
         }
 
@@ -85,11 +78,10 @@
                 .then(function (response) {
                     if(response.data){
                         vm.comments = response.data;
-                        console.log(vm.comments);
                     }
                 })
                 .catch(function (err) {
-                    console.log("Error in lodaing the comments")
+                    vm.error = "Error loading the comments";
                 })
         }
 
@@ -113,7 +105,6 @@
         function saveMedia() {
 
             var media = new Object();
-            //media.user = uid;
             media.guideboxId = vm.media.id;
             media.title = vm.media.title;
             media.type = "SHOW";
@@ -126,7 +117,6 @@
                 .then(function (response) {
                     if(response.data){
                         vm.message = "Successfully saved the media";
-                        console.log("Successfully saved media");
                         vm.saved = true;
                     }
                     else {
@@ -146,7 +136,6 @@
             var thread = new Object();
 
             thread.comment = comment;
-            //thread.user = uid;
             thread.guideBoxMediaId = guideBoxId;
 
             var promise = SocialService.saveThread(thread);
@@ -154,13 +143,12 @@
             promise
                 .then(function (response) {
                     if(response.data){
-                        console.log("Thread saved successfully");
                         loadComments();
                         vm.comment = "";
                     }
                 })
                 .catch(function (err) {
-                    console.log("Error saving the comment");
+                    vm.error = "Error Saving the comment";
                 })
         }
 
