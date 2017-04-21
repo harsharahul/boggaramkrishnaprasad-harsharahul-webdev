@@ -28,7 +28,7 @@
             <div class="form-group">
                 <label class="register-label" for="username">Username</label>
                 <!--<input type="text" class="form-control" id="username" placeholder="Username">-->
-                <input name="username" required class="form-control" ng-model="model.user.username" type="text" placeholder="Username"/>
+                <input name="username" required class="form-control" ng-model="model.user.username" type="text" placeholder="Display Name"/>
 
             </div>
             <div ng-show="form.$submitted || form.username.$touched"
@@ -40,7 +40,7 @@
             <div class="form-group">
                 <label class="register-label" for="email">Email address</label>
                 <!--<input type="email" class="form-control" id="email" placeholder="alice@wonderland.com">-->
-                <input name="email" required class="form-control" ng-model="model.user.email" id="email" type="email" placeholder="Email"/>
+                <input name="email" required class="form-control" ng-model="model.user.email" id="email" type="email" placeholder="name@company.com"/>
 
             </div>
             <div ng-show="form.$submitted || form.email.$touched"

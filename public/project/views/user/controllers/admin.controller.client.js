@@ -112,6 +112,7 @@
                 .then(function (response) {
                     if(response.data){
                         init();
+                        vm.editingComment = null;
                     }
                     else {
                         vm.error = "Error deleting the comment";
@@ -139,7 +140,6 @@
             vm.editingComment = null;
 
             vm.commentObj.comment = updateMessage;
-            console.log(vm.commentObj);
             vm.editBarDisable = true;
 
             var promise =  SocialService.updateThread(vm.commentObj._id,vm.commentObj);
@@ -147,7 +147,7 @@
             promise
                 .then(function (respose) {
                     if(respose.data){
-                        vm.success = "Updated thread successfully";
+                        init();
                     }
                     else{
                         vm.error = "Update thread error";

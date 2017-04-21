@@ -15,9 +15,13 @@
         <h5 class="col-md-8">{{comment.userName}}</h5>
         <h6 class="col-md-3" ng-bind="comment.dateCreated | date:'medium'"></h6>
 
-        <a ng-show="model.config" ng-click="model.ediComment(comment)" class="col-md-1 glyphicon glyphicon-cog cog-gly"></a>
+        <a ng-show="model.config" ng-click="model.ediComment(comment)" class="col-md-1 ">
+            <span class=" glyphicon glyphicon-cog cog-gly"></span>
+        </a>
 
-        <a ng-show="model.edit" ng-click="model.removeComment(comment._id)" class="col-md-1 glyphicon glyphicon-remove remove-gly"></a>
+        <a ng-show="model.edit" ng-click="model.removeComment(comment._id)" class="col-md-1 ">
+            <span class="glyphicon glyphicon-remove remove-gly"></span>
+        </a>
 
         <p class="col-md-12">
             {{comment.comment}}

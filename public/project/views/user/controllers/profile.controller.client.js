@@ -58,7 +58,7 @@
             promise
                 .then(function (respose) {
                     if(respose.data){
-                        vm.success = "Updated thread successfully";
+                        init();
                     }
                     else{
                         vm.error = "Update thread error";
@@ -216,6 +216,7 @@
                 .then(function (response) {
                     if(response.data){
                         init();
+                        vm.editingComment =null;
                     }
                     else {
                         vm.error = "Error deleting the comment";
