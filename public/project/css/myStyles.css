@@ -259,6 +259,7 @@ html, body, .container-table {
 .pre-scrollable {
     max-height: 550px;
     overflow-y: scroll;
+    padding-bottom: 35px;
 }
 
 .user-menu {
@@ -402,9 +403,9 @@ input[type="text"]:disabled{background-color:#d3d3d3;
 color: #0a568c}
 
 .wordwrap {
-    white-space: pre-wrap;      /* CSS3 */
+    white-space: pre-line;      /* CSS3 */
     white-space: -moz-pre-wrap; /* Firefox */
-    white-space: -pre-wrap;     /* Opera <7 */
-    white-space: -o-pre-wrap;   /* Opera 7 */
+    /*white-space: -pre-wrap;     !* Opera <7 *!*/
+    /*white-space: -o-pre-wrap;   !* Opera 7 *!*/
     word-wrap: break-word;      /* IE */
 }

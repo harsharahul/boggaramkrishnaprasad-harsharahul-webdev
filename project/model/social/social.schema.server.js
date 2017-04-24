@@ -6,6 +6,7 @@ module.exports = function() {
         userName: String,
         guideBoxMediaId: String,
         comment: String,
+        mediaName: String,
         dateCreated: {type:Date, default: Date.now()}
     }, {collection: "project.social"});
     return SocialSchema;

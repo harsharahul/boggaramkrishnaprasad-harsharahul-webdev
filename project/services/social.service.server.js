@@ -118,6 +118,7 @@ module.exports = function (app, socialModel, userModel) {
         localThread.comment  = newThread.comment;
         localThread.user =  req.user._id;//newThread.user;//taking from passport
         localThread.guideBoxMediaId = newThread.guideBoxMediaId;
+        localThread.mediaName = newThread.mediaName;
 
         userModel.getUsername(localThread.user)
             .then(function (response) {

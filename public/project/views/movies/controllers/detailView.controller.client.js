@@ -118,6 +118,8 @@
 
             thread.comment = comment;
             thread.guideBoxMediaId = guideBoxId;
+            thread.mediaName =  vm.media.title;
+
 
             var promise = SocialService.saveThread(thread);
 
