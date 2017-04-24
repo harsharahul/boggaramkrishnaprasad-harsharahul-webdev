@@ -7,14 +7,11 @@
 <div class="row" ng-hide="model.usersCall" ng-repeat="user in model.allUsers"  style="margin-top: 2%; padding-top: 1%;">
     <div ng-click="model.editMessageForUser(user)" class="col-md-12 col-xs-12 single-comment" style="padding-top: 1%;">
         <p class="col-md-4"><b>User Name:</b> {{user.username}}</p>
-        <!--<p class="col-md-4 "><b>Password:</b> {{user.password}}</p>-->
-        <!--<p class="col-md-3" ng-bind="user.dateCreated | date:'medium'"><b>Date Created:</b> </p>-->
-        <!--<span class="col-md-1 glyphicon glyphicon-cog remove-gly"></span>-->
+
         <a>
             <i ng-click="model.editMessageForUser(user)" class="fa fa-envelope pull-right admin-label" aria-hidden="true"></i>
         </a>
         <p class="col-md-4"><b>First Name:</b> {{user.firstName}}</p>
         <p class="col-md-4"><b>Last Name:</b> {{user.lastName}}</p>
-        <!--<p class="col-md-4"><b>Email:</b> {{user.email}}</p>-->
     </div>
 </div>

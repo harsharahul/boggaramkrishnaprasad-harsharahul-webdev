@@ -12,12 +12,7 @@
                     <label class="logout-label">Logout</label></i>
             </a>
         </div>
-        <!--<div class="navbar-text pull-right ">-->
-            <!--<a href="" ng-click="" class="admin-label">-->
-                <!--<i class="fa fa-user-secret admin-label" aria-hidden="true">-->
-                    <!--<label class="admin-label">Admin</label></i>-->
-            <!--</a>-->
-        <!--</div>-->
+
         <div class="navbar-header">
             <a class="navbar-brand" href="#">
                 <p class="brand-name">StreamHub</p>
@@ -28,10 +23,6 @@
             </div>
         </div>
 
-        <!--<button class="btn btn-lg btn-warning">-->
-            <!--<span class="glyphicon glyphicon-refresh glyphicon-facetime-video fa-spin" style="color: whitesmoke"></span> Loading...-->
-        <!--</button>-->
-        <!--<i class="faa-spin animated" style="color:whitesmoke;"></i>-->
     </div>
 </nav>
 
@@ -60,10 +51,7 @@
                         <span ng-if="model.saved==1">Saved !!</span>  <span ng-if="!model.saved">Save Media</span>
                     </button>
                 </div>
-                <!--<div class="hidden-lg hidden-md"-->
-                     <!--style="padding-top: 5%; margin-top: 10%; margin-bottom: 15%; padding-bottom: 5%">-->
-                    <!--<button type="button" class="btn btn-primary col-md-12 col-sm-12 col-xs-12">Watch Trailer</button>-->
-                <!--</div>-->
+
             </div>
 
         </div>
@@ -82,10 +70,6 @@
                     Starring: <span ng-repeat="star in model.media.cast">
                        <a class="a-link" target="_blank" href="http://www.imdb.com/name/{{star.imdb}}"> {{star.name}} </a></span><br><br>
                     Status: <span style="color:#aaaaaa">{{model.media.status}}</span>
-                    <!--<span ng-repeat="write in model.media.status">-->
-                       <!--<a class="a-link" target="_blank"href="http://www.imdb.com/name/{{write.imdb}}"> {{write.name}} </a> </span><br><br>-->
-                    <!--Directors: <span ng-repeat="director in model.media.directors">-->
-                       <!--<a class="a-link"  target="_blank" href="http://www.imdb.com/name/{{director.imdb}}"> {{director.name}} </a></span><br><br>-->
                     <br><br>
                     Genre : <span style="color:#aaaaaa" ng-repeat="genre in model.media.genres"> {{genre.title}} </span>
                     <br><br>
@@ -138,12 +122,6 @@
                 <img class="img-rounded poster" width="100%"
                      ng-src="{{movie.thumbnail_608x342}}"/>
                 </a>
-                <!--<img ng-if="model.currentUser" ng-click="model.routeToDetails(movie.id)" class="img-rounded poster" width="100%"-->
-                     <!--ng-src="{{model.parseIntoHttps(movie.poster_400x570)}}"/>-->
-                <!--<img ng-if="!model.currentUser" data-toggle="tooltip" title="Please Login to Continue"  class="img-rounded poster red-tooltip" width="100%"-->
-                     <!--ng-src="{{model.parseIntoHttps(movie.poster_400x570)}}"/>-->
-                <!--<img ng-if="{{movie.artwork_448x252}}" ng-click="model.routeToDetails(movie.id)" class="img-rounded poster" width="100%"-->
-                <!--ng-src="{{movie.artwork_448x252}}"/>-->
             </div>
         </div>
     </div>
