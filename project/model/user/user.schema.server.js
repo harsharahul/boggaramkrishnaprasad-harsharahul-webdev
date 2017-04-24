@@ -14,7 +14,13 @@ module.exports = function() {
         facebook: {
             id:    String,
             token: String
-        }
+        },
+
+        messages:[{
+                id: String,
+                name: String,
+                message:String
+            }]
 
     }, {collection: "project.users"});
     return UsersSchema;

@@ -1,0 +1,22 @@
+<div ng-show="model.deleteMessageError" class="alert alert-danger" role="alert" >
+    {{model.deleteMessageError}}
+</div>
+<div class="alert alert-success" ng-show="model.deleteMessageSuccess">
+    {{model.deleteMessageSuccess}}
+</div>
+<div class="row user-single-comment"  ng-repeat="message in model.user.messages" style="margin-top: 2%; padding-top: 1%;">
+
+    <div class="col-md-12 col-xs-12">
+        <h5 class="col-md-8">From: {{message.name}}</h5>
+        <h6 class="col-md-3" ng-bind="comment.dateCreated | date:'medium'"></h6>
+
+        <a  ng-click="model.deleteMessage(message)" class="col-md-1 ">
+            <span class="glyphicon glyphicon-remove remove-gly"></span>
+        </a>
+
+        <p class="col-md-12">
+            {{message.message}}
+        </p>
+
+    </div>
+</div>

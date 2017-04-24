@@ -47,6 +47,18 @@
                     <label class="admin-label">Settings</label>
                 </a>
             </li>
+            <li class="col-sm-12">
+                <a ng-click="model.setDisplayMode('MESSAGE')">
+                    <i class="fa fa-envelope logout-gly" aria-hidden="true">
+                        <label class="logout-label">Message</label></i>
+                </a>
+            </li>
+            <li class="col-sm-12">
+                <a ng-click="model.model.setDisplayMode('INBOX')">
+                    <i class="fa fa-inbox logout-gly" aria-hidden="true">
+                        <label class="logout-label">Inbox</label></i>
+                </a>
+            </li>
             <li ng-show="model.showAdmin"  class="col-sm-12">
                 <a  ng-click="model.routeAdmin()" class="admin-label">
                     <i class="fa fa-user-secret admin-label" aria-hidden="true">
@@ -59,6 +71,7 @@
                         <label class="logout-label">Logout</label></i>
                 </a>
             </li>
+
 
         </ul>
     </div>
@@ -92,6 +105,18 @@
                             <span class="glyphicon glyphicon-cog user-action-gly"></span>
                             Settings </button>
                     </li>
+
+                    <li class="user-menu">
+                        <button ng-click="model.setDisplayMode('MESSAGE')" type="button" class="btn btn-outline btn-primary btn-lg btn-block user-button ">
+                            <span class="glyphicon glyphicon-envelope user-action-gly"></span>
+                            Message </button>
+                    </li>
+
+                    <li class="user-menu">
+                        <button ng-click="model.setDisplayMode('INBOX')" type="button" class="btn btn-outline btn-primary btn-lg btn-block user-button ">
+                            <i class="fa fa-inbox user-action-gly"></i>
+                            Inbox </button>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -113,6 +138,15 @@
                 </div>
                 <div ng-switch-when="COMMENTS">
                     <ng-include src="'views/user/templates/user-comments.view.client.html'"></ng-include>
+                </div>
+                <div ng-switch-when="MESSAGE">
+                    <ng-include src="'views/user/templates/allUserShow-profile.view.client.html'"></ng-include>
+                </div>
+                <div ng-switch-when="INBOX">
+                    <ng-include src="'views/user/templates/user-inbox.view.client.html'"></ng-include>
+                </div>
+                <div ng-switch-when="MESSAGE-EDITOR">
+                    <ng-include src="'views/user/templates/user-message-editor.view.client.html'"></ng-include>
                 </div>
             </div>
 

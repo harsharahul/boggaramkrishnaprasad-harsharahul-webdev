@@ -19,6 +19,9 @@
         vm.removeMovie = removeMovie;
         vm.removeComment = removeComment;
         vm.routeAdmin=routeAdmin;
+        vm.editMessageForUser = editMessageForUser;
+        vm.sendUserMessage =sendUserMessage;
+        vm.deleteMessage = deleteMessage;
         vm.showAdmin= false;
 
         vm.editingComment = '';
@@ -32,6 +35,7 @@
 
         vm.ediComment = ediComment;
         vm.okClick = okClick;
+        //vm.messageIconDisplay = false;
 
         function ediComment(comment) {
 
@@ -141,11 +145,28 @@
                     vm.error = "Error getting the User Information!";
                 })
 
+            var allUserPromise = UserService.getAllUsers();
+
+            allUserPromise
+                .then(function (response) {
+                    if(response.data){
+                        vm.allUsers = response.data;
+                    }
+                    else{
+                        vm.error = "Error getting all the users";
+                    }
+                })
+                .catch(function (err) {
+                    vm.error = "Error getting all the users";
+                })
+
         }
 
         init();
 
         function setDisplayMode(mode) {
+            vm.sentError = null;
+            vm.sentSuccessfully = null;
             vm.mode = mode;
         }
 
@@ -231,5 +252,97 @@
         function routeAdmin() {
             $location.url("/admin");
         }
+
+        function editMessageForUser(user) {
+            vm.messageUser = user;
+            vm.mode = "MESSAGE-EDITOR";
+        }
+
+        function sendUserMessage(message) {
+
+            if(!message){
+                vm.sentError = "Message cannot be empty";
+            }
+
+            var messages = new Object();
+            messages.id = vm.messageUser._id;
+            messages.name = vm.messageUser.username;
+            messages.message = message;
+
+            vm.messageUser.messages.push(messages);
+
+            // //Filling the user object with message
+            // if(!vm.messageUser.messages){
+            //     var messages = new Object();
+            //     messages.id = user._id;
+            //     messages.name = user.username;
+            //     messages.message = message;
+            //
+            //     vm.messageUser.messages = messages;
+            //
+            // }
+            // else {
+            //     var messages = new Object();
+            //     messages.id = user._id;
+            //     messages.name = user.username;
+            //     messages.message = message;
+            //
+            //     vm.messageUser.messages.push(messages);
+            // }
+
+            console.log(vm.messageUser);
+
+            if(vm.messageUser){
+                var promise = UserService.updateUserByID(vm.messageUser);
+
+                promise
+                    .then(function (response) {
+                        if(response){
+                            if(response.data) {
+                                init();
+                                vm.sentSuccessfully = "Sent message successfully";
+                            }
+                            else {
+                                vm.sentError = "Error sending message to the User";
+                            }
+                        }
+                    })
+                    .catch(function (err) {
+                        vm.sentError = "Error sending message to the User";
+                    })
+            }
+            else {
+                vm.sentError = "message cannot be empty";
+            }
+
+        }
+
+        function deleteMessage(message) {
+
+            if(message){
+                vm.user.messages.splice(vm.user.messages.indexOf(message,1));
+
+                var promise = UserService.updateUserByID(vm.user);
+
+                promise
+                    .then(function (response) {
+                        if(response){
+                            if(response.data) {
+                                init();
+                                //vm.deleteMessageSuccess = "Delete Successful";
+                            }
+                            else {
+                                vm.deleteMessageError = "Error deleting message";
+                            }
+                        }
+                    })
+                    .catch(function (err) {
+                        vm.deleteMessageError = "Error deleting message";
+                    })
+
+            }
+
+        }
+
     }
 })();
