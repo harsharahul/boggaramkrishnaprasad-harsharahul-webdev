@@ -1,3 +1,9 @@
+<div ng-show="model.sentError" class="alert alert-danger" role="alert" >
+    {{model.sentError}}
+</div>
+<div class="alert alert-success" ng-show="model.sentSuccessfully">
+    {{model.sentSuccessfully}}
+</div>
 <div class="row" ng-hide="model.usersCall" ng-repeat="user in model.allUsers"  style="margin-top: 2%; padding-top: 1%;">
     <div ng-click="model.editMessageForUser(user)" class="col-md-12 col-xs-12 single-comment" style="padding-top: 1%;">
         <p class="col-md-4"><b>User Name:</b> {{user.username}}</p>

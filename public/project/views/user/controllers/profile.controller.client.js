@@ -165,6 +165,7 @@
         init();
 
         function setDisplayMode(mode) {
+            init();
             vm.sentError = null;
             vm.sentSuccessfully = null;
             vm.mode = mode;
@@ -262,6 +263,7 @@
 
             if(!message){
                 vm.sentError = "Message cannot be empty";
+                return;
             }
 
             var messages = new Object();
@@ -281,7 +283,8 @@
                     .then(function (response) {
                         if(response){
                             if(response.data) {
-                                init();
+                                //init();
+                                setDisplayMode("MESSAGE")
                                 vm.sentSuccessfully = "Sent message successfully";
                             }
                             else {

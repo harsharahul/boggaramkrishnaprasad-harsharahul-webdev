@@ -7,13 +7,9 @@
     </div>
     <label style="color: whitesmoke">To : {{model.messageUser.username}}</label>
     <div>
-        <textarea ng-model="newMessage" rows="5" ng-model="model.comment" ng-model="searchText" type="text" class="form-control comment-bar"
+        <textarea maxlength="250" ng-model="newMessage" rows="4" ng-model="model.comment" ng-model="searchText" type="text" class="form-control comment-bar"
                   placeholder="Type Message Here" style="width: 100%;height: 200px"></textarea>
-        <!--<span class="input-group-btn">-->
-            <!--<a ng-click="model.addComment(model.comment)" class="btn btn-default search-button" type="button">-->
-            <!--<span class="glyphicon glyphicon-plus search-gly"></span>-->
-            <!--</a>-->
-            <!--</span>-->
+
     </div>
     <br>
     <button ng-click="model.sendUserMessage(newMessage)" type="button"
