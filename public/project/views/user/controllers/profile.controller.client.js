@@ -265,30 +265,12 @@
             }
 
             var messages = new Object();
-            messages.id = vm.messageUser._id;
-            messages.name = vm.messageUser.username;
+            messages.id = vm.user._id;
+            messages.name = vm.user.username;
             messages.message = message;
 
             vm.messageUser.messages.push(messages);
 
-            // //Filling the user object with message
-            // if(!vm.messageUser.messages){
-            //     var messages = new Object();
-            //     messages.id = user._id;
-            //     messages.name = user.username;
-            //     messages.message = message;
-            //
-            //     vm.messageUser.messages = messages;
-            //
-            // }
-            // else {
-            //     var messages = new Object();
-            //     messages.id = user._id;
-            //     messages.name = user.username;
-            //     messages.message = message;
-            //
-            //     vm.messageUser.messages.push(messages);
-            // }
 
             console.log(vm.messageUser);
 
@@ -320,7 +302,7 @@
         function deleteMessage(message) {
 
             if(message){
-                vm.user.messages.splice(vm.user.messages.indexOf(message,1));
+                vm.user.messages.splice(vm.user.messages.indexOf(message),1);
 
                 var promise = UserService.updateUserByID(vm.user);
 
