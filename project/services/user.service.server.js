@@ -7,6 +7,7 @@ module.exports = function (app, userModel, socialModel, mediaModel) {
         callbackURL  : "https://harsharahul-webdev.herokuapp.com/auth/facebook/callback"
     };
 
+
     var passport = require('passport');
     var LocalStrategy = require('passport-local').Strategy;
     var FacebookStrategy = require('passport-facebook').Strategy;
